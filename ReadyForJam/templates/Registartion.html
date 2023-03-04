@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+</head>
+<body>
+    <form method="post" action="/register/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+            <div>{{ Nick }}</div>
+            <img src='{{ Photo }}' alt="Avatar"/>
+        </table>
+        <input type="submit" value="Send">
+    </form>
+</body>
+</html>

@@ -16,6 +16,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
 ]
 
 MIDDLEWARE = [
@@ -52,7 +53,7 @@ TEMPLATES = [
         ],
         "APP_DIRS": True,
         'OPTIONS': {
-            'environment': 'energosec.jinja2.environment'
+            'environment': 'ReadyForJam.jinja2.environment'
         },
     },
 ]
