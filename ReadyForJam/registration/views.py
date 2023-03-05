@@ -1,24 +1,26 @@
-from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import View
 
 from registration.form import UserRegistrationForm
-from registration.utils import handle_uploaded_file
+from globalUtils.utils import HandleUploadedFile
 
 
 class UserRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        return render(request, '../templates/Registartion.html', {'form': UserRegistrationForm})
+        return render(request, '../templates/user/registration.html', {'form': UserRegistrationForm})
 
     @staticmethod
     def post(request, **kwargs):
-        NickName = request.POST.get("NickName")
-        path = handle_uploaded_file(request.FILES['Image'],
-                                    request.FILES['Image'].name)
+        nickName = request.POST.get("NickName")
+        eMail = request.POST.get("EMail")
+        path = HandleUploadedFile(request.FILES['Photo'],
+                                  'static/user/img/',
+                                  request.FILES['Photo'].name)
         context = {
-            'Nick': NickName,
-            'Photo': '/' + path
+            'nick': nickName,
+            'eMail': eMail,
+            'photo': '/' + path,
         }
-        return render(request, '../templates/Registartion.html', context=context)
+        return render(request, '../templates/user/registration.html', context=context)

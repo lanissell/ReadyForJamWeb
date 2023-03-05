@@ -1,20 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Регистрация</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block content %}
     <div>
         <form method="post" action="/register/" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
                 {{ form }}
-                <div>{{ Nick }}</div>
+                <div>{{ nick }}</div>
+                <div>{{ eMail }}</div>
+                <div><img src="{{ photo }}" alt="Avatar"/></div>
             </table>
-            <img src="{{ Photo }}" alt="Avatar"/>
             <input type="submit" value="Send">
         </form>
     </div>
-</body>
-</html>
+{% endblock %}

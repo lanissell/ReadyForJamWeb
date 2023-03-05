@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="../static/base/css/zeroing-style.css">
+  <link rel="stylesheet" href="../static/base/css/style.css">
+  <link rel="shortcut icon" href="../static/base/img/Logo.svg">
+  <title>Document</title>
+</head>
+<body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__container _container">
+          <a class="header__link" href="MainPage.html">
+            <img src="../static/base/img/Logo.svg" class="header_logo" alt="">
+          </a>
+          <h1 class="header__project-name">Ready for Jam</h1>
+
+
+          <nav class="header__menu menu">
+            <ul class="menu_list">
+              <li class="menu_item">
+                <a href="" class="menu__link">Джемы</a>
+              </li>
+              <li class="menu_item">
+                <a href="" class="menu__link">Резюме</a>
+              </li>
+              <li class="menu_item">
+                <a href="" class="menu__link">Рейтинг</a>
+              </li>
+            </ul>
+          </nav>
+
+
+          <nav class="header__right-group right-group">
+            <ul class="right-group__list">
+              <li class="right-group__items">
+                  <label>
+                      <input type="text" placeholder="Поиск..." class="right-group__search">
+                  </label>
+              </li>
+              <li class="right-group__items">
+                <a class="right-group__link" href="">
+                  <img class="right-group__notification" src="../static/base/img/alarm.svg" alt="">
+                </a>
+              </li>
+              <li class="right-group__items">
+                <a class="right-group__link" href="">
+                  <img class="right-group__profile" src="../static/base/img/Profile.svg" alt="">
+                </a>
+              </li>
+            </ul>
+          </nav>
+
+
+        </div>
+      </header>
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>
