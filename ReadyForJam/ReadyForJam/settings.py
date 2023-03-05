@@ -33,6 +33,16 @@ ROOT_URLCONF = 'ReadyForJam.urls'
 
 TEMPLATES = [
     {
+        "BACKEND": "django.template.backends.jinja2.Jinja2",
+        "DIRS": [
+            os.path.join(BASE_DIR, "templates")
+        ],
+        "APP_DIRS": True,
+        'OPTIONS': {
+            'environment': 'ReadyForJam.jinja2.environment',
+        },
+    },
+    {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [BASE_DIR / 'templates']
         ,
@@ -44,16 +54,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
-        },
-    },
-    {
-        "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [
-            os.path.join(BASE_DIR, "templates")
-        ],
-        "APP_DIRS": True,
-        'OPTIONS': {
-            'environment': 'ReadyForJam.jinja2.environment'
         },
     },
 ]
@@ -90,6 +90,9 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static')
+]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

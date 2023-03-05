@@ -5,14 +5,16 @@
     <title>Регистрация</title>
 </head>
 <body>
-    <form method="post" action="/register/" enctype="multipart/form-data">
-        {% csrf_token %}
-        <table>
-            {{ form }}
-            <div>{{ Nick }}</div>
-            <img src='{{ Photo }}' alt="Avatar"/>
-        </table>
-        <input type="submit" value="Send">
-    </form>
+    <div>
+        <form method="post" action="/register/" enctype="multipart/form-data">
+            {% csrf_token %}
+            <table>
+                {{ form }}
+                <div>{{ Nick }}</div>
+            </table>
+            <img src="{{ Photo }}" alt="Avatar"/>
+            <input type="submit" value="Send">
+        </form>
+    </div>
 </body>
 </html>
