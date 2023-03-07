@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 
 from registration.form import UserRegistrationForm
-from globalUtils.utils import HandleUploadedFile
+from globalUtils import HandleUploadedFile
 
 
 class UserRegistrationView(View):
