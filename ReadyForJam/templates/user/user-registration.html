@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% block links %}
+    <link rel="stylesheet" href="../../static/user/css/registration/user-registration.css">
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="registration">
+            <div class="registration__container">
+                <div class="registration__title">
+                    <h1 class="registration__title-text">Регистрация аккаунта</h1>
+                </div>
+                <form method="post" action="/register/" enctype="multipart/form-data" class="registration__form">
+                    {% csrf_token %}
+                    <ul class="registration__list">
+                        {% for field in form %}
+                            <li class="registration__item">
+                                <h3 class="registration__item-title">{{ field.label }}</h3>
+                                <label>
+                                    {{ field }}
+                                </label>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <div class="registration__button-block button_block">
+                        <button class="button-block__button" type="button">
+                            <a href="" class="button-block__link">Есть аккаунт</a>
+                        </button>
+                        <button class="button-block__button-complete" type="submit">Регистрация</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

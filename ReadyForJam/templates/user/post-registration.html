@@ -4,12 +4,10 @@
         <form method="post" action="/register/" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
-                {{ form }}
                 <div>{{ nick }}</div>
                 <div>{{ eMail }}</div>
                 <div><img src="{{ photo }}" alt="Avatar"/></div>
             </table>
-            <input type="submit" value="Send">
         </form>
     </div>
 {% endblock %}

@@ -9,7 +9,7 @@ class UserRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        return render(request, '../templates/user/registration.html', {'form': UserRegistrationForm})
+        return render(request, '../templates/user/user-registration.html', {'form': UserRegistrationForm})
 
     @staticmethod
     def post(request, **kwargs):
@@ -23,4 +23,4 @@ class UserRegistrationView(View):
             'eMail': eMail,
             'photo': '/' + path,
         }
-        return render(request, '../templates/user/registration.html', context=context)
+        return render(request, '../templates/user/post-registration.html', context=context)
