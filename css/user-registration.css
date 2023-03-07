@@ -1,0 +1,165 @@
+@import "zeroing-style.css";
+@import url("https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap");
+body,
+html {
+  font-size: 16px;
+  height: 100%;
+  width: 100%;
+  font-family: Monda, sans-serif;
+  background: #313131 url("../img/background-image.svg") repeat;
+  background-size: cover;
+  z-index: 1;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+  box-sizing: content-box;
+}
+
+._container {
+  max-width: 83.3854166667%;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+.registration {
+  max-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 79px 0;
+}
+
+.registration__container {
+  max-width: 785px;
+  background: linear-gradient(180deg, #525252 0%, #414141 100%);
+  border: 2px solid #313131;
+  border-radius: 10px;
+  align-items: center;
+  top: 50%;
+}
+
+.registration__title {
+  width: 100%;
+  max-height: 80px;
+  text-align: center;
+  background: #414141;
+  border-bottom: 2px solid #CA3E47;
+  border-radius: 10px 10px 0 0;
+}
+
+.registration__title-text {
+  font-family: Monda, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 49px;
+  color: #FFFFFF;
+}
+
+.registration__list {
+  flex-wrap: wrap;
+}
+.registration__list :last-child {
+  margin-bottom: 44px;
+}
+
+.registration__item {
+  height: 92px;
+  width: 514px;
+  margin: 0 137px;
+}
+
+.registration__item-title {
+  vertical-align: top;
+  font-family: Monda, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 49px;
+  color: #FFFFFF;
+}
+
+.registration__item-input {
+  width: 514px;
+  height: 35px;
+  vertical-align: bottom;
+  outline: none;
+  background: #525252;
+  border: 2px solid #313131;
+  border-radius: 5px;
+  color: white;
+}
+
+.registration__item-about-me {
+  max-width: 514px;
+  width: 514px;
+  height: 242px;
+  max-height: 242px;
+  margin-bottom: 22px;
+  outline: none;
+  background: #525252;
+  border: 2px solid #313131;
+  border-radius: 5px;
+  color: white;
+}
+
+.registration__item-image {
+  background: #525252;
+  border: 2px solid #313131;
+  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+}
+
+.registration__button-block {
+  width: 100%;
+  text-align: center;
+  margin-bottom: 66px;
+}
+
+.button_block {
+  padding: 0 5px;
+}
+
+.button-block__button {
+  max-height: 40px;
+  max-width: 242px;
+  width: 242px;
+  height: 40px;
+  margin-right: 30px;
+  background: #525252;
+  border-radius: 5px;
+  text-decoration: none;
+}
+
+.button-block__link {
+  text-decoration: none;
+  font-family: Monda, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+.button-block__button-complete {
+  max-height: 40px;
+  max-width: 242px;
+  width: 242px;
+  height: 40px;
+  background: #CA3E47;
+  border-radius: 5px;
+  text-decoration: none;
+  font-family: Monda, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 33px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/*# sourceMappingURL=user-registration.css.map */

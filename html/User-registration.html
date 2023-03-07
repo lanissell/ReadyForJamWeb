@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <link rel="stylesheet" href="../css/zeroing-style.css">
+  <link rel="stylesheet" href="../css/user-registration.css">
+</head>
+<body>
+<div class="wrapper">
+  <div class="registration">
+    <div class="registration__container">
+      <div class="registration__title">
+        <h1 class="registration__title-text">Регистрация аккаунта</h1>
+      </div>
+      <form action="index.html" class="registration__form">
+        <ul class="registration__list">
+          <li class="registration__item">
+            <h3 class="registration__item-title">Ник</h3>
+            <label>
+              <input type="text" name="nickname"
+                     class="registration__item-input" required>
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">Пароль</h3>
+            <label>
+              <input type="password" name="password" placeholder="не менее 8 сомволов"
+                     class="registration__item-input" required>
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">Повторите пароль</h3>
+            <label>
+              <input type="password" name="confirm_password" placeholder="повторите пароль"
+                     class="registration__item-input" required>
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">Ваш E-Mail</h3>
+            <label>
+              <input type="text" name="email" class="registration__item-input" required>
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">Дата рождения</h3>
+            <label>
+              <input type="date" name="birthday" class="registration__item-input" required>
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">О себе</h3>
+            <label><!--class="registration__item-about-me"-->
+              <input class="registration__item-input" type="text">//TODO
+<!--              <p><textarea class="registration__item-about-me"></textarea></p>-->
+            </label>
+          </li>
+          <li class="registration__item">
+            <h3 class="registration__item-title">Аватар</h3>
+            <input type="file" name="avatar_image" class="registration__item-image" required alt="SHOW">
+          </li>
+        </ul>
+
+        <div class="registration__button-block button_block">
+          <button class="button-block__button" type="button">
+            <a href="" class="button-block__link">Есть аккаунт</a>
+          </button>
+          <button class="button-block__button-complete" type="submit">Регистрация</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+</body>
+</html>
