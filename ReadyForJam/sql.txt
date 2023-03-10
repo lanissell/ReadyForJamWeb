@@ -1,9 +1,0 @@
-BEGIN;
---
--- Alter field BirthDate on user
---
-CREATE TABLE "new__registration_user" ("id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, "BirthDate" date NOT NULL, "NickName" varchar(256) NOT NULL);
-INSERT INTO "new__registration_user" ("id", "NickName", "BirthDate") SELECT "id", "NickName", "BirthDate" FROM "registration_user";
-DROP TABLE "registration_user";
-ALTER TABLE "new__registration_user" RENAME TO "registration_user";
-COMMIT;

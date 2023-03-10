@@ -1,8 +1,10 @@
 from django.contrib import admin
-from django.urls import path
-from registration.views import UserRegistrationView
+from django.urls import path, include
+
+import authorization
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', UserRegistrationView.as_view())
+    path('author/', include('authorization.urls')),
 ]

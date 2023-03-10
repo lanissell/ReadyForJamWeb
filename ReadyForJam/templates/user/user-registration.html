@@ -3,7 +3,7 @@
     <link rel="stylesheet" href="../../static/user/css/registration/user-registration.css">
 {% endblock %}
 {% block title %}
-    Регистрация
+    {{ pageTitle }}
 {% endblock %}
 {% block content %}
     <div class="wrapper">
@@ -26,9 +26,9 @@
                     </ul>
                     <div class="registration__button-block button_block">
                         <button class="button-block__button" type="button">
-                            <a href="" class="button-block__link">Есть аккаунт</a>
+                            <a href="../{{ changePageBtnUrl }}" class="button-block__link">{{ changePageBtnText }}</a>
                         </button>
-                        <button class="button-block__button-complete" type="submit">Регистрация</button>
+                        <button class="button-block__button-complete" type="submit">{{ submitBtnText }}</button>
                     </div>
                 </form>
             </div>
