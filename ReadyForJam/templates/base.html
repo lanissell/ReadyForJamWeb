@@ -10,7 +10,10 @@
     <link rel="shortcut icon" href="../static/base/img/Logo.svg">
     {% block links %}
     {% endblock %}
-    <title>Document</title>
+    <title>
+        {% block title %}
+        {% endblock %}
+    </title>
 </head>
 <body>
 <div class="wrapper">

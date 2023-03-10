@@ -1,11 +1,11 @@
 @import "../../../base/css/zeroing-style.css";
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body,
 html {
   font-size: 16px;
   height: 100%;
   width: 100%;
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
   background: url("../../img/registration/sr26e2dd61dd2e6.gif") no-repeat;
   background-size: cover;
   z-index: 1;
@@ -51,7 +51,7 @@ html {
 }
 
 .registration__title-text {
-  font-family: Montserrat, serif;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -74,7 +74,7 @@ html {
 
 .registration__item-title {
   vertical-align: top;
-  font-family: Montserrat, serif;
+  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
@@ -136,7 +136,7 @@ html {
 
 .button-block__link {
   text-decoration: none;
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
@@ -150,13 +150,11 @@ html {
   max-width: 242px;
   width: 242px;
   height: 40px;
-
   background: #CA3E47;
   border: 2px solid #313131;
   border-radius: 5px;
-
   text-decoration: none;
-  font-family: Montserrat, sans-serif;
+  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
