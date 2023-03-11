@@ -1,12 +1,13 @@
 @import "../../../base/css/zeroing-style.css";
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
 body,
 html {
   font-size: 16px;
   height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
-  background: url("../../img/registration/sr26e2dd61dd2e6.gif") no-repeat;
+  background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat;
   background-size: cover;
   z-index: 1;
 }
@@ -17,12 +18,16 @@ html {
   box-sizing: content-box;
 }
 
+
+
+
 ._container {
-  max-width: 83.3854166667%;
+  max-width: 1601px / 1920px * 100%;
   padding: 0 15px;
   margin: 0 auto;
   box-sizing: content-box;
 }
+
 
 .registration {
   max-width: 100%;
@@ -40,6 +45,8 @@ html {
   align-items: center;
   top: 50%;
 }
+
+
 
 .registration__title {
   width: 100%;
@@ -59,11 +66,14 @@ html {
   color: #FFFFFF;
 }
 
+.registration__form {
+}
+
 .registration__list {
   flex-wrap: wrap;
-}
-.registration__list :last-child {
-  margin-bottom: 44px;
+  :last-child {
+    margin-bottom: 44px;
+  }
 }
 
 .registration__item {
@@ -74,11 +84,14 @@ html {
 
 .registration__item-title {
   vertical-align: top;
+
+
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 49px;
+
   color: #FFFFFF;
 }
 
@@ -87,6 +100,7 @@ html {
   height: 35px;
   vertical-align: bottom;
   outline: none;
+
   background: #525252;
   border: 2px solid #313131;
   border-radius: 5px;
@@ -103,6 +117,7 @@ html {
   background: #525252;
   border: 2px solid #313131;
   border-radius: 5px;
+
   color: white;
 }
 
@@ -134,6 +149,7 @@ html {
   border-radius: 5px;
 }
 
+
 .button-block__link {
   text-decoration: none;
   font-family: Roboto, sans-serif;
@@ -142,6 +158,7 @@ html {
   font-size: 20px;
   line-height: 33px;
   text-align: center;
+
   color: #FFFFFF;
 }
 
@@ -150,9 +167,11 @@ html {
   max-width: 242px;
   width: 242px;
   height: 40px;
+
   background: #CA3E47;
   border: 2px solid #313131;
   border-radius: 5px;
+
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-style: normal;
@@ -160,7 +179,6 @@ html {
   font-size: 20px;
   line-height: 33px;
   text-align: center;
+
   color: #FFFFFF;
 }
-
-/*# sourceMappingURL=user-authorization.css.map */

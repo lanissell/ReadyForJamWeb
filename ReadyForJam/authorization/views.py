@@ -3,7 +3,7 @@ from django.views import View
 
 from authorization.form import UserRegistrationForm, UserLoginForm
 from authorization.utils import CreateAuthorViewContext
-from globalUtils import HandleUploadedFile
+from globalUtils import UploadFile
 
 
 class UserLoginView(View):
@@ -14,7 +14,7 @@ class UserLoginView(View):
                                           'Нет аккаунта',
                                           'register',
                                           UserLoginForm)
-        return render(request, '../templates/user/user-registration.html', context=context)
+        return render(request, '../templates/user/authorization.html', context=context)
 
 
 class UserRegistrationView(View):
@@ -26,19 +26,15 @@ class UserRegistrationView(View):
                                           'Есть аккаунт',
                                           'login',
                                           UserRegistrationForm)
-        return render(request, '../templates/user/user-registration.html', context=context)
+        return render(request, '../templates/user/authorization.html', context=context)
 
     @staticmethod
     def post(request, **kwargs):
-        nickName = request.POST.get("NickName")
-        eMail = request.POST.get("EMail")
-        path = HandleUploadedFile(request.FILES['Photo'],
-                                  'static/user/img/',
-                                  request.FILES['Photo'].name)
-        context = {
-            'nick': nickName,
-            'eMail': eMail,
-            'photo': '/' + path,
-        }
+
+        form = UserRegistrationForm(request.POST, request.FILES)
+        context = {}
+        if form.is_valid():
+            user = form.save(commit=True)
+            context['user'] = user
         return render(request, '../templates/user/post-registration.html', context=context)
 

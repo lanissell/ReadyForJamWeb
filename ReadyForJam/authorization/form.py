@@ -1,28 +1,39 @@
+from django.forms import ModelForm
 from django import forms
+from user.models import User
 
 
-class UserLoginForm(forms.Form):
-    attrs = {'class': 'registration__item-input'}
-
-    Login = forms.CharField(label='Логин', widget=forms.TextInput(
-        attrs=attrs
-    ))
-    Password = forms.CharField(min_length=8, label='Пароль', widget=forms.PasswordInput(
-        attrs=attrs
-    ))
+class UserLoginForm(ModelForm):
+    class Meta:
+        attrs = {'class': 'registration__item-input'}
+        model = User
+        fields = ['NickName', 'Password']
+        widgets = {
+            'NickName': forms.TextInput(attrs=attrs),
+            'Password': forms.PasswordInput(attrs=attrs),
+        }
+        labels = {
+            'NickName': 'Ник',
+            'Password': 'Пароль',
+        }
 
 
 class UserRegistrationForm(UserLoginForm):
     PasswordRepeat = forms.CharField(min_length=8, label='Повторите пароль', widget=forms.PasswordInput(
-        attrs=UserLoginForm.attrs
+        attrs=UserLoginForm.Meta.attrs
     ))
     EMail = forms.CharField(label='E-Mail', widget=forms.EmailInput(
-        attrs=UserLoginForm.attrs
+        attrs=UserLoginForm.Meta.attrs
     ))
+
     BirthDate = forms.DateField(label='Дата рождения', widget=forms.SelectDateWidget())
     About = forms.CharField(label='О себе', required=False, widget=forms.Textarea(
-        attrs=UserLoginForm.attrs
+        attrs=UserLoginForm.Meta.attrs
     ))
-    Photo = forms.ImageField(label='Аватар', required=False, widget=forms.FileInput(
-        attrs={'class': 'registration__item-image'}
-    ))
+
+    class Meta(UserLoginForm.Meta):
+        fieldName = 'AvatarUrl'
+        UserLoginForm.Meta.fields.append(fieldName)
+        UserLoginForm.Meta.labels[fieldName] = 'Аватар'
+
+    field_order = ['NickName', 'Password', 'PasswordRepeat', 'EMail', 'BirthDate', 'About', 'AvatarUrl']
