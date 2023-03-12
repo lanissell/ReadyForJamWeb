@@ -23,7 +23,7 @@ html {
 /*Header*/
 .header {
   width: 100%;
-  height: 5.2083333333%;
+  height: 4.1666666667%;
   z-index: 50;
   background-color: #313131;
   border-bottom: 4px solid #CA3E47;
@@ -36,40 +36,27 @@ html {
 }
 
 .header_logo {
+  margin-right: auto;
   width: 73px;
+  max-width: 100%;
   height: 78px;
-  left: 160px;
-  top: 11px;
-}
-
-.header__project-name {
-  font-family: Roboto, serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 49px;
-  margin: 0 0 0 63px;
-  display: flex;
-  align-items: center;
-  text-transform: uppercase;
-  color: #FFFFFF;
 }
 
 .header__menu {
-  margin: 0 0 0 10.4166666667%;
+  margin: 0 0 0 3.9583333333%;
 }
 
 .menu {
   padding: 5px 0;
 }
 
-.menu_list {
+.menu__list {
   flex-wrap: wrap;
   display: flex;
 }
 
-.menu_item :last-child {
-  margin: 0 0 0 25px;
+ul li.menu__item:not(:last-child) {
+  margin-right: 25px;
 }
 
 .menu__link {
@@ -82,7 +69,7 @@ html {
 }
 
 .header__right-group {
-  margin: 0 0 0 55px;
+  margin-left: auto;
   align-items: center;
 }
 
@@ -91,11 +78,12 @@ html {
 }
 
 .right-group__list {
+  align-items: center;
   display: flex;
 }
 
-.right-group__items {
-  margin: 0 0 0 30px;
+ul li.right-group__items:not(:last-child) {
+  margin-right: 30px;
 }
 
 .right-group__search {
@@ -103,6 +91,8 @@ html {
   height: 30px;
   margin: 35px 0;
   top: 34px;
+  border: 0;
+  outline: none;
   background: #414141;
   color: white;
   border-radius: 8px;
@@ -110,12 +100,67 @@ html {
 
 .right-group__notification {
   margin: 33px 0;
-  width: 35px;
-  height: 35px;
 }
 
 .right-group__profile {
-  margin: 6px 0;
+  height: 80px;
+  width: 80px;
+}
+
+@media (max-width: 960px) {
+  .header_logo {
+    width: 51.1px;
+    height: 54.6px;
+  }
+  .menu__link {
+    font-weight: 300;
+    font-size: 15px;
+  }
+  ul li.menu__item:not(:last-child) {
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 800px) {
+  .right-group__search {
+    display: none;
+  }
+}
+@media (max-width: 500px) {
+  .header__container {
+    min-height: 50px;
+  }
+  .right-group__profile {
+    height: 40px;
+    width: 40px;
+  }
+  .right-group__notification {
+    height: 21px;
+    width: 21px;
+  }
+  .header_logo {
+    width: 36.5px;
+    height: 39px;
+  }
+  li ul.menu_item:not(:last-child) {
+    display: contents;
+    color: red;
+  }
+  .dropdown {
+    display: inline-block;
+  }
+}
+@media (max-width: 430px) {
+  .right-group__profile {
+    height: 20px;
+    width: 20px;
+  }
+  .right-group__notification {
+    height: 14px;
+    width: 14px;
+  }
+  .header__container {
+    min-height: 30px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */
