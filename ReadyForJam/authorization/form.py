@@ -1,5 +1,7 @@
 from django.forms import ModelForm
 from django import forms
+
+
 from user.models import User
 
 
@@ -28,12 +30,14 @@ class UserRegistrationForm(UserLoginForm):
 
     BirthDate = forms.DateField(label='Дата рождения', widget=forms.SelectDateWidget())
     About = forms.CharField(label='О себе', required=False, widget=forms.Textarea(
-        attrs=UserLoginForm.Meta.attrs
+        attrs={'class': 'registration__item-about-me '}
     ))
 
     class Meta(UserLoginForm.Meta):
         fieldName = 'AvatarUrl'
-        UserLoginForm.Meta.fields.append(fieldName)
-        UserLoginForm.Meta.labels[fieldName] = 'Аватар'
+        parentMeta = UserLoginForm.Meta
+        parentMeta.fields.append(fieldName)
+        parentMeta.labels[fieldName] = 'Аватар'
+        parentMeta.widgets[fieldName] = forms.FileInput
 
     field_order = ['NickName', 'Password', 'PasswordRepeat', 'EMail', 'BirthDate', 'About', 'AvatarUrl']

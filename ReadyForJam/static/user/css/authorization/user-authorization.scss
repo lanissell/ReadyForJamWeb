@@ -3,13 +3,13 @@
 
 body,
 html {
-  font-size: 16px;
+  font-size: 20px;
   height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
-  background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat;
-  background-size: cover;
   z-index: 1;
+  background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat fixed center;
+  background-size: cover;
 }
 
 .wrapper {
@@ -17,8 +17,6 @@ html {
   overflow: hidden;
   box-sizing: content-box;
 }
-
-
 
 
 ._container {
@@ -55,6 +53,7 @@ html {
   background: #414141;
   border-bottom: 2px solid #CA3E47;
   border-radius: 10px 10px 0 0;
+  margin-bottom: 30px;
 }
 
 .registration__title-text {
@@ -77,8 +76,6 @@ html {
 }
 
 .registration__item {
-  height: 92px;
-  width: 514px;
   margin: 0 137px;
 }
 
@@ -109,15 +106,14 @@ html {
 
 .registration__item-about-me {
   max-width: 514px;
-  width: 514px;
-  height: 242px;
   max-height: 242px;
+  min-width: 514px;
+  min-height: 242px;
   margin-bottom: 22px;
   outline: none;
   background: #525252;
   border: 2px solid #313131;
   border-radius: 5px;
-
   color: white;
 }
 
