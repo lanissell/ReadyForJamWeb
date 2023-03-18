@@ -1,12 +1,10 @@
 {% extends 'base.html' %}
 {% block content %}
     <div>
-        <form method="post" action="/author/" enctype="multipart/form-data">
+        <form method="post" action="/register/" enctype="multipart/form-data">
             {% csrf_token %}
             <table>
-                <div>{{ user.NickName }}</div>
-                <div>{{ eMail }}</div>
-                <div><img src="/media/{{ user.AvatarUrl }}" alt="Avatar"/></div>
+                <div>Ку,{{ user.login }}</div>
             </table>
         </form>
     </div>
