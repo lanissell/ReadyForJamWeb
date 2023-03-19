@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.forms import ModelForm
 from django import forms
+import datetime
 
 from registration.models import User
 
@@ -13,7 +14,7 @@ class UserRegistrationForm(ModelForm):
     attrs = {'class': 'registration__item-input'}
 
     # <editor-fold desc="Fields">
-    login = forms.CharField(widget=forms.TextInput(
+    login = forms.CharField(label='Логин', widget=forms.TextInput(
         attrs=attrs
     ))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(
@@ -31,7 +32,7 @@ class UserRegistrationForm(ModelForm):
 
     dateAttrs = {
         'class': attrs['class'],
-        'max': "2100-12-31",
+        'max': f"{datetime.datetime.now().year}-12-31",
         'min': "1900-12-31"
     }
 

@@ -29,6 +29,7 @@ html {
 
 .registration {
   max-width: 100%;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -80,20 +81,18 @@ html {
 }
 
 .registration__item-title {
-  vertical-align: top;
 
 
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
-  line-height: 49px;
-
+  line-height: 35px;
   color: #FFFFFF;
 }
 
 .registration__item-input {
-  width: 514px;
+  width: 100%;
   height: 35px;
   vertical-align: bottom;
   outline: none;
@@ -105,10 +104,11 @@ html {
 }
 
 .registration__item-about-me {
-  max-width: 514px;
   max-height: 242px;
-  min-width: 514px;
-  min-height: 242px;
+  min-height: 35px;
+  max-width: 100%;
+  min-width: 100%;
+  height: 242px/1217px * 100%;
   margin-bottom: 22px;
   outline: none;
   background: #525252;
@@ -125,25 +125,29 @@ html {
 
 .registration__button-block {
   width: 100%;
+  height: 40px;
   text-align: center;
-  margin-bottom: 66px;
+  align-items: center;
 }
 
-.button_block {
+.button-block {
   padding: 0 5px;
+  margin-bottom: 66px;
 }
 
 .button-block__button {
   max-height: 40px;
   max-width: 242px;
-  width: 242px;
-  height: 40px;
+  width: 50%;
   margin-right: 30px;
   background: #525252;
   text-decoration: none;
   border: 2px solid #313131;
   border-radius: 5px;
+  text-align: center;
 }
+
+
 
 
 .button-block__link {
@@ -153,7 +157,6 @@ html {
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
-  text-align: center;
 
   color: #FFFFFF;
 }
@@ -161,8 +164,7 @@ html {
 .button-block__button-complete {
   max-height: 40px;
   max-width: 242px;
-  width: 242px;
-  height: 40px;
+  width: 50%;
 
   background: #CA3E47;
   border: 2px solid #313131;
@@ -177,4 +179,67 @@ html {
   text-align: center;
 
   color: #FFFFFF;
+}
+
+@media (max-width: 800px) {
+  .registration__container {
+    max-width: round(785px * 0.8);
+  }
+
+  .registration__item {
+    margin: 0 96px;
+  }
+
+  .registration__item-title {
+    font-weight: 350;
+    font-size: 25px;
+  }
+
+  .button-block__button {
+    margin: 0 0 20px 0;
+  }
+  .button-block__link {
+    font-weight: 350;
+    font-size: 18px;
+  }
+
+  .button-block__button-complete {
+    font-weight: 350;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 630px) {
+  .registration__container {
+    max-width: round(785px * 0.65);
+  }
+
+  .registration__item {
+    margin: 0 82px;
+  }
+
+  .registration__item-title {
+    font-weight: 300;
+    font-size: 20px;
+  }
+
+  .button-block__button {
+    margin: 0 0 15px 0;
+  }
+
+  .button-block__link {
+    font-weight: 300;
+    font-size: 16px;
+  }
+
+  .button-block__button-complete {
+    font-weight: 300;
+    font-size: 16px;
+  }
+}
+
+@media (max-width: 520px) {
+  .registration__button-block {
+    width: 95%;
+  }
 }
