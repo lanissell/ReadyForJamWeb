@@ -18,9 +18,7 @@
                         {% for field in form %}
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>
-                                <label>
-                                    {{ field }}
-                                </label>
+                                {{ field }}
                             </li>
                         {% endfor %}
                     </ul>

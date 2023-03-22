@@ -3,6 +3,7 @@ from django.forms import ModelForm
 from django import forms
 import datetime
 
+from login.utils import BasicHtmlAttrs
 from registration.models import User
 
 
@@ -11,9 +12,8 @@ class DateInput(forms.DateInput):
 
 
 class UserRegistrationForm(ModelForm):
-    attrs = {'class': 'registration__item-input'}
+    attrs = BasicHtmlAttrs.inputFieldAttrs
 
-    # <editor-fold desc="Fields">
     login = forms.CharField(label='Логин', widget=forms.TextInput(
         attrs=attrs
     ))
@@ -39,8 +39,6 @@ class UserRegistrationForm(ModelForm):
     birthDate = forms.DateField(label='Дата рождения', widget=DateInput(
         attrs=dateAttrs
     ))
-
-    # </editor-fold>
 
     class Meta:
         model = User

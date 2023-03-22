@@ -14,7 +14,7 @@ class UserRegistrationView(View):
                                           'Есть аккаунт',
                                           'login',
                                           UserRegistrationForm)
-        return render(request, '../templates/user/authorization.html', context=context)
+        return render(request, '../templates/user/form-template.html', context=context)
 
     @staticmethod
     def post(request, **kwargs):
