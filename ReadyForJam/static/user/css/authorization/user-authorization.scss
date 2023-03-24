@@ -37,13 +37,14 @@ html {
 }
 
 .registration__container {
-  max-width: 785px;
+  min-width: 785px;
   background: linear-gradient(180deg, #525252 0%, #414141 100%);
   border: 2px solid #313131;
   border-radius: 10px;
   align-items: center;
   top: 50%;
 }
+
 
 
 .registration__title {
@@ -70,18 +71,18 @@ html {
 
 .registration__list {
   flex-wrap: wrap;
-  :last-child {
-    margin-bottom: 44px;
-  }
+  align-items: center;
 }
 
+
 .registration__item {
-  margin: 0 137px;
+}
+
+ul li.registration__item {
+  margin: 0 137px 44px;
 }
 
 .registration__item-title {
-
-
   font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
@@ -108,7 +109,6 @@ html {
   max-width: 100%;
   min-width: 100%;
   height: 242px/1217px * 100%;
-  margin-bottom: 22px;
   outline: none;
   background: #525252;
   border: 2px solid #313131;
@@ -131,8 +131,12 @@ html {
 
 .button-block {
   padding: 0 5px;
-  margin-bottom: 66px;
+  margin: 0 0 66px;
 }
+
+//button.button-block:last-child {
+//  margin-bottom: 66px;
+//}
 
 .button-block__button {
   max-height: 40px;
@@ -182,12 +186,12 @@ html {
 
 @media (max-width: 800px) {
   .registration__container {
-    max-width: round(785px * 0.8);
+    min-width: round(785px * 0.8);
   }
 
-  .registration__item {
-    margin: 0 96px;
-  }
+ul li.registration__item {
+  margin: 0 96px 44px;
+}
 
   .registration__item-title {
     font-weight: 350;
@@ -210,12 +214,12 @@ html {
 
 @media (max-width: 630px) {
   .registration__container {
-    max-width: round(785px * 0.65);
+    min-width: round(785px * 0.65);
   }
 
-  .registration__item {
-    margin: 0 82px;
-  }
+ul li.registration__item {
+  margin: 0 82px 44px;
+}
 
   .registration__item-title {
     font-weight: 300;
@@ -240,5 +244,9 @@ html {
 @media (max-width: 520px) {
   .registration__button-block {
     width: 95%;
+  }
+
+  .button-block__button {
+    margin: 0 0 20px 0;
   }
 }
