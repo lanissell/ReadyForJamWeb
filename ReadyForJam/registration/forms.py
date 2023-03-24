@@ -3,7 +3,7 @@ from django.forms import ModelForm
 from django import forms
 import datetime
 
-from login.utils import BasicHtmlAttrs
+from registration.utils import BasicHtmlAttrs
 from registration.models import User
 
 

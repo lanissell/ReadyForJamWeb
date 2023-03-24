@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block links %}
+    <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
+    <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
+    <script type="text/javascript" src="/tinymce/js/tinymce/custom.js" ></script>
+{% endblock %}
+{% block title %}
+    {{ pageTitle }}
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="registration">
+            <div class="registration__container">
+                <div class="registration__title">
+                    <h1 class="registration__title-text">{{ pageTitle }}</h1>
+                </div>
+                <form method="post" action="{{ action }}" enctype="multipart/form-data" class="registration__form">
+                    {% csrf_token %}
+                    <ul class="registration__list">
+                        {% for field in form %}
+                            <li class="registration__item">
+                                <h3 class="registration__item-title">{{ field.label }}</h3>
+                                {{ field }}
+                            </li>
+                        {% endfor %}
+                        {{ form.media }}
+                    </ul>
+                    <div class="registration__button-block button-block">
+                        <button class="button-block__button-complete" type="submit">{{ submitBtnText }}</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

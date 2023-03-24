@@ -1,19 +1,20 @@
 from django.shortcuts import render
 from django.views import View
 
-from registration.form import UserRegistrationForm
-from registration.utils import CreateAuthorViewContext
+from registration.forms import UserRegistrationForm
+from registration.utils import CreateFormViewContext
 
 
 class UserRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        context = CreateAuthorViewContext('Регистрация',
-                                          'Зарегистрироваться',
-                                          'Есть аккаунт',
-                                          'login',
-                                          UserRegistrationForm)
+        context = CreateFormViewContext('Регистрация',
+                                        '/register/',
+                                        'Зарегистрироваться',
+                                        UserRegistrationForm)
+        context['changePageBtnText'] = 'Есть аккаунт'
+        context['changePageBtnUrl'] = 'login'
         return render(request, '../templates/user/form-template.html', context=context)
 
     @staticmethod

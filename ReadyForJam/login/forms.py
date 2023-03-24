@@ -1,6 +1,6 @@
 from django import forms
 
-from login.utils import BasicHtmlAttrs
+from registration.utils import BasicHtmlAttrs
 
 
 class UserLoginForm(forms.Form):
@@ -11,3 +11,4 @@ class UserLoginForm(forms.Form):
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(
         attrs=BasicHtmlAttrs.inputFieldAttrs
     ))
+

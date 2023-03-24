@@ -1,9 +1,15 @@
-def CreateAuthorViewContext(pageTitle, submitBtnText, changePageBtnText, changePageBtnUrl, form):
+
+class BasicHtmlAttrs:
+
+    inputFieldAttrs = attrs = {'class': 'registration__item-input'}
+
+
+def CreateFormViewContext(pageTitle, action,
+                          submitBtnText, form):
     context = {
         'pageTitle': pageTitle,
+        'action': action,
         'submitBtnText': submitBtnText,
-        'changePageBtnText': changePageBtnText,
-        'changePageBtnUrl': changePageBtnUrl,
         'form': form
     }
     return context
