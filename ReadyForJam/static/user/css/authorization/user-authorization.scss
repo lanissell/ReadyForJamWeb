@@ -106,8 +106,8 @@ ul li.registration__item {
 .registration__item-about-me {
   max-height: 242px;
   min-height: 35px;
-  max-width: 100%;
-  min-width: 100%;
+  max-width: 514px;
+  min-width: 514px;
   height: 242px/1217px * 100%;
   outline: none;
   background: #525252;
@@ -198,6 +198,11 @@ ul li.registration__item {
     font-size: 25px;
   }
 
+  .registration__item-about-me {
+    max-width: 433px;
+    min-width: 433px;
+  }
+
   .button-block__button {
     margin: 0 0 20px 0;
   }
@@ -226,6 +231,11 @@ ul li.registration__item {
     font-size: 20px;
   }
 
+  .registration__item-about-me {
+    max-width: 343px;
+    min-width: 343px;
+  }
+
   .button-block__button {
     margin: 0 0 15px 0;
   }
@@ -248,5 +258,10 @@ ul li.registration__item {
 
   .button-block__button {
     margin: 0 0 20px 0;
+  }
+
+  .registration__item-about-me {
+    max-width: 100%;
+    min-width: 100%;
   }
 }
