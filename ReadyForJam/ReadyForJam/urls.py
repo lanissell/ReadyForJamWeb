@@ -9,7 +9,7 @@ from login import views as loginViews
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('register/', regViews.UserRegistrationView.as_view(), name='registration'),
-    path('login/', loginViews.UserLoginView.as_view()),
+    path('login/', loginViews.UserLoginView.as_view(), name='login'),
     path('jam/', include('jam.urls')),
 ]
 

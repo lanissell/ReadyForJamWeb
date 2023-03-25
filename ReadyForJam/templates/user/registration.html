@@ -3,16 +3,16 @@
     <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
 {% endblock %}
 {% block title %}
-    {{ pageTitle }}
+    Регистрация
 {% endblock %}
 {% block content %}
     <div class="wrapper">
         <div class="registration">
             <div class="registration__container">
                 <div class="registration__title">
-                    <h1 class="registration__title-text">{{ pageTitle }}</h1>
+                    <h1 class="registration__title-text">Регистрация</h1>
                 </div>
-                <form method="post" action="{{ action }}" enctype="multipart/form-data" class="registration__form">
+                <form method="post" action={% url 'registration' %} enctype="multipart/form-data" class="registration__form">
                     {% csrf_token %}
                     <ul class="registration__list">
                         {% for field in form %}
@@ -37,9 +37,9 @@
                     </ul>
                     <div class="registration__button-block button-block">
                         <button class="button-block__button" type="button">
-                            <a href="../{{ changePageBtnUrl }}" class="button-block__link">{{ changePageBtnText }}</a>
+                            <a href="../login" class="button-block__link">Есть аккаунт</a>
                         </button>
-                        <button class="button-block__button-complete" type="submit">{{ submitBtnText }}</button>
+                        <button class="button-block__button-complete" type="submit">Зарегистрироваться</button>
                     </div>
                 </form>
             </div>
