@@ -8,7 +8,7 @@ from login import views as loginViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/', regViews.UserRegistrationView.as_view()),
+    path('register/', regViews.UserRegistrationView.as_view(), name='registration'),
     path('login/', loginViews.UserLoginView.as_view()),
     path('jam/', include('jam.urls')),
 ]

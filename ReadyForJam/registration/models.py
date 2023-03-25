@@ -13,8 +13,8 @@ class User(models.Model):
 
 class UserPhoto(models.Model):
     user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)
-    avatar = models.ImageField(upload_to='media/user/avatar')
-    background = models.ImageField(upload_to='media/user/background')
+    avatar = models.ImageField(upload_to='user/avatar')
+    background = models.ImageField(upload_to='user/background')
 
 
 class Right(models.Model):

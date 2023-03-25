@@ -4,7 +4,7 @@ from django import forms
 import datetime
 
 from registration.utils import BasicHtmlAttrs
-from registration.models import User
+from registration.models import User, UserPhoto
 
 
 class DateInput(forms.DateInput):
@@ -16,16 +16,16 @@ class UserRegistrationForm(ModelForm):
 
     login = forms.CharField(label='Логин', widget=forms.TextInput(
         attrs=attrs
-    ))
+    ), error_messages={'unique': 'Логин занят'})
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(
         attrs=attrs
     ))
     passwordRepeat = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput(
         attrs=attrs
     ))
-    email = forms.CharField(label='E-mail', widget=forms.EmailInput(
+    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(
         attrs=attrs
-    ))
+    ), error_messages={'invalid': 'Не корректно введена почта'})
     about = forms.CharField(label='Немного о себе', widget=forms.Textarea(
         attrs={'class': 'registration__item-about-me'}
     ))
@@ -40,15 +40,26 @@ class UserRegistrationForm(ModelForm):
         attrs=dateAttrs
     ))
 
+    def clean(self):
+        cleanedData = super().clean()
+        password = cleanedData.get("password")
+        passwordRepeat = cleanedData.get("passwordRepeat")
+        if password != passwordRepeat:
+            raise ValidationError("Пароли не совпадают")
+        return cleanedData
+
     class Meta:
         model = User
         fields = ['login', 'password', 'email', 'about', 'birthDate']
 
-    def clean_passwordRepeat(self):
-        password = self.cleaned_data['password']
-        passwordRepeat = self.cleaned_data['passwordRepeat']
-        if password != passwordRepeat:
-            raise ValidationError('Пароли не совпадают')
-        return passwordRepeat
-
     field_order = ['login', 'password', 'passwordRepeat', 'email', 'birthDate', 'about']
+
+
+class UserPhotoForm(ModelForm):
+    avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
+        attrs=BasicHtmlAttrs.attrs
+    ))
+
+    class Meta:
+        model = UserPhoto
+        fields = ['avatar']

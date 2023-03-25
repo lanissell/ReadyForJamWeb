@@ -5,6 +5,7 @@
             {% csrf_token %}
             <table>
                 <div>Ку,{{ user.login }}</div>
+                <img src="{{ userPhoto.avatar }}" alt="avatar">
             </table>
         </form>
     </div>
