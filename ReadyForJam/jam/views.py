@@ -8,7 +8,7 @@ class JamRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        context = {}
+        context = {'form': JamRegistrationForm}
         return render(request, '../templates/jam/form-template.html', context=context)
 
     @staticmethod

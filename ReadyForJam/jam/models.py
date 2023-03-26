@@ -1,12 +1,12 @@
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
-from tinymce.models import HTMLField
 
 
 class Jam(models.Model):
     name = models.CharField(max_length=128, blank=False, null=False, unique=True)
     theme = models.CharField(max_length=128, blank=False, null=False, unique=True)
-    content = HTMLField(blank=False, null=False, default='')
     avatar = models.ImageField(upload_to='media/jam/avatar')
+    content = RichTextUploadingField(default='none')
 
 
 class JamForeign:

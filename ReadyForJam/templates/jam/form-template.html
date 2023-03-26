@@ -1,18 +1,16 @@
 {% extends 'base.html' %}
 {% block links %}
     <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
-    <script src="/tinymce/js/tinymce/tinymce.min.js"></script>
-    <script type="text/javascript" src="/tinymce/js/tinymce/custom.js" ></script>
 {% endblock %}
 {% block title %}
-    {{ pageTitle }}
+    Создание джема
 {% endblock %}
 {% block content %}
     <div class="wrapper">
         <div class="registration">
             <div class="registration__container">
                 <div class="registration__title">
-                    <h1 class="registration__title-text">{{ pageTitle }}</h1>
+                    <h1 class="registration__title-text">Создай свой джем</h1>
                 </div>
                 <form method="post" action="{{ action }}" enctype="multipart/form-data" class="registration__form">
                     {% csrf_token %}
@@ -23,10 +21,10 @@
                                 {{ field }}
                             </li>
                         {% endfor %}
-                        {{ form.media }}
                     </ul>
+                    {{ form.media }}
                     <div class="registration__button-block button-block">
-                        <button class="button-block__button-complete" type="submit">{{ submitBtnText }}</button>
+                        <button class="button-block__button-complete" type="submit">Создать</button>
                     </div>
                 </form>
             </div>
