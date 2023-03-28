@@ -21,8 +21,10 @@ class JamRegistrationForm(ModelForm):
     theme = forms.CharField(label='Тема', widget=forms.TextInput(
         attrs=attrs
     ))
+    color = forms.CharField(widget=forms.TextInput(attrs={'type': 'color', 'class': 'bgColor'}))
 
     class Meta:
         model = Jam
         fields = ['name', 'theme', 'content']
 
+    field_order = ['name', 'theme', 'color' ,'content']

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views import View
 
 from jam.forms import JamRegistrationForm
@@ -13,4 +13,11 @@ class JamRegistrationView(View):
 
     @staticmethod
     def post(request, **kwargs):
-        return render(request, '../templates/user/post-registration.html')
+        form = JamRegistrationForm(request.POST)
+        context = {}
+        if form.is_valid():
+            jam = form.save(commit=True)
+            context['jam'] = jam
+            return render(request, '../templates/jam/jam-page.html', context=context)
+        else:
+            return redirect('jamRegister')

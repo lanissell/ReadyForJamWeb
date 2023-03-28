@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block links %}
+    <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
+{% endblock %}
+{% block title %}
+    {{ jam.name }}
+{% endblock %}
+{% block content %}
+    <h1>{{ jam.name }}</h1>
+
+    <h1>{{ jam.content|safe }}</h1>
+{% endblock %}

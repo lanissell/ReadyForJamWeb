@@ -27,6 +27,15 @@
                         <button class="button-block__button-complete" type="submit">Создать</button>
                     </div>
                 </form>
+                <script>
+                        document.addEventListener("DOMContentLoaded", function (e) {
+                            const input = document.querySelector(".bgColor");
+                            input.addEventListener("change", function () {
+                                const iframe = document.querySelector("#cke_1_contents").childNodes[1];
+                                iframe.contentDocument.body.style.backgroundColor = input.value
+                            })
+                        })
+                    </script>
             </div>
         </div>
     </div>
