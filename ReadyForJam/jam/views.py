@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from django.views import View
 
-from jam.forms import JamRegistrationForm
+from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm
 
 
 class JamRegistrationView(View):
@@ -9,6 +9,10 @@ class JamRegistrationView(View):
     @staticmethod
     def get(request, **kwargs):
         context = {'form': JamRegistrationForm}
+        color = JamColorForm
+        date = JamDateForm
+        context['color'] = color
+        context['date'] = date
         return render(request, '../templates/jam/form-template.html', context=context)
 
     @staticmethod

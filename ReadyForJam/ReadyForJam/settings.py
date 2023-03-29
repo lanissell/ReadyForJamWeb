@@ -116,9 +116,9 @@ CKEDITOR_CONFIGS = {
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'    ]},
-            {'name': 'links', 'items': ['Link']},
+            {'name': 'links', 'items': ['VideoDetector']},
             {'name': 'insert',
-             'items': ['Youtube', 'Flash', 'Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak',]},
+             'items': ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak',]},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
@@ -126,7 +126,7 @@ CKEDITOR_CONFIGS = {
         ],
         'toolbar': 'Custom',  # put selected toolbar config here
         'toolbarGroups': [{'name': 'document', 'groups': ['mode', 'document', 'doctools']}],
-        'height': 400,
+        'height': 200,
         'width': '100%',
         'filebrowserWindowHeight': 725,
         'filebrowserWindowWidth': 940,
@@ -142,7 +142,6 @@ CKEDITOR_CONFIGS = {
             'autoembed',
             'embedsemantic',
             'autogrow',
-            'devtools',
             'widget',
             'lineutils',
             'clipboard',
@@ -150,6 +149,7 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
             'codesnippet',
+            'videodetector'
         ]),
     }
 }

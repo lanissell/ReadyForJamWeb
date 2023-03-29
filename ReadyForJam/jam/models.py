@@ -4,9 +4,9 @@ from django.db import models
 
 class Jam(models.Model):
     name = models.CharField(max_length=128, blank=False, null=False, unique=True)
-    theme = models.CharField(max_length=128, blank=False, null=False, unique=True)
+    theme = models.CharField(max_length=128, blank=False, null=False)
     avatar = models.ImageField(upload_to='media/jam/avatar')
-    content = RichTextUploadingField(default='none')
+    content = RichTextUploadingField(default='', blank=False, null=False,)
 
 
 class JamForeign:
@@ -18,6 +18,10 @@ class JamDate(models.Model, JamForeign):
     votingStartDate = models.DateField(blank=False, null=False)
     votingEndDate = models.DateField(blank=False, null=False)
 
+class JamColor(models.Model, JamForeign):
+    backgroundColor = models.CharField(max_length=10, blank=False, null=False)
+    formColor = models.CharField(max_length=10, blank=False, null=False)
+    mainTextColor = models.CharField(max_length=10, blank=False, null=False)
 
 class JamCriteria(models.Model, JamForeign):
     name = models.CharField(max_length=128, blank=False, null=False, unique=True)
