@@ -27,17 +27,19 @@ class JamRegistrationForm(ModelForm):
     ))
     content = forms.CharField(label='Содержание страницы',
                               widget=CKEditorUploadingWidget())
+
     class Meta:
         model = Jam
         fields = ['name', 'theme', 'avatar', 'content']
 
     field_order = ['name', 'theme', 'avatar']
 
+
 class DateInput(forms.DateInput):
     input_type = 'datetime-local'
 
-class JamDateForm(ModelForm):
 
+class JamDateForm(ModelForm):
     dateAttrs = {
         'class': BasicHtmlAttrs.inputFieldAttrs['class'],
         'max': f"{datetime.now().year + 20}-12-31",
@@ -58,6 +60,7 @@ class JamDateForm(ModelForm):
         model = JamDate
         fields = ['startDate', 'votingStartDate', 'votingEndDate']
 
+
 class JamColorForm(ModelForm):
     colorAttrs = {'type': 'color', 'value': '#525252'}
 
@@ -65,10 +68,10 @@ class JamColorForm(ModelForm):
         attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'bgColor', }
     ))
     formColor = forms.CharField(label='Цвет формы', widget=forms.TextInput(
-        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'formColor',}
+        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'formColor', }
     ))
     mainTextColor = forms.CharField(label='Основной цвет текста', widget=forms.TextInput(
-        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'textColor' }
+        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'textColor'}
     ))
 
     class Meta:
