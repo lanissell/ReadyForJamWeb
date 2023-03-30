@@ -27,7 +27,7 @@ class Migration(migrations.Migration):
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('name', models.CharField(max_length=128, unique=True)),
             ],
-            bases=(models.Model, jam.models.JamForeign),
+            bases=(models.Model, ),
         ),
         migrations.CreateModel(
             name='JamDate',
@@ -37,6 +37,6 @@ class Migration(migrations.Migration):
                 ('votingStartDate', models.DateField()),
                 ('votingEndDate', models.DateField()),
             ],
-            bases=(models.Model, jam.models.JamForeign),
+            bases=(models.Model, ),
         ),
     ]

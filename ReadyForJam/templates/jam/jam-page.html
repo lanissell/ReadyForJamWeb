@@ -1,12 +1,33 @@
 {% extends 'base.html' %}
 {% block links %}
     <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
+    <style>
+        body, html{
+            background: {{ jamColor.backgroundColor }} !important;
+        }
+    </style>
 {% endblock %}
 {% block title %}
     {{ jam.name }}
 {% endblock %}
 {% block content %}
-    <h1>{{ jam.name }}</h1>
-
-    <h1>{{ jam.content|safe }}</h1>
+    <div class="wrapper">
+        <img src="../../media/{{ jam.avatar }}" alt="jamLogo"
+             style="margin: 0 auto; height: 20%; width: 20%; ">
+        <div class="registration">
+            <div class="registration__container" style="background: {{ jamColor.formColor }} !important;
+                    color: {{ jamColor.mainTextColor }}">
+                <div class="registration__title"
+                     style="border-bottom:{{ jamColor.backgroundColor }} !important;
+                             background: {{ jamColor.formColor }} !important;">
+                    <h1 class="registration__title-text">{{ jam.name }}</h1>
+                </div>
+                <ul class="registration__list">
+                    <li class="registration__item">
+                    {{ jam.content|safe }}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 {% endblock %}

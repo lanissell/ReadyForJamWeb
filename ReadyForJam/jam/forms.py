@@ -1,10 +1,10 @@
 from datetime import datetime
 
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 from django.forms import ModelForm
 from django import forms
 
 from jam.models import Jam, JamColor, JamDate
-from registration.forms import DateInput
 from registration.utils import BasicHtmlAttrs
 
 
@@ -22,12 +22,19 @@ class JamRegistrationForm(ModelForm):
     theme = forms.CharField(label='Тема', widget=forms.TextInput(
         attrs=attrs
     ))
-
+    avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
+        attrs=attrs
+    ))
+    content = forms.CharField(label='Содержание страницы',
+                              widget=CKEditorUploadingWidget())
     class Meta:
         model = Jam
-        fields = ['name', 'theme', 'content']
+        fields = ['name', 'theme', 'avatar', 'content']
 
-    field_order = ['name', 'theme']
+    field_order = ['name', 'theme', 'avatar']
+
+class DateInput(forms.DateInput):
+    input_type = 'datetime-local'
 
 class JamDateForm(ModelForm):
 
@@ -37,13 +44,13 @@ class JamDateForm(ModelForm):
         'min': "1900-12-31"
     }
 
-    startDate = forms.DateField(label='Дата рождения', widget=DateInput(
+    startDate = forms.DateTimeField(label='Дата начала джема', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingStartDate = forms.DateField(label='Дата рождения', widget=DateInput(
+    votingStartDate = forms.DateTimeField(label='Дата начала голосования', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingEndDate = forms.DateField(label='Дата рождения', widget=DateInput(
+    votingEndDate = forms.DateTimeField(label='Дата окончания голосования', widget=DateInput(
         attrs=dateAttrs
     ))
 
@@ -52,10 +59,17 @@ class JamDateForm(ModelForm):
         fields = ['startDate', 'votingStartDate', 'votingEndDate']
 
 class JamColorForm(ModelForm):
+    colorAttrs = {'type': 'color', 'value': '#525252'}
 
-    backgroundColor = forms.CharField(widget=forms.TextInput(attrs={'type': 'color', 'class': 'bgColor'}))
-    formColor = forms.CharField(widget=forms.TextInput(attrs={'type': 'color', 'class': 'formColor'}))
-    mainTextColor = forms.CharField(widget=forms.TextInput(attrs={'type': 'color', 'class': 'textColor'}))
+    backgroundColor = forms.CharField(label='Цвет фона', widget=forms.TextInput(
+        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'bgColor', }
+    ))
+    formColor = forms.CharField(label='Цвет формы', widget=forms.TextInput(
+        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'formColor',}
+    ))
+    mainTextColor = forms.CharField(label='Основной цвет текста', widget=forms.TextInput(
+        attrs={'type': colorAttrs['type'], 'value': colorAttrs['value'], 'class': 'textColor' }
+    ))
 
     class Meta:
         model = JamColor

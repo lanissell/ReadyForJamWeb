@@ -21,7 +21,7 @@ class Migration(migrations.Migration):
                 ('formColor', models.CharField(max_length=10)),
                 ('mainTextColor', models.CharField(max_length=10)),
             ],
-            bases=(models.Model, jam.models.JamForeign),
+            bases=(models.Model,),
         ),
         migrations.AlterField(
             model_name='jam',
