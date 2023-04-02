@@ -1,8 +1,9 @@
 {% extends 'base.html' %}
 {% block links %}
-    <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
+    <link rel="stylesheet" href="../../static/jam/page/jam-page.css">
+    <link rel="stylesheet" href="../../static/base/css/zeroing-style.css">
     <style>
-        body, html{
+        body, html {
             background: {{ jamColor.backgroundColor }} !important;
         }
     </style>
@@ -12,21 +13,66 @@
 {% endblock %}
 {% block content %}
     <div class="wrapper">
-        <img src="../../media/{{ jam.avatar }}" alt="jamLogo"
-             style="margin: 0 auto; height: 20%; width: 20%; ">
-        <div class="registration">
-            <div class="registration__container" style="background: {{ jamColor.formColor }} !important;
-                    color: {{ jamColor.mainTextColor }}">
-                <div class="registration__title"
-                     style="border-bottom:{{ jamColor.backgroundColor }} !important;
-                             background: {{ jamColor.formColor }} !important;">
-                    <h1 class="registration__title-text">{{ jam.name }}</h1>
+
+        <img src="../../media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
+
+        <div class="jam-block">
+            <div class="jam-block__container">
+                <div class="jam-block__list">
+                    <div class="jam-block__text-block text-block">
+                        <h3 class="text-block__count-member">1000 участников</h3>
+                        <h1 class="text-block__name">GAME JAM</h1>
+                        <nav class="text-block__creator">
+                            <ul class="text-block__creator-list creator-list">
+                                <li class="creator-list__item">
+                                    <a href="" class="creator__link">proffof</a>
+                                </li>
+                                <li class="creator-list__item">
+                                    <a href="" class="creator__link">lanissel</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="jam-block__participate">
+                        <h1 id="timer" class="jam-block__timer"><span>00:00:00</span></h1>
+                        <form action="" class="jam-block__form">
+                            <button type="submit" class="jam-block__button">УЧАВСТВОВАТЬ</button>
+                        </form>
+                    </div>
+
+                    <div class="pc-tab">
+                        <input checked="checked" id="tab1" type="radio" name="pct"/>
+                        <input id="tab2" type="radio" name="pct"/>
+                        <input id="tab3" type="radio" name="pct"/>
+                        <nav>
+                            <ul>
+                                <li class="tab1">
+                                    <label for="tab1">First Tab</label>
+                                </li>
+                                <li class="tab2">
+                                    <label for="tab2">Second Tab</label>
+                                </li>
+                            </ul>
+                        </nav>
+                        <section>
+                            <div class="tab1">
+                                <h2>First</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellendus itaque quidem
+                                    minus nostrum, voluptatem accusamus aspernatur quia harum ratione, officia
+                                    laudantium inventore autem doloribus atque labore numquam non. Hic, animi.</p>
+                            </div>
+                            <div class="tab2">
+                                <h2>Second</h2>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum nesciunt ipsum
+                                    dolore error repellendus officiis aliquid a, vitae reprehenderit, accusantium vero,
+                                    ad. Obcaecati numquam sapiente cupiditate. Praesentium eaque, quae error!</p>
+                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
+                            </div>
+                        </section>
+                    </div>
+
                 </div>
-                <ul class="registration__list">
-                    <li class="registration__item">
-                    {{ jam.content|safe }}
-                    </li>
-                </ul>
             </div>
         </div>
     </div>
