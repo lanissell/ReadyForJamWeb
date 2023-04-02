@@ -116,7 +116,7 @@ CKEDITOR_CONFIGS = {
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
                        'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'    ]},
-            {'name': 'links', 'items': ['VideoDetector']},
+            {'name': 'links', 'items': ['Youtube']},
             {'name': 'insert',
              'items': ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak',]},
             '/',
@@ -149,7 +149,7 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
             'codesnippet',
-            'videodetector'
+            'youtube'
         ]),
     }
 }
