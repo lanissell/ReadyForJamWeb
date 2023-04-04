@@ -1,4 +1,4 @@
-@import "../../css/zeroing-style.css";
+@import "../../base/css/zeroing-style.css";
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body,
 html {
@@ -6,18 +6,12 @@ html {
   height: 100%;
   width: 100%;
   font-family: Monda, sans-serif;
-  background: #313131 url("../../img/background-image.svg");
+  background: #525252 url("../../../media/jam/pageImages/background-image.svg");
   background-size: cover;
   z-index: 1;
 }
 
-.wrapper {
-  min-height: 100%;
-  overflow: hidden;
-}
-
 ._container {
-  display: grid;
   max-width: 90%;
   padding: 0 15px;
   margin: 0 auto;
@@ -62,11 +56,24 @@ html {
   width: 100%;
   max-width: 377px;
   height: 450px;
-  background-color: black;
+  background-color: #313131;
+  background-size: cover;
+  background-position: center;
   border-radius: 25px;
+  position: relative;
 }
 
-.list__item-backround-image {
+.blur {
+  width: 100%;
+  max-width: 377px;
+  height: 450px;
+  border-radius: 25px;
+  position: absolute;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(30, 30, 30, 0.9) 70%);
+  backdrop-filter: blur(3px);
+}
+
+.list__item-background-image {
   background-size: cover;
   width: 100%;
   min-width: 100%;
@@ -76,6 +83,7 @@ html {
 
 .list__text-block {
   width: 80%;
+  position: relative;
   margin: 0 auto;
   text-align: left;
   box-sizing: content-box;
@@ -88,7 +96,7 @@ html {
   color: #ffffff;
 }
 .list__text-block span {
-  color: #82E1FF;
+  color: #EE525C;
 }
 
 .list__item-title {
@@ -143,4 +151,4 @@ html {
   }
 }
 
-/*# sourceMappingURL=jam-screen_style.css.map */
+/*# sourceMappingURL=jam-list.css.map */
