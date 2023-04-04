@@ -105,7 +105,8 @@ html {
   font-weight: 700;
   font-size: 1.5em;
   text-transform: uppercase;
-  margin: 5% 0 8% 0;
+  margin: 0 auto;
+  padding: 55% 0 40% 0;
 }
 
 .list__item-text {
