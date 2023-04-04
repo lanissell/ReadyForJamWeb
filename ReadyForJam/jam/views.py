@@ -58,3 +58,24 @@ class JamPageView(View):
             context['jamColor'] = jamColor
             context['jameDate'] = jamDate
         return render(request, '../templates/jam/jam-page.html', context=context)
+
+class JamListView(View):
+    @staticmethod
+    def get(request, **kwargs):
+        jams = Jam.objects.raw('''
+            SELECT  jam_jam.id, 
+                    jam_jam.name, 
+                    main.jam_jam.avatar,
+                    main.jam_jamcolor.backgroundColor,
+                    main.jam_jamdate.startDate
+            FROM main.jam_jam
+            JOIN main.jam_jamdate ON (jam_jam.id = jam_jamdate.jam_id)
+            JOIN main.jam_jamcolor ON (jam_jam.id = jam_jamcolor.jam_id)
+            ''')
+        jamCards = [{
+            'title': jam.name,
+            'photo': jam.avatar,
+            'date': jam.startDate,
+            'color': jam.backgroundColor,
+        } for jam in jams]
+        return render(request, '../templates/jam/jam-list.html', context={'jamCards': jamCards})
