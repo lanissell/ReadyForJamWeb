@@ -33,7 +33,7 @@ html {
 }
 
 .jam-block__container {
-  max-width: 70%;
+  max-width: 80%;
   align-items: center;
   margin: 10px auto 66px;
 }
@@ -108,7 +108,7 @@ html {
   height: 60%;
   grid-area: 1/2/2/2;
   text-align: center;
-  margin: auto;
+  margin: auto 40px auto auto;
   background: #FFFFFF;
   border-radius: 10px;
 }
@@ -163,10 +163,9 @@ html {
 }
 
 .pc-tab {
-  grid-area: 2/1/6/2;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto 0 33px;
+  grid-area: 2/1/7/3;
+  width: 110%;
+  padding: 0 33px;
 }
 .pc-tab ul {
   list-style: none;
@@ -176,38 +175,41 @@ html {
 .pc-tab ul li label {
   font-family: Roboto, sans-serif;
   float: left;
-  margin-right: 10px;
   border-bottom: 0;
   color: #444;
 }
 .pc-tab ul li label:hover {
-  background: #dddddd;
+  background: black;
 }
 .pc-tab ul li label:active {
   background: #ffffff;
 }
 .pc-tab ul li:not(:last-child) label {
   border-right-width: 0;
+  margin-right: 10px;
+  margin-bottom: 20px;
 }
 .pc-tab section {
+  width: 90%;
+  height: 90%;
+  grid-area: 3/-1/7/3;
   font-family: Roboto, sans-serif;
   clear: both;
+  overflow-y: auto;
 }
 .pc-tab section div {
   padding: 20px;
-  width: 100%;
-  height: 100%;
   border: 1px solid #ddd;
-  background: #fff;
+  background: #b04040;
   line-height: 1.5em;
   letter-spacing: 0.3px;
-  color: #444;
+  color: black;
 }
 .pc-tab section div h2 {
   margin: 0;
   font-family: Roboto, sans-serif;
   letter-spacing: 1px;
-  color: #34495e;
+  color: #ffffff;
 }
 
 #tab1:checked ~ nav .tab1 label,

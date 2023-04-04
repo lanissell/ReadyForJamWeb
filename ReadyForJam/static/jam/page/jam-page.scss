@@ -36,7 +36,7 @@ html {
 }
 
 .jam-block__container {
-  max-width: 70%;
+  max-width: 80%;
   align-items: center;
   margin: 10px auto 66px;
 }
@@ -128,11 +128,14 @@ html {
   height: 60%;
   grid-area: 1 / 2 / 2 / 2;
   text-align: center;
-  margin: auto;
+
+  margin: auto 40px auto auto;
 
   background: #FFFFFF;
   border-radius: 10px;
 }
+
+
 
 .jam-block__timer {
   width: 100%;
@@ -150,6 +153,8 @@ html {
 
 .jam-block__form {
 }
+
+
 
 .jam-block__button {
   width: 60%;
@@ -198,10 +203,9 @@ $unactiveHoverColor: #dddddd;
 }
 
 .pc-tab {
-  grid-area: 2 / 1 / 6 / 2;
-  width: 100%;
-  max-width: 700px;
-  margin: 0 auto 0 33px;
+  grid-area: 2 / 1 / 7 / 3;
+  width: 110%;
+  padding: 0 33px;
 
 
   ul {
@@ -213,12 +217,11 @@ $unactiveHoverColor: #dddddd;
       label {
         font-family: Roboto, sans-serif;
         float: left;
-        margin-right: 10px;
         border-bottom: 0;
         color: #444;
 
         &:hover {
-          background: $unactiveHoverColor;
+          background: black;
         }
 
         &:active {
@@ -228,29 +231,33 @@ $unactiveHoverColor: #dddddd;
 
       &:not(:last-child) label {
         border-right-width: 0;
+        margin-right: 10px;
+        margin-bottom: 20px;
       }
     }
   }
 
   section {
+    width: 90%;
+    height: 90%;
+    grid-area: 3 / -1 / 7 / 3;
     font-family: Roboto, sans-serif;
     clear: both;
+    overflow-y: auto;
 
     div {
       padding: 20px;
-      width: 100%;
-      height: 100%;
       border: 1px solid #ddd;
-      background: #fff;
+      background: #b04040;//вот это свойство для смены цвета фона текста
       line-height: 1.5em;
       letter-spacing: 0.3px;
-      color: #444;
+      color: black;
 
       h2 {
         margin: 0;
         font-family: Roboto, sans-serif;
         letter-spacing: 1px;
-        color: #34495e;
+        color: #ffffff;
       }
     }
   }
