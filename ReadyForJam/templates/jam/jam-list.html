@@ -34,7 +34,7 @@
                 <li class="filter-block__create-jam">
                     <form action="" class="filter-block__form">
                         <button type="submit" class="filter-block__button">
-                            <a href="" class="filter-block_button-text">Создать джем</a>
+                            <a href="/jam/register/" class="filter-block_button-text">Создать джем</a>
                         </button>
                     </form>
                 </li>
@@ -45,18 +45,21 @@
         <div class="jam-list list">
             <div class="list__container">
                 {% for card in jamCards %}
-                    <div class="list__item" style="
-                            background-color: {{ card.color }};
-                            background-image: url('/media/{{ card.photo }}') !important;">
-                        <div class="blur">
+                    <a href="/jam/{{ card.title }}" style="text-decoration: none">
+                        <div class="list__item" style="
+                                background-color: {{ card.color }};
+                                background-image: url('{{ card.photo }}') !important;">
+                            <div class="blur"></div>
+                            <div class="list__text-block">
+                                <h3 class="list__item-title">{{ card.title }}</h3>
+                                <h4 class="list__item-text"><span>Начало: </span>{{ card.date }}</h4>
+                                <h4 class="list__item-text"><span>Организатор: </span> lanissel</h4>
+                                <h4 class="list__item-text">
+                                    <span>Участники: </span>{{ card.participantQuantity }}
+                                </h4>
+                            </div>
                         </div>
-                        <div class="list__text-block">
-                            <h3 class="list__item-title">{{ card.title }}</h3>
-                            <h4 class="list__item-text"><span>Начало: </span> {{ card.date }}</h4>
-                            <h4 class="list__item-text"><span>Организатор: </span> lanissel</h4>
-                            <h4 class="list__item-text"><span>Участники: </span> 300000</h4>
-                        </div>
-                    </div>
+                    </a>
                 {% endfor %}
 
             </div>

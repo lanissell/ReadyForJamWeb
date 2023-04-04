@@ -1,9 +1,11 @@
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
 
 from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm
 from jam.models import Jam, JamColor, JamDate
+from jam.utils import JamCard
 
 
 class JamRegistrationView(View):
@@ -72,10 +74,13 @@ class JamListView(View):
             JOIN main.jam_jamdate ON (jam_jam.id = jam_jamdate.jam_id)
             JOIN main.jam_jamcolor ON (jam_jam.id = jam_jamcolor.jam_id)
             ''')
-        jamCards = [{
-            'title': jam.name,
-            'photo': jam.avatar,
-            'date': jam.startDate,
-            'color': jam.backgroundColor,
-        } for jam in jams]
+        jamCards = [JamCard(jam.id,
+                            jam.name,
+                            jam.avatar,
+                            jam.startDate,
+                            jam.backgroundColor)
+                    for jam in jams]
+        print(jamCards[0].date)
         return render(request, '../templates/jam/jam-list.html', context={'jamCards': jamCards})
+
+
