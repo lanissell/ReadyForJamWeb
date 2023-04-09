@@ -32,20 +32,54 @@ html {
 .filter-block__item {
   display: flex;
   align-items: center;
-  margin-right: 45px;
 }
 .filter-block__item p {
   color: #FFFFFF;
+}
+.filter-block__item a {
+  color: #FFFFFF;
+  outline: none;
+}
+
+ul li.filter-block__item:not(:nth-child(4) and :nth-child(5)) {
+  margin-right: 45px;
+}
+
+ul li.filter-block__item:nth-child(5) {
+  margin-left: auto;
+}
+
+.filter-block__item-text {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
 }
 
 .filter-block__triangle-image {
   margin-left: 3px;
 }
 
+.filter-block__button {
+  width: 241px;
+  height: 100%;
+  background: #CA3E47;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.filter-block_button-text {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  text-decoration: none;
+}
+
 .list__container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 30px;
   grid-column-gap: 30px;
   grid-row-gap: 50px;
   max-width: 90%;
@@ -100,6 +134,7 @@ html {
 }
 
 .list__item-title {
+  max-width: 100%;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -110,42 +145,19 @@ html {
 }
 
 .list__item-text {
+  max-width: 300px;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 20px;
 }
 
-.filter-block__create-jam {
-  margin-left: auto;
-  text-align: center;
-}
-.filter-block__create-jam a {
-  color: #FFFFFF;
-}
-
-.filter-block__button {
-  width: 241px;
-  background: #CA3E47;
-  border-radius: 5px;
-  border: none;
-  cursor: pointer;
-}
-
-.filter-block_button-text {
-  font-family: Roboto, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  text-decoration: none;
-}
-
+/* Adjust the grid layout for smaller screens */
 @media only screen and (max-width: 768px) {
   .list__container {
     grid-template-columns: repeat(2, 1fr);
   }
 }
-/* Adjust the grid layout for even smaller screens */
 @media only screen and (max-width: 480px) {
   .list__container {
     grid-template-columns: repeat(1, 1fr);

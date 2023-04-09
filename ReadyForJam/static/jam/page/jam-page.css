@@ -30,20 +30,20 @@ html {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  margin: 0 auto 66px;
 }
 
 .jam-block__container {
   max-width: 80%;
   align-items: center;
-  margin: 10px auto 66px;
 }
 
 .jam-block__list {
+  width: 1000px;
+  height: 1200px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(6, 1fr);
-  width: 1000px;
-  height: 1200px;
   border: 2px solid #FFFFFF;
   border-radius: 10px;
   background-color: #916FAD;
@@ -125,7 +125,7 @@ html {
 }
 
 .jam-block__button {
-  width: 60%;
+  width: 70%;
   padding: 9px 15px;
   cursor: pointer;
   font-family: Roboto, sans-serif;
@@ -226,6 +226,129 @@ html {
   width: 100%;
   left: 0;
   bottom: -1px;
+}
+
+@media screen and (max-width: 1250px) {
+  .jam-block__list {
+    width: 800px;
+    height: 960px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .jam-block__list {
+    width: 700px;
+    height: 840px;
+  }
+  .text-block__name {
+    font-size: 3em;
+  }
+}
+@media screen and (max-width: 850px) {
+  .jam-block__list {
+    width: 600px;
+    height: 720px;
+  }
+  .text-block__name {
+    font-size: 2.7em;
+  }
+  .jam-block__timer span {
+    font-size: 1.1em;
+  }
+  .jam-block__button {
+    font-size: 0.9em;
+  }
+  .creator__link {
+    font-size: 1em;
+  }
+  .jam-block__participate {
+    height: 55%;
+  }
+  .text-block__count-member {
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 730px) {
+  .jam-block__list {
+    width: 500px;
+    height: 600px;
+  }
+  .jam-block__text-block {
+    margin: 47px 20px 37px;
+  }
+  .text-block__name {
+    font-size: 2.1em;
+  }
+  .jam-block__button {
+    padding: 5px 10px;
+    font-size: 0.8em;
+    text-align: center;
+  }
+  .pc-tab {
+    padding: 0 20px;
+  }
+  .pc-tab section {
+    height: 85%;
+  }
+}
+@media screen and (max-width: 620px) {
+  .jam-block__list {
+    width: 400px;
+    height: 480px;
+  }
+  .creator-list__item {
+    padding: 0 7px;
+  }
+  .creator__link {
+    font-size: 0.8em;
+  }
+  .text-block__name {
+    font-size: 1.8em;
+  }
+  .jam-block__timer span {
+    font-size: 0.9em;
+  }
+  .jam-block__button {
+    width: 80%;
+    font-size: 0.7em;
+    text-align: center;
+  }
+  .text-block__count-member {
+    font-size: 0.85em;
+  }
+  .pc-tab section {
+    height: 77%;
+  }
+}
+@media screen and (max-width: 490px) {
+  .jam-block__list {
+    width: 300px;
+    height: 480px;
+  }
+  .text-block__name {
+    font-size: 1em;
+  }
+  .creator-list__item {
+    padding: 0 3px;
+    align-items: center;
+    margin-bottom: 1%;
+  }
+  .creator__link {
+    font-size: 0.7em;
+  }
+  .jam-block__timer span {
+    font-size: 0.7em;
+  }
+  .jam-block__button {
+    width: 80%;
+    font-size: 0.5em;
+    text-align: center;
+  }
+  .text-block__count-member {
+    font-size: 0.6em;
+  }
+  .pc-tab section {
+    height: 70%;
+  }
 }
 
 /*# sourceMappingURL=jam-page.css.map */
