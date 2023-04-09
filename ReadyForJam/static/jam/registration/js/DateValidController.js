@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function (){
-    const dateStart = document.querySelector("#id_startDate");
-    const votingStartDate = document.querySelector("#id_votingStartDate");
-    const votingEndDate = document.querySelector("#id_votingEndDate");
+    const dateStart = document.querySelector("#id_startDate")
+    const votingStartDate = document.querySelector("#id_votingStartDate")
+    const votingEndDate = document.querySelector("#id_votingEndDate")
 
     const votingStartDateParent = votingStartDate.parentElement
     votingStartDateParent.style.visibility = "hidden"

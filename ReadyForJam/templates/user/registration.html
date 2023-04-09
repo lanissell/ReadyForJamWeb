@@ -20,9 +20,16 @@
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>
                                 {{ field }}
-                                <div style="color: #ff6363">{{ field.errors.as_ul }}</div>
-                            </li>
+                                <div style="color: #ff6363; max-width: 514px">{{ field.errors.as_ul }}</div>
+
                         {% endfor %}
+                        <li class="registration__item">
+                            <ul>
+                                <li id="password_size">Должен содержать не менее 8 символов </li>
+                                <li id="password_num">Должен содержать цифры </li>
+                                <li id="password_repeat">Пароли должны совпадать </li>
+                            </ul>
+                        </li>
                         {% for field in dataForm %}
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>
@@ -41,8 +48,11 @@
                         <button class="button-block__button" type="button">
                             <a href="../login" class="button-block__link">Есть аккаунт</a>
                         </button>
-                        <button class="button-block__button-complete" type="submit">Зарегистрироваться</button>
+                        <button class="button-block__button-complete"
+                                id="register_btn"
+                                type="submit">Зарегистрироваться</button>
                     </div>
+                    <script src="../../static/user/js/passwordValidator.js"></script>
                 </form>
             </div>
         </div>
