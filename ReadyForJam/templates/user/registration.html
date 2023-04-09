@@ -12,13 +12,22 @@
                 <div class="registration__title">
                     <h1 class="registration__title-text">Регистрация</h1>
                 </div>
-                <form method="post" action={% url 'registration' %} enctype="multipart/form-data" class="registration__form">
+                <form method="post" action={% url 'registration' %} enctype="multipart/form-data"
+                      class="registration__form">
                     {% csrf_token %}
                     <ul class="registration__list">
                         {% for field in form %}
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>
                                 {{ field }}
+                                <div style="color: #ff6363">{{ field.errors.as_ul }}</div>
+                            </li>
+                        {% endfor %}
+                        {% for field in dataForm %}
+                            <li class="registration__item">
+                                <h3 class="registration__item-title">{{ field.label }}</h3>
+                                {{ field }}
+                                <div style="color: #CA3E47">{{ field.errors }}</div>
                             </li>
                         {% endfor %}
                         {% for field in photoForm %}
@@ -27,13 +36,6 @@
                                 {{ field }}
                             </li>
                         {% endfor %}
-                        {% if messages %}
-                            {% for m in messages %}
-                                <li class="registration__item">
-                                    <h4>{{ m }}</h4>
-                                </li>
-                            {% endfor %}
-                        {% endif %}
                     </ul>
                     <div class="registration__button-block button-block">
                         <button class="button-block__button" type="button">

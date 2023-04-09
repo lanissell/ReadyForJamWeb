@@ -3,7 +3,7 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
 
-from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm
+from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
 from jam.models import Jam, JamColor, JamDate
 from jam.utils import JamCard
 
@@ -17,6 +17,7 @@ class JamRegistrationView(View):
         date = JamDateForm
         context['color'] = color
         context['date'] = date
+        context['formSet'] = JamCriteriaFormSet()
         return render(request, '../templates/jam/form-template.html', context=context)
 
     @staticmethod
@@ -80,7 +81,6 @@ class JamListView(View):
                             jam.startDate,
                             jam.backgroundColor)
                     for jam in jams]
-        print(jamCards[0].date)
         return render(request, '../templates/jam/jam-list.html', context={'jamCards': jamCards})
 
 

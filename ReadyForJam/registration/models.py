@@ -1,14 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-
-class User(models.Model):
-    login = models.CharField(max_length=128, blank=False, null=False, unique=True)
-    password = models.CharField(max_length=24, blank=False, null=False)
-    email = models.EmailField(blank=False, null=False)
+class UserData(models.Model):
+    user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)
     about = models.CharField(max_length=512)
     birthDate = models.DateField(blank=False, null=False)
-    dateCreate = models.DateField(auto_now_add=True)
-    isBlocked = models.BooleanField(default=False)
 
 
 class UserPhoto(models.Model):

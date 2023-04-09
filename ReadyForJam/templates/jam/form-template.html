@@ -36,17 +36,31 @@
                             </li>
                         {% endfor %}
                         <li class="registration__item">
-                                <h3 class="registration__item-title">{{ form.content.label }}</h3>
-                                {{ form.content }}
+                            <h3 class="registration__item-title">{{ form.content.label }}</h3>
+                            {{ form.content }}
                         </li>
+                        {% for criteriaForm in formSet %}
+                            {% for field in criteriaForm %}
+                                <li class="registration__item">
+                                    <h3 class="registration__item-title">{{ field.label }}</h3>
+                                    {{ field }}
+                                </li>
+                            {% endfor %}
+                        {% endfor %}
                     </ul>
                     {{ form.media }}
+                    <div class="registration__button-block button-block">
+                        <button class="button-block__button-complete" id="criteria_add_btn" type="button">Добавить
+                            критерий
+                        </button>
+                    </div>
                     <div class="registration__button-block button-block">
                         <button class="button-block__button-complete" type="submit">Создать</button>
                     </div>
                 </form>
-                <script src="../../static/jam/registration/js/richTextInputColor.js"></script>
-                <script src="../../static/jam/registration/js/dateValidController.js"></script>
+                <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>
+                <script src="../../static/jam/registration/js/RichTextInputColor.js"></script>
+                <script src="../../static/jam/registration/js/DateValidController.js"></script>
             </div>
         </div>
     </div>

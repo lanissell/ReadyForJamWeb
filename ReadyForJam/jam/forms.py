@@ -1,11 +1,11 @@
 from datetime import datetime
 
 from ckeditor_uploader.widgets import CKEditorUploadingWidget
-from django.forms import ModelForm
+from django.forms import ModelForm, formset_factory
 from django import forms
 
-from jam.models import Jam, JamColor, JamDate
-from registration.utils import BasicHtmlAttrs
+from jam.models import Jam, JamColor, JamDate, JamCriteria
+from globalUtils import BasicHtmlAttrs
 
 
 class JamRegistrationForm(ModelForm):
@@ -77,3 +77,14 @@ class JamColorForm(ModelForm):
     class Meta:
         model = JamColor
         fields = ['backgroundColor', 'formColor', 'mainTextColor']
+
+class JamCriteriaForm(ModelForm):
+
+    name = forms.CharField(label='Название критерия', widget=forms.TextInput(
+        attrs=BasicHtmlAttrs.inputFieldAttrs
+    ))
+    class Meta:
+        model = JamCriteria
+        fields = ['name']
+
+JamCriteriaFormSet = formset_factory(JamCriteriaForm, extra=1)

@@ -1,11 +1,12 @@
 from django import forms
+from django.contrib.auth.forms import AuthenticationForm
 
-from registration.utils import BasicHtmlAttrs
+from globalUtils import BasicHtmlAttrs
 
 
-class UserLoginForm(forms.Form):
+class UserLoginForm(AuthenticationForm):
 
-    login = forms.CharField(label='Логин', widget=forms.TextInput(
+    username = forms.CharField(label='Логин', widget=forms.TextInput(
         attrs=BasicHtmlAttrs.inputFieldAttrs
     ))
     password = forms.CharField(label='Пароль', widget=forms.PasswordInput(

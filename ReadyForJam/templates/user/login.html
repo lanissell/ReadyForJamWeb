@@ -21,13 +21,9 @@
                                 {{ field }}
                             </li>
                         {% endfor %}
-                        {% if messages %}
-                            {% for m in messages %}
-                                <li class="registration__item">
-                                    <h4>{{ m }}</h4>
-                                </li>
-                            {% endfor %}
-                        {% endif %}
+                        {% for message in messages %}
+                            <li class="registration__item" style="color: #CA3E47">{{ message }}</li>
+                        {% endfor %}
                     </ul>
                     <div class="registration__button-block button-block">
                         <button class="button-block__button" type="button">
