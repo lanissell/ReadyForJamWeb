@@ -18,10 +18,10 @@
 
         <div class="jam-block">
             <div class="jam-block__container">
-                <div class="jam-block__list">
+                <div class="jam-block__list" style="background-color:{{ jamColor.formColor }}">
                     <div class="jam-block__text-block text-block">
-                        <h3 class="text-block__count-member">1000 участников</h3>
-                        <h1 class="text-block__name">GAME JAM</h1>
+                        <h3 class="text-block__count-member">1000</h3>
+                        <h1 class="text-block__name">{{ jam.name }}</h1>
                         <nav class="text-block__creator">
                             <ul class="text-block__creator-list creator-list">
                                 <li class="creator-list__item">
@@ -56,14 +56,12 @@
                             </ul>
                         </nav>
                         <section>
-                            <div class="tab1">
-                                <h2>First</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci autem deserunt officiis quia voluptas. Adipisci blanditiis cumque dicta iste laborum non numquam ratione. Ab architecto atque consequatur consequuntur cupiditate dolore ducimus eligendi enim eos esse et eum eveniet ex ipsam laboriosam magnam maiores natus nesciunt officiis omnis optio porro quas, quis quod rerum similique sit sunt tenetur totam unde ut veritatis voluptate voluptatem! Deserunt ducimus ex molestias quaerat soluta. At commodi consectetur consequatur corporis cum deserunt dignissimos dolorum esse eum eveniet expedita id itaque, iure, labore maiores neque numquam perferendis perspiciatis placeat rem saepe sapiente sed sunt tempora velit? Vero.</p>
+                            <div class="tab1" style="background-color:{{ jamColor.formColor }}">
+                                {{ jam.content|safe }}
                             </div>
 
                             <div class="tab2">
                                 <h2>Second</h2>
-                                <p>Гачи бой</p>
                                 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Perferendis, maiores.</p>
                             </div>
                         </section>

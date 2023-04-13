@@ -3,46 +3,92 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
 
+
 from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
 from jam.models import Jam, JamColor, JamDate
-from jam.utils import JamCard
+from jam.utils import JamCard, JamFormSaver, GetJamContext
 
 
 class JamRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        context = {'form': JamRegistrationForm}
-        color = JamColorForm
-        date = JamDateForm
-        context['color'] = color
-        context['date'] = date
-        context['formSet'] = JamCriteriaFormSet()
+        context = GetJamContext()
         return render(request, '../templates/jam/form-template.html', context=context)
 
     @staticmethod
     def post(request, **kwargs):
         form = JamRegistrationForm(request.POST, request.FILES)
-        if form.is_valid():
-            jam = form.save(commit=True)
-            if jam.id is not None:
-                jamColorForm = JamColorForm(request.POST)
-                jamDateForm = JamDateForm(request.POST)
-                if jamColorForm.is_valid():
-                    jamColor = jamColorForm.save(commit=False)
-                    jamColor.jam = jam
-                    jamColor.save()
-                else:
-                    return redirect('jamRegister')
-                if jamDateForm.is_valid():
-                    jamDate = jamDateForm.save(commit=False)
-                    jamDate.jam = jam
-                    jamDate.save()
-                else:
-                    return redirect('jamRegister')
-            return redirect(f'../../jam/{jam.name}')
+        color = JamColorForm(request.POST)
+        date = JamDateForm(request.POST)
+        formSaver = JamFormSaver()
+        formSaver.MainFormSave(form)
+        formSaver.RelativeFormsSave([color, date])
+        if formSaver.isFormsValidated:
+            return redirect(f'../../jam/{formSaver.jamObject.name}')
         else:
-            return redirect('jamRegister')
+            context = GetJamContext(form, color, date)
+            return render(request, '../templates/jam/form-template.html', context=context)
+
+
+class JamUpdateView(View):
+
+    def get(self, request, **kwargs):
+        jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+        colorObject = JamColor.objects.get(jam=jamObject)
+        dateObject = JamDate.objects.get(jam=jamObject)
+
+        jam = JamRegistrationForm(instance=jamObject)
+        color = JamColorForm(instance=colorObject)
+        date = JamDateForm(instance=dateObject)
+        context = GetJamContext(jam, color, date)
+        return render(request, '../templates/jam/form-template.html', context=context)
+
+
+    def post(self, request, **kwargs):
+        isValidated = True
+
+        jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+        colorObject = JamColor.objects.get(jam=jamObject)
+        dateObject = JamDate.objects.get(jam=jamObject)
+
+        jam = JamRegistrationForm(request.POST, request.FILES,
+                                  instance=jamObject)
+        color = JamColorForm(request.POST,
+                             instance=colorObject)
+        date = JamDateForm(request.POST,
+                           instance=dateObject)
+
+        if jam.is_valid():
+            jamObject.name = jam.cleaned_data['name']
+            jamObject.theme = jam.cleaned_data['theme']
+            jamObject.content = jam.cleaned_data['content']
+            jamObject.avatar = jam.cleaned_data['avatar']
+        else:
+            isValidated = False
+
+        if color.is_valid() and isValidated:
+            colorObject.backgroundColor =  color.cleaned_data['backgroundColor']
+            colorObject.formColor =  color.cleaned_data['formColor']
+            colorObject.mainTextColor =  color.cleaned_data['mainTextColor']
+        else:
+            isValidated = False
+
+        if date.is_valid() and isValidated:
+            dateObject.startDate = date.cleaned_data['startDate']
+            dateObject.votingStartDate = date.cleaned_data['votingStartDate']
+            dateObject.votingEndDate = date.cleaned_data['votingEndDate']
+        else:
+            isValidated = False
+
+        if isValidated:
+            jamObject.save()
+            colorObject.save()
+            dateObject.save()
+            return redirect(f'../../jam/{jamObject.name}')
+        else:
+            context = GetJamContext(jam, color, date)
+            return render(request, '../templates/jam/form-template.html', context=context)
 
 class JamPageView(View):
 
