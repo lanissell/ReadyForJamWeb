@@ -154,7 +154,6 @@ html {
 .jam-block__form {
 }
 
-
 .jam-block__button {
   width: 70%;
 
@@ -203,7 +202,7 @@ $unactiveHoverColor: #dddddd;
 
 .pc-tab {
   grid-area: 2 / 1 / 7 / 3;
-  width: 110%;
+  width: 100%;
   padding: 0 33px;
 
 
@@ -236,8 +235,12 @@ $unactiveHoverColor: #dddddd;
     }
   }
 
+  iframe{ //видео здесь!!!!!!!!!!!!!!!!!!!!!!!!
+    width: 100%;
+  }
+
   section {
-    width: 90%;
+    width: 100%;
     height: 90%;
     grid-area: 3 / -1 / 7 / 3;
     font-family: Roboto, sans-serif;
@@ -246,8 +249,6 @@ $unactiveHoverColor: #dddddd;
 
     div {
       padding: 20px;
-      border: 1px solid #ddd;
-      background: #b04040; //вот это свойство для смены цвета фона текста
       line-height: 1.5em;
       letter-spacing: 0.3px;
       color: black;

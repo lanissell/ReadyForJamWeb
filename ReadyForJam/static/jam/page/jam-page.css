@@ -164,7 +164,7 @@ html {
 
 .pc-tab {
   grid-area: 2/1/7/3;
-  width: 110%;
+  width: 100%;
   padding: 0 33px;
 }
 .pc-tab ul {
@@ -189,8 +189,11 @@ html {
   margin-right: 10px;
   margin-bottom: 20px;
 }
+.pc-tab iframe {
+  width: 100%;
+}
 .pc-tab section {
-  width: 90%;
+  width: 100%;
   height: 90%;
   grid-area: 3/-1/7/3;
   font-family: Roboto, sans-serif;
@@ -199,8 +202,6 @@ html {
 }
 .pc-tab section div {
   padding: 20px;
-  border: 1px solid #ddd;
-  background: #b04040;
   line-height: 1.5em;
   letter-spacing: 0.3px;
   color: black;

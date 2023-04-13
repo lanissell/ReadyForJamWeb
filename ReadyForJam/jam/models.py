@@ -12,9 +12,9 @@ class Jam(models.Model):
 
 class JamDate(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
-    startDate = models.DateTimeField(blank=False, null=False)
-    votingStartDate = models.DateTimeField(blank=False, null=False)
-    votingEndDate = models.DateTimeField(blank=False, null=False)
+    startDate = models.CharField(max_length=30, blank=False, null=False)
+    votingStartDate = models.CharField(max_length=30,blank=False, null=False)
+    votingEndDate = models.CharField(max_length=30,blank=False, null=False)
 
 class JamColor(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
