@@ -235,7 +235,7 @@ $unactiveHoverColor: #dddddd;
     }
   }
 
-  iframe{ //видео здесь!!!!!!!!!!!!!!!!!!!!!!!!
+  iframe { //видео здесь!!!!!!!!!!!!!!!!!!!!!!!!
     width: 100%;
   }
 
@@ -248,7 +248,7 @@ $unactiveHoverColor: #dddddd;
     overflow-y: auto;
 
     div {
-      padding: 20px;
+      padding: 20px 0;
       line-height: 1.5em;
       letter-spacing: 0.3px;
       color: black;
@@ -289,6 +289,10 @@ $unactiveHoverColor: #dddddd;
     width: 1000px * 0.8;
     height: 1200px * 0.8;
   }
+
+  .jam-block__participate {
+    height: 45%;
+  }
 }
 
 @media screen and (max-width: 1000px) {
@@ -300,6 +304,12 @@ $unactiveHoverColor: #dddddd;
   .text-block__name {
     font-size: 3em;
   }
+
+  .jam-block__participate {
+    height: 45%;
+  }
+
+
 }
 
 @media screen and (max-width: 850px) {
@@ -327,7 +337,7 @@ $unactiveHoverColor: #dddddd;
   }
 
   .jam-block__participate {
-    height: 55%;
+    height: 45%;
   }
 
   .text-block__count-member {
@@ -430,27 +440,31 @@ $unactiveHoverColor: #dddddd;
 
   .jam-block__timer {
     span {
-      font-size: 0.7em;
+      font-size: 0.6em;
     }
   }
 
   .jam-block__button {
-      width: 80%;
-      font-size: 0.5em;
-      text-align: center;
-    }
+    width: 80%;
+    font-size: 0.5em;
+    text-align: center;
+  }
 
   .text-block__count-member {
     font-size: 0.6em;
   }
 
 
-    .pc-tab {
+  .pc-tab {
 
-      section {
-        height: 70%;
-      }
+    section {
+      height: 70%;
     }
+  }
+
+  .jam-block__participate {
+    height: 55%;
+  }
 }
 
 

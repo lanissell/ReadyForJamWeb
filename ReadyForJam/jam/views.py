@@ -68,6 +68,7 @@ class JamUpdateView(View):
             isValidated = False
 
         if color.is_valid() and isValidated:
+            #color.update(**color.cleaned_data)
             colorObject.backgroundColor =  color.cleaned_data['backgroundColor']
             colorObject.formColor =  color.cleaned_data['formColor']
             colorObject.mainTextColor =  color.cleaned_data['mainTextColor']

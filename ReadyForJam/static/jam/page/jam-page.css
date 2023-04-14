@@ -201,7 +201,7 @@ html {
   overflow-y: auto;
 }
 .pc-tab section div {
-  padding: 20px;
+  padding: 20px 0;
   line-height: 1.5em;
   letter-spacing: 0.3px;
   color: black;
@@ -234,6 +234,9 @@ html {
     width: 800px;
     height: 960px;
   }
+  .jam-block__participate {
+    height: 45%;
+  }
 }
 @media screen and (max-width: 1000px) {
   .jam-block__list {
@@ -242,6 +245,9 @@ html {
   }
   .text-block__name {
     font-size: 3em;
+  }
+  .jam-block__participate {
+    height: 45%;
   }
 }
 @media screen and (max-width: 850px) {
@@ -262,7 +268,7 @@ html {
     font-size: 1em;
   }
   .jam-block__participate {
-    height: 55%;
+    height: 45%;
   }
   .text-block__count-member {
     font-size: 1em;
@@ -337,7 +343,7 @@ html {
     font-size: 0.7em;
   }
   .jam-block__timer span {
-    font-size: 0.7em;
+    font-size: 0.6em;
   }
   .jam-block__button {
     width: 80%;
@@ -349,6 +355,9 @@ html {
   }
   .pc-tab section {
     height: 70%;
+  }
+  .jam-block__participate {
+    height: 55%;
   }
 }
 
