@@ -35,7 +35,7 @@ class JamCard:
 
     @staticmethod
     def DateFormat(date:str):
-        datePart = datetime.strptime(date.split()[0], "%Y-%m-%d")
+        datePart = datetime.strptime(date.split('T')[0], "%Y-%m-%d")
         datePart = datePart.strftime("%d.%m.%Y")
         return datePart
 

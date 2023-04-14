@@ -108,6 +108,13 @@ class JamPageView(View):
             context['jameDate'] = jamDate
         return render(request, '../templates/jam/jam-page.html', context=context)
 
+class JamDeleteView(View):
+
+    def get(self, request, **kwargs):
+        jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+        jamObject.delete()
+        return redirect('jamList')
+
 class JamListView(View):
     @staticmethod
     def get(request, **kwargs):

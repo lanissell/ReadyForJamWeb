@@ -46,13 +46,13 @@ class JamDateForm(ModelForm):
         'min': "1900-12-31"
     }
 
-    startDate = forms.DateTimeField(label='Дата начала джема', widget=DateInput(
+    startDate = forms.CharField(label='Дата начала джема', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingStartDate = forms.DateTimeField(label='Дата начала голосования', widget=DateInput(
+    votingStartDate = forms.CharField(label='Дата начала голосования', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingEndDate = forms.DateTimeField(label='Дата окончания голосования', widget=DateInput(
+    votingEndDate = forms.CharField(label='Дата окончания голосования', widget=DateInput(
         attrs=dateAttrs
     ))
 
