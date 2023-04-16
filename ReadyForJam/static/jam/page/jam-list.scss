@@ -12,6 +12,10 @@ html {
   z-index: 1;
 }
 
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
 
 ._container {
   max-width: 90%;
@@ -30,6 +34,9 @@ html {
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
+  background: #313131;
+  border-radius: 5px;
+
 }
 
 .filter-block__item {
@@ -38,11 +45,15 @@ html {
 
 
   span {
-    color: #FFFFFF;
+    color: $textColor;
+  }
+
+  p {
+    color: $textColor;
   }
 
   a {
-    color: #FFFFFF;
+    color: $textColor;
     outline: none;
   }
 
@@ -76,6 +87,14 @@ ul li.filter-block__item:nth-child(5) {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+
+  a:hover {
+    color: $hoverColor;
+  }
+
+  a {
+    color: $unactiveColor;
+  }
 }
 
 .filter-block_button-text {
@@ -143,12 +162,12 @@ ul li.filter-block__item:nth-child(5) {
   align-items: center;
 
   h3 {
-    color: #FFFFFF;
+    color: $textColor;
     text-align: center;
   }
 
   h4 {
-    color: #ffffff;
+    color: $textColor;
   }
 
   span {
@@ -245,15 +264,15 @@ ul li.filter-block__item:nth-child(5) {
   }
 
   .filter-block__item-text {
-    font-size: 4vw;
+    font-size: 5vw;
   }
 
   .filter-block__button {
-    width: 241px * 0.83;
+    width: 163%;
   }
 
   .filter-block_button-text {
-    font-size: 3.5vw;
+    font-size: 5vw;
   }
 
   .list__container {
