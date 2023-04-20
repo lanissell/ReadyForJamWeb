@@ -98,6 +98,7 @@ html {
   background: #525252;
   color: #ffffff;
   border: 2px solid #313131;
+  border-radius: 5px;
 }
 
 .registration__colors {
@@ -127,6 +128,7 @@ html {
 .registration__color-input {
   width: 80%;
   height: 36px;
+  border-radius: 5px;
 }
 
 ul li.registration__item {
