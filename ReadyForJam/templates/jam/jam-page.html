@@ -25,20 +25,23 @@
                         <nav class="text-block__creator">
                             <ul class="text-block__creator-list creator-list">
                                 <li class="creator-list__item">
-                                    <a href="" class="creator__link">proffof</a>
-                                </li>
-                                <li class="creator-list__item">
-                                    <a href="" class="creator__link">lanissel</a>
+                                    <a href="" class="creator__link"
+                                       style="color: {{ jamColor.formColor }}">
+                                        {{ jam.author }}
+                                    </a>
                                 </li>
                             </ul>
                         </nav>
                     </div>
 
                     <div class="jam-block__participate">
-                        <h1 id="timer" class="jam-block__timer"><span>00:00:00</span></h1>
+                        <h1 id="timer" class="jam-block__timer" style="color: {{ jamColor.formColor }}">
+                            <span>00:00:00</span>
+                        </h1>
                         <form action="" class="jam-block__form">
-                            <button type="submit" class="jam-block__button">
-                                <a href="" class="jam-block__link">УЧАВСТВОВАТЬ</a>
+                            <button type="submit" class="jam-block__button"
+                            style="background-color: {{ jamColor.formColor }}; color: {{ jamColor.mainTextColor }}">
+                                УЧАВСТВОВАТЬ
                             </button>
                         </form>
                     </div>
@@ -58,7 +61,8 @@
                             </ul>
                         </nav>
                         <section>
-                            <div class="tab1" style="background-color:{{ jamColor.formColor }}">
+                            <div class="tab1" style="background-color:{{ jamColor.formColor }};
+                                    color: {{ jamColor.mainTextColor }}">
                                 {{ jam.content|safe }}
                             </div>
 

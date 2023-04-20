@@ -100,7 +100,7 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTO_LOGOUT = {'IDLE_TIME': 10}
+AUTO_LOGOUT = {'SESSION_TIME': 600}
 
 CKEDITOR_UPLOAD_PATH="uploads/"
 

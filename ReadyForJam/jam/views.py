@@ -13,8 +13,11 @@ class JamRegistrationView(View):
 
     @staticmethod
     def get(request, **kwargs):
-        context = GetJamContext()
-        return render(request, '../templates/jam/form-template.html', context=context)
+        if request.user.is_authenticated:
+            context = GetJamContext()
+            return render(request, '../templates/jam/form-template.html', context=context)
+        else:
+            return redirect('login')
 
     @staticmethod
     def post(request, **kwargs):
@@ -22,7 +25,7 @@ class JamRegistrationView(View):
         color = JamColorForm(request.POST)
         date = JamDateForm(request.POST)
         formSaver = JamFormSaver()
-        formSaver.MainFormSave(form)
+        formSaver.MainFormSave(form, request)
         formSaver.RelativeFormsSave([color, date])
         if formSaver.isFormsValidated:
             return redirect(f'../../jam/{formSaver.jamObject.name}')
@@ -33,62 +36,48 @@ class JamRegistrationView(View):
 
 class JamUpdateView(View):
 
+    baseContext = {
+        'title': 'Обновление джема',
+        'btnName': 'Обновить'
+    }
+
     def get(self, request, **kwargs):
-        jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
-        colorObject = JamColor.objects.get(jam=jamObject)
-        dateObject = JamDate.objects.get(jam=jamObject)
-
-        jam = JamRegistrationForm(instance=jamObject)
-        color = JamColorForm(instance=colorObject)
-        date = JamDateForm(instance=dateObject)
-        context = GetJamContext(jam, color, date)
-        return render(request, '../templates/jam/form-template.html', context=context)
-
+        user = request.user
+        if user.is_authenticated:
+            jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+            if jamObject.author.id == user.id:
+                colorObject = JamColor.objects.get(jam=jamObject)
+                dateObject = JamDate.objects.get(jam=jamObject)
+                jam = JamRegistrationForm(instance=jamObject)
+                color = JamColorForm(instance=colorObject)
+                date = JamDateForm(instance=dateObject)
+                context = GetJamContext(jam, color, date)
+                context.update(self.baseContext)
+                return render(request, '../templates/jam/form-template.html', context=context)
+            else:
+                return redirect('jamList')
+        else:
+            return redirect('login')
 
     def post(self, request, **kwargs):
-        isValidated = True
-
         jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
-        colorObject = JamColor.objects.get(jam=jamObject)
-        dateObject = JamDate.objects.get(jam=jamObject)
 
         jam = JamRegistrationForm(request.POST, request.FILES,
                                   instance=jamObject)
-        color = JamColorForm(request.POST,
-                             instance=colorObject)
-        date = JamDateForm(request.POST,
-                           instance=dateObject)
+        color = JamColorForm(request.POST)
+        date = JamDateForm(request.POST)
 
-        if jam.is_valid():
-            jamObject.name = jam.cleaned_data['name']
-            jamObject.theme = jam.cleaned_data['theme']
-            jamObject.content = jam.cleaned_data['content']
-            jamObject.avatar = jam.cleaned_data['avatar']
-        else:
-            isValidated = False
-
-        if color.is_valid() and isValidated:
-            #color.update(**color.cleaned_data)
-            colorObject.backgroundColor =  color.cleaned_data['backgroundColor']
-            colorObject.formColor =  color.cleaned_data['formColor']
-            colorObject.mainTextColor =  color.cleaned_data['mainTextColor']
-        else:
-            isValidated = False
-
-        if date.is_valid() and isValidated:
-            dateObject.startDate = date.cleaned_data['startDate']
-            dateObject.votingStartDate = date.cleaned_data['votingStartDate']
-            dateObject.votingEndDate = date.cleaned_data['votingEndDate']
-        else:
-            isValidated = False
-
-        if isValidated:
-            jamObject.save()
-            colorObject.save()
-            dateObject.save()
+        if jam.is_valid() and color.is_valid() and date.is_valid():
+            Jam.objects.update_or_create(id=jamObject.id,
+                                         defaults=jam.cleaned_data)
+            JamColor.objects.update_or_create(jam=jamObject,
+                                              defaults=color.cleaned_data)
+            JamDate.objects.update_or_create(jam=jamObject,
+                                             defaults=date.cleaned_data)
             return redirect(f'../../jam/{jamObject.name}')
         else:
             context = GetJamContext(jam, color, date)
+            context.update(self.baseContext)
             return render(request, '../templates/jam/form-template.html', context=context)
 
 class JamPageView(View):
@@ -111,10 +100,16 @@ class JamPageView(View):
 
 class JamDeleteView(View):
 
-    def get(self, request, **kwargs):
-        jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
-        jamObject.delete()
-        return redirect('jamList')
+    @staticmethod
+    def get(request, **kwargs):
+        user = request.user
+        if user.is_authenticated:
+            jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+            if jamObject.author.id == user.id:
+                jamObject.delete()
+            return redirect('jamList')
+        else:
+            return redirect('login')
 
 class JamListView(View):
     @staticmethod
@@ -129,12 +124,7 @@ class JamListView(View):
             JOIN main.jam_jamdate ON (jam_jam.id = jam_jamdate.jam_id)
             JOIN main.jam_jamcolor ON (jam_jam.id = jam_jamcolor.jam_id)
             ''')
-        jamCards = [JamCard(jam.id,
-                            jam.name,
-                            jam.avatar,
-                            jam.startDate,
-                            jam.backgroundColor)
-                    for jam in jams]
+        jamCards = [JamCard(jam) for jam in jams]
         return render(request, '../templates/jam/jam-list.html', context={'jamCards': jamCards})
 
 

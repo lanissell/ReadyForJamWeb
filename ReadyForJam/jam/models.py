@@ -9,6 +9,7 @@ class Jam(models.Model):
     theme = models.CharField(max_length=128, blank=False, null=False)
     avatar = models.ImageField(upload_to='jam/avatar')
     content = RichTextUploadingField(default='', blank=False, null=False,)
+    author = models.ForeignKey(User, blank=False, null=True, on_delete=models.CASCADE)
 
 class JamDate(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
