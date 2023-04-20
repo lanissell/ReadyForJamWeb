@@ -115,6 +115,12 @@ ul li.registration__item {
   text-align: center;
   align-items: center;
 }
+.registration__button-block a {
+  color: #eeeeee;
+}
+.registration__button-block a:hover {
+  color: #ffffff;
+}
 
 .button-block {
   padding: 0 5px;
@@ -131,6 +137,7 @@ ul li.registration__item {
   border: 2px solid #313131;
   border-radius: 5px;
   text-align: center;
+  cursor: pointer;
 }
 
 .button-block__link {
@@ -158,6 +165,7 @@ ul li.registration__item {
   line-height: 33px;
   text-align: center;
   color: #FFFFFF;
+  cursor: pointer;
 }
 
 @media (max-width: 800px) {

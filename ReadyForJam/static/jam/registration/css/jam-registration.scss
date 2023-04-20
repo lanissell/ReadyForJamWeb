@@ -8,7 +8,7 @@ html {
   width: 100%;
   font-family: Roboto, sans-serif;
   z-index: 1;
-  background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat fixed center;
+  background: #525252 url("../../../../media/base/Background-image.svg") no-repeat fixed center;
   background-size: cover;
 }
 
@@ -46,7 +46,6 @@ html {
 }
 
 
-
 .registration__title {
   width: 100%;
   max-height: 80px;
@@ -72,6 +71,72 @@ html {
 .registration__list {
   flex-wrap: wrap;
   align-items: center;
+}
+
+.registration-lists {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr);
+  grid-template-rows: repeat(3, 0.33fr);
+}
+
+.registration__dates {
+  grid-area: 1 / 1 / 3 / 1;
+  height: 145%;
+  width: 100%;
+}
+
+.registration__dates-item {
+  margin-bottom: 23px;
+  text-align: left;
+  align-content: center;
+}
+
+.registration__date-title {
+  margin-bottom: 23px;
+
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55vw;
+  color: #ffffff;
+}
+
+.registration__date-input {
+  width: 80%;
+  background: #525252;
+  color: #ffffff;
+  border: 2px solid #313131;
+}
+
+
+.registration__colors {
+  grid-area: 1 / 2 / 3 / 2;
+  height: 145%;
+  width: 100%;
+}
+
+.registration__color-item {
+  width: 100%;
+  margin-bottom: 23px;
+  text-align: left;
+  align-content: center;
+
+  h3 {
+    font-family: Roboto, serif;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.55vw;
+    color: #ffffff;
+  }
+}
+
+.registration__color-title {
+  margin-bottom: 21px;
+}
+
+.registration__color-input {
+  width: 80%;
+  height: 36px;
 }
 
 
@@ -103,12 +168,28 @@ ul li.registration__item {
   color: white;
 }
 
-.registration__item-about-me {
-  max-height: 242px;
-  min-height: 35px;
-  max-width: 514px;
-  min-width: 514px;
-  height: 242px/1217px * 100%;
+.registration-criteria-block {
+  width: 100%;
+  border: 2px solid #313131;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.criteria-block {
+}
+
+.criteria-block__list {
+}
+
+.criteria-block__item {
+}
+
+
+.criteria-block__input {
+  width: 75%;
+  margin: 20px 0;
+
   outline: none;
   background: #525252;
   border: 2px solid #313131;
@@ -116,11 +197,28 @@ ul li.registration__item {
   color: white;
 }
 
-.registration__item-image {
+.criteria-block__button-add {
+  width: 55%;
+  text-align: center;
+
+  background: #CA3E47;
   border: 2px solid #313131;
-  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+
+  margin-bottom: 20px;
+  cursor: pointer;
 }
+
+.criteria-block__link {
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55vw;
+  line-height: 33px;
+  color: #ffffff;
+}
+
 
 $unactiveColor: #eeeeee;
 $hoverColor: #ffffff;
@@ -128,6 +226,7 @@ $hoverColor: #ffffff;
 .registration__button-block {
   width: 100%;
   height: 40px;
+  padding: 0 137px 66px;
   text-align: center;
   align-items: center;
 
@@ -141,25 +240,7 @@ $hoverColor: #ffffff;
 }
 
 .button-block {
-  padding: 0 5px;
-  margin: 0 0 66px;
 }
-
-
-.button-block__button {
-  max-height: 40px;
-  max-width: 242px;
-  width: 50%;
-  margin-right: 30px;
-  background: #525252;
-  text-decoration: none;
-  border: 2px solid #313131;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
-}
-
-
 
 
 .button-block__link {
@@ -175,8 +256,7 @@ $hoverColor: #ffffff;
 
 .button-block__button-complete {
   max-height: 40px;
-  max-width: 242px;
-  width: 50%;
+  width: 100%;
 
   background: #CA3E47;
   border: 2px solid #313131;
@@ -195,14 +275,14 @@ $hoverColor: #ffffff;
   cursor: pointer;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
   .registration__container {
     min-width: round(785px * 0.8);
   }
 
-ul li.registration__item {
-  margin: 0 96px 44px;
-}
+  ul li.registration__item {
+    margin: 0 96px 44px;
+  }
 
   .registration__item-title {
     font-weight: 350;
@@ -228,14 +308,14 @@ ul li.registration__item {
   }
 }
 
-@media (max-width: 630px) {
+@media screen and (max-width: 630px) {
   .registration__container {
     min-width: round(785px * 0.65);
   }
 
-ul li.registration__item {
-  margin: 0 82px 44px;
-}
+  ul li.registration__item {
+    margin: 0 82px 44px;
+  }
 
   .registration__item-title {
     font-weight: 300;

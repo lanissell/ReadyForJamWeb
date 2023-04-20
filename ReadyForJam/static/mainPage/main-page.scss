@@ -15,10 +15,7 @@ html {
 }
 
 
-
-
 ._container {
-  //display: grid;
   max-width: 90%;
   padding: 0 15px;
   margin: 0 auto;
@@ -99,7 +96,7 @@ html {
 }
 
 .right-group__item {
-    margin-right: 66px;
+  margin-right: 66px;
 
 }
 
@@ -198,6 +195,9 @@ html {
   color: #E64751;
 }
 
+$unactiveColor: #c5c5c5;
+$hoverColor: #ffffff;
+
 .title__button {
   background: linear-gradient(270deg, #525252 0%, #414141 100%);;
   height: 90px;
@@ -205,6 +205,14 @@ html {
   border-radius: 25px;
   border: 0;
   cursor: pointer;
+
+  a {
+    color: $unactiveColor;
+  }
+
+  a:hover {
+    color:$hoverColor;
+  }
 }
 
 .title__link {
@@ -215,8 +223,6 @@ html {
   font-size: 30px;
   line-height: 49px;
   text-transform: uppercase;
-
-  color: #FFFFFF;
 }
 
 .title__author-url {
@@ -270,6 +276,7 @@ html {
   width: 100%;
   height: 450px;
 }
+
 //<!--пофиксить момент с тем что list_item при применении к нему технического класса контейнер не встает по контейнеру-->
 .list {
 }
@@ -296,7 +303,7 @@ ul li.list__item:first-child {
   width: 100%;
   min-width: 100%;
   height: 55%;
-  border-radius: 25px  25px 0 0;
+  border-radius: 25px 25px 0 0;
 }
 
 .list__text-block {
@@ -341,7 +348,8 @@ ul li.list__item:first-child {
 
 
 .jam-block__slider {
-  margin: 45px 0 0/*здесь должен быть отстур 108px но он не появляется */ 25px;
+  margin: 45px 0 0 /*здесь должен быть отстур 108px но он не появляется */
+  25px;
   width: 98%;
   height: 3%;
   background-color: black;

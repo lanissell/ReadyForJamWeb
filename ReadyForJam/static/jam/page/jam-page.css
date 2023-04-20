@@ -124,15 +124,24 @@ html {
   width: 70%;
   padding: 9px 15px;
   cursor: pointer;
+  background: #916FAD;
+  border-radius: 10px;
+  border: none;
+}
+.jam-block__button a {
+  color: #eeeeee;
+  text-decoration: none;
+}
+.jam-block__button a:hover {
+  color: #ffffff;
+  text-decoration: none;
+}
+
+.button-block__link {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 15px;
-  text-align: center;
-  color: #FFFFFF;
-  background: #916FAD;
-  border-radius: 10px;
-  border: none;
 }
 
 /* Component Needs */

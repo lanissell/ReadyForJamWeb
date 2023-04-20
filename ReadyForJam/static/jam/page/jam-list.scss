@@ -12,6 +12,10 @@ html {
   z-index: 1;
 }
 
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
 
 ._container {
   max-width: 90%;
@@ -30,6 +34,9 @@ html {
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
+  background: #313131;
+  border-radius: 5px;
+
 }
 
 .filter-block__item {
@@ -37,19 +44,23 @@ html {
   align-items: center;
 
 
+  span {
+    color: $textColor;
+  }
+
   p {
-    color: #FFFFFF;
+    color: $textColor;
   }
 
   a {
-    color: #FFFFFF;
+    color: $textColor;
     outline: none;
   }
 
 }
 
 ul li.filter-block__item:not(:nth-child(4) and :nth-child(5)) {
-  margin-right: 45px;
+  margin-right: 2%;
 }
 
 ul li.filter-block__item:nth-child(5) {
@@ -60,11 +71,13 @@ ul li.filter-block__item:nth-child(5) {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2vw;
 }
 
 .filter-block__triangle-image {
   margin-left: 3px;
+
+
 }
 
 .filter-block__button {
@@ -74,6 +87,14 @@ ul li.filter-block__item:nth-child(5) {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+
+  a:hover {
+    color: $hoverColor;
+  }
+
+  a {
+    color: $unactiveColor;
+  }
 }
 
 .filter-block_button-text {
@@ -141,12 +162,12 @@ ul li.filter-block__item:nth-child(5) {
   align-items: center;
 
   h3 {
-    color: #FFFFFF;
+    color: $textColor;
     text-align: center;
   }
 
   h4 {
-    color: #ffffff;
+    color: $textColor;
   }
 
   span {
@@ -177,18 +198,24 @@ ul li.filter-block__item:nth-child(5) {
   }
 
   .list__item-text {
-    font-size: 1.7vw;
+    font-size: 1.6vw;
   }
 
 }
 
 @media only screen and (max-width: 1024px) {
-  .list__item-title {
-    font-size: 2vw;
-  }
-}
 
-@media only screen and (max-width: 768px) {
+  .filter-block__item-text {
+    font-size: 1.5vw;
+  }
+
+  .filter-block__button {
+    width: 241px * 0.8;
+  }
+
+  .filter-block_button-text {
+    font-size: 1.8vw;
+  }
 
   .list__container {
     grid-template-columns: repeat(2, 1fr);
@@ -197,25 +224,68 @@ ul li.filter-block__item:nth-child(5) {
   .list__item-title {
     font-size: 3vw;
   }
+
+  .list__item-text {
+    font-size: 2.8vw;
+  }
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 780px) {
+
+  .filter-block__item-text {
+    font-size: 1.6vw;
+  }
+
+  .filter-block__button {
+    width: 241px * 0.5;
+  }
+
+  .filter-block_button-text {
+    font-size: 1.8vw;
+  }
+
+
+  .list__item-title {
+    font-size: 3.2vw;
+  }
+
+  .list__item-text {
+    font-size: 3.2vw;
+  }
+}
+
+@media only screen and (max-width: 490px) {
+  .filter-block__list {
+    display: inline-block;
+  }
+
+  .filter-block__item {
+    margin-bottom: 20px;
+  }
+
+  .filter-block__item-text {
+    font-size: 5vw;
+  }
+
+  .filter-block__button {
+    width: 163%;
+  }
+
+  .filter-block_button-text {
+    font-size: 5vw;
+  }
 
   .list__container {
     grid-template-columns: repeat(1, 1fr);
   }
+
+
+  .list__item-title {
+    font-size: 6vw;
+  }
+
+  .list__item-text {
+    font-size: 6vw;
+  }
 }
 
-
-//@media only screen and (max-width: 120px) {
-//  .list__container {
-//    grid-template-columns: repeat(2, 1fr);
-//  }
-//}
-//
-///* Adjust the grid layout for even smaller screens */
-//@media only screen and (max-width: 480px) {
-//  .list__container {
-//    grid-template-columns: repeat(1, 1fr);
-//  }
-//}

@@ -1,6 +1,5 @@
 @import "../../../base/css/zeroing-style.css";
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap");
 body,
 html {
   font-size: 20px;
@@ -8,7 +7,7 @@ html {
   width: 100%;
   font-family: Roboto, sans-serif;
   z-index: 1;
-  background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat fixed center;
+  background: #525252 url("../../../../media/base/Background-image.svg") no-repeat fixed center;
   background-size: cover;
 }
 
@@ -18,14 +17,12 @@ html {
   box-sizing: content-box;
 }
 
-
 ._container {
-  max-width: 1601px / 1920px * 100%;
+  max-width: 83.3854166667%;
   padding: 0 15px;
   margin: 0 auto;
   box-sizing: content-box;
 }
-
 
 .registration {
   max-width: 100%;
@@ -44,8 +41,6 @@ html {
   align-items: center;
   top: 50%;
 }
-
-
 
 .registration__title {
   width: 100%;
@@ -66,16 +61,72 @@ html {
   color: #FFFFFF;
 }
 
-.registration__form {
-}
-
 .registration__list {
   flex-wrap: wrap;
   align-items: center;
 }
 
+.registration-lists {
+  display: grid;
+  grid-template-columns: repeat(2, 0.5fr);
+  grid-template-rows: repeat(3, 0.33fr);
+}
 
-.registration__item {
+.registration__dates {
+  grid-area: 1/1/3/1;
+  height: 145%;
+  width: 100%;
+}
+
+.registration__dates-item {
+  margin-bottom: 23px;
+  text-align: left;
+  align-content: center;
+}
+
+.registration__date-title {
+  margin-bottom: 23px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55vw;
+  color: #ffffff;
+}
+
+.registration__date-input {
+  width: 80%;
+  background: #525252;
+  color: #ffffff;
+  border: 2px solid #313131;
+}
+
+.registration__colors {
+  grid-area: 1/2/3/2;
+  height: 145%;
+  width: 100%;
+}
+
+.registration__color-item {
+  width: 100%;
+  margin-bottom: 23px;
+  text-align: left;
+  align-content: center;
+}
+.registration__color-item h3 {
+  font-family: Roboto, serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55vw;
+  color: #ffffff;
+}
+
+.registration__color-title {
+  margin-bottom: 21px;
+}
+
+.registration__color-input {
+  width: 80%;
+  height: 36px;
 }
 
 ul li.registration__item {
@@ -96,19 +147,23 @@ ul li.registration__item {
   height: 35px;
   vertical-align: bottom;
   outline: none;
-
   background: #525252;
   border: 2px solid #313131;
   border-radius: 5px;
   color: white;
 }
 
-.registration__item-about-me {
-  max-height: 242px;
-  min-height: 35px;
-  max-width: 514px;
-  min-width: 514px;
-  height: 242px/1217px * 100%;
+.registration-criteria-block {
+  width: 100%;
+  border: 2px solid #313131;
+  border-radius: 5px;
+  align-items: center;
+  text-align: center;
+}
+
+.criteria-block__input {
+  width: 75%;
+  margin: 20px 0;
   outline: none;
   background: #525252;
   border: 2px solid #313131;
@@ -116,51 +171,39 @@ ul li.registration__item {
   color: white;
 }
 
-.registration__item-image {
+.criteria-block__button-add {
+  width: 55%;
+  text-align: center;
+  background: #CA3E47;
   border: 2px solid #313131;
-  box-shadow: inset 1px 1px 4px rgba(0, 0, 0, 0.25);
   border-radius: 5px;
+  margin-bottom: 20px;
+  cursor: pointer;
 }
 
-$unactiveColor: #eeeeee;
-$hoverColor: #ffffff;
+.criteria-block__link {
+  text-decoration: none;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.55vw;
+  line-height: 33px;
+  color: #ffffff;
+}
 
 .registration__button-block {
   width: 100%;
   height: 40px;
+  padding: 0 137px 66px;
   text-align: center;
   align-items: center;
-
-  a {
-    color: $unactiveColor;
-  }
-
-  a:hover {
-    color: $hoverColor;
-  }
 }
-
-.button-block {
-  padding: 0 5px;
-  margin: 0 0 66px;
+.registration__button-block a {
+  color: #eeeeee;
 }
-
-
-.button-block__button {
-  max-height: 40px;
-  max-width: 242px;
-  width: 50%;
-  margin-right: 30px;
-  background: #525252;
-  text-decoration: none;
-  border: 2px solid #313131;
-  border-radius: 5px;
-  text-align: center;
-  cursor: pointer;
+.registration__button-block a:hover {
+  color: #ffffff;
 }
-
-
-
 
 .button-block__link {
   text-decoration: none;
@@ -169,19 +212,15 @@ $hoverColor: #ffffff;
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
-
   color: #FFFFFF;
 }
 
 .button-block__button-complete {
   max-height: 40px;
-  max-width: 242px;
-  width: 50%;
-
+  width: 100%;
   background: #CA3E47;
   border: 2px solid #313131;
   border-radius: 5px;
-
   text-decoration: none;
   font-family: Roboto, sans-serif;
   font-style: normal;
@@ -189,31 +228,25 @@ $hoverColor: #ffffff;
   font-size: 20px;
   line-height: 33px;
   text-align: center;
-
   color: #FFFFFF;
-
   cursor: pointer;
 }
 
-@media (max-width: 800px) {
+@media screen and (max-width: 800px) {
   .registration__container {
-    min-width: round(785px * 0.8);
+    min-width: 628px;
   }
-
-ul li.registration__item {
-  margin: 0 96px 44px;
-}
-
+  ul li.registration__item {
+    margin: 0 96px 44px;
+  }
   .registration__item-title {
     font-weight: 350;
     font-size: 25px;
   }
-
   .registration__item-about-me {
     max-width: 433px;
     min-width: 433px;
   }
-
   .button-block__button {
     margin: 0 0 20px 0;
   }
@@ -221,58 +254,49 @@ ul li.registration__item {
     font-weight: 350;
     font-size: 18px;
   }
-
   .button-block__button-complete {
     font-weight: 350;
     font-size: 18px;
   }
 }
-
-@media (max-width: 630px) {
+@media screen and (max-width: 630px) {
   .registration__container {
-    min-width: round(785px * 0.65);
+    min-width: 510px;
   }
-
-ul li.registration__item {
-  margin: 0 82px 44px;
-}
-
+  ul li.registration__item {
+    margin: 0 82px 44px;
+  }
   .registration__item-title {
     font-weight: 300;
     font-size: 20px;
   }
-
   .registration__item-about-me {
     max-width: 343px;
     min-width: 343px;
   }
-
   .button-block__button {
     margin: 0 0 15px 0;
   }
-
   .button-block__link {
     font-weight: 300;
     font-size: 16px;
   }
-
   .button-block__button-complete {
     font-weight: 300;
     font-size: 16px;
   }
 }
-
 @media (max-width: 520px) {
   .registration__button-block {
     width: 95%;
   }
-
   .button-block__button {
     margin: 0 0 20px 0;
   }
-
   .registration__item-about-me {
     max-width: 100%;
     min-width: 100%;
   }
 }
+
+/*# sourceMappingURL=jam-registration.css.map */

@@ -175,6 +175,12 @@ html {
   border: 0;
   cursor: pointer;
 }
+.title__button a {
+  color: #c5c5c5;
+}
+.title__button a:hover {
+  color: #ffffff;
+}
 
 .title__link {
   text-decoration: none;
@@ -184,7 +190,6 @@ html {
   font-size: 30px;
   line-height: 49px;
   text-transform: uppercase;
-  color: #FFFFFF;
 }
 
 .title__author-url {

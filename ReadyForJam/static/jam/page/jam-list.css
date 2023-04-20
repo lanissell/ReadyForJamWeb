@@ -27,22 +27,27 @@ html {
   flex-wrap: wrap;
   width: 100%;
   align-items: center;
+  background: #313131;
+  border-radius: 5px;
 }
 
 .filter-block__item {
   display: flex;
   align-items: center;
 }
+.filter-block__item span {
+  color: #ffffff;
+}
 .filter-block__item p {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .filter-block__item a {
-  color: #FFFFFF;
+  color: #ffffff;
   outline: none;
 }
 
 ul li.filter-block__item:not(:nth-child(4) and :nth-child(5)) {
-  margin-right: 45px;
+  margin-right: 2%;
 }
 
 ul li.filter-block__item:nth-child(5) {
@@ -53,7 +58,7 @@ ul li.filter-block__item:nth-child(5) {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
+  font-size: 1.2vw;
 }
 
 .filter-block__triangle-image {
@@ -67,6 +72,12 @@ ul li.filter-block__item:nth-child(5) {
   border-radius: 5px;
   border: none;
   cursor: pointer;
+}
+.filter-block__button a:hover {
+  color: #ffffff;
+}
+.filter-block__button a {
+  color: #eeeeee;
 }
 
 .filter-block_button-text {
@@ -124,7 +135,7 @@ ul li.filter-block__item:nth-child(5) {
   align-items: center;
 }
 .list__text-block h3 {
-  color: #FFFFFF;
+  color: #ffffff;
   text-align: center;
 }
 .list__text-block h4 {
@@ -152,25 +163,70 @@ ul li.filter-block__item:nth-child(5) {
 /* Adjust the grid layout for smaller screens */
 @media only screen and (max-width: 1270px) {
   .list__item-text {
-    font-size: 1.7vw;
+    font-size: 1.6vw;
   }
 }
 @media only screen and (max-width: 1024px) {
-  .list__item-title {
-    font-size: 2vw;
+  .filter-block__item-text {
+    font-size: 1.5vw;
   }
-}
-@media only screen and (max-width: 768px) {
+  .filter-block__button {
+    width: 192.8px;
+  }
+  .filter-block_button-text {
+    font-size: 1.8vw;
+  }
   .list__container {
     grid-template-columns: repeat(2, 1fr);
   }
   .list__item-title {
     font-size: 3vw;
   }
+  .list__item-text {
+    font-size: 2.8vw;
+  }
 }
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 780px) {
+  .filter-block__item-text {
+    font-size: 1.6vw;
+  }
+  .filter-block__button {
+    width: 120.5px;
+  }
+  .filter-block_button-text {
+    font-size: 1.8vw;
+  }
+  .list__item-title {
+    font-size: 3.2vw;
+  }
+  .list__item-text {
+    font-size: 3.2vw;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .filter-block__list {
+    display: inline-block;
+  }
+  .filter-block__item {
+    margin-bottom: 20px;
+  }
+  .filter-block__item-text {
+    font-size: 5vw;
+  }
+  .filter-block__button {
+    width: 163%;
+  }
+  .filter-block_button-text {
+    font-size: 5vw;
+  }
   .list__container {
     grid-template-columns: repeat(1, 1fr);
+  }
+  .list__item-title {
+    font-size: 6vw;
+  }
+  .list__item-text {
+    font-size: 6vw;
   }
 }
 
