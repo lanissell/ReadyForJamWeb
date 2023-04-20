@@ -3,14 +3,14 @@
     <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
 {% endblock %}
 {% block title %}
-    Создание джема
+    {{title}}
 {% endblock %}
 {% block content %}
     <div class="wrapper">
         <div class="registration">
             <div class="registration__container">
                 <div class="registration__title">
-                    <h1 class="registration__title-text">Создай свой джем</h1>
+                    <h1 class="registration__title-text">{{title}}</h1>
                 </div>
                 <form method="post" enctype="multipart/form-data" class="registration__form">
                     {% csrf_token %}
@@ -58,7 +58,7 @@
                         </button>
                     </div>
                     <div class="registration__button-block button-block">
-                        <button class="button-block__button-complete" type="submit">Создать</button>
+                        <button class="button-block__button-complete" type="submit">{{btnName}}</button>
                     </div>
                 </form>
                 <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>

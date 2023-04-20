@@ -82,9 +82,6 @@ html {
 .text-block__creator-list {
   width: 100%;
 }
-.text-block__creator-list a {
-  color: #916FAD;
-}
 
 .creator-list__item {
   display: inline-block;
@@ -121,7 +118,6 @@ html {
   font-style: normal;
   font-weight: 700;
   font-size: 55px;
-  color: #916FAD;
 }
 
 .jam-block__button {
