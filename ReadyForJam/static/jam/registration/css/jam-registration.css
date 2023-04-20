@@ -178,6 +178,7 @@ ul li.registration__item {
   border: 2px solid #313131;
   border-radius: 5px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 
 .criteria-block__link {
