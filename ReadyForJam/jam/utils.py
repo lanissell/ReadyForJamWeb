@@ -1,8 +1,7 @@
 from datetime import datetime
 
-from django.contrib.auth.models import User
 
-from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm
+from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
 from jam.models import Participant
 
 def GetJamContext(mainForm = None, dataForm = None, colorForm = None):
@@ -17,6 +16,7 @@ def GetJamContext(mainForm = None, dataForm = None, colorForm = None):
         'form': mainForm,
         'date': dataForm,
         'color': colorForm,
+        'formSet': JamCriteriaFormSet,
         'title': 'Создание джема',
         'btnName': 'Создать'}
 

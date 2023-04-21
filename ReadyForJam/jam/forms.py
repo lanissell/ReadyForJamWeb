@@ -26,7 +26,7 @@ class JamRegistrationForm(ModelForm):
     avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
         attrs=attrs
     ))
-    content = forms.CharField(label='Содержание страницы',
+    content = forms.Field(label='Содержание страницы',
                               widget=CKEditorWidget())
 
     class Meta:
@@ -71,7 +71,7 @@ class JamColorForm(ModelForm):
     mainTextColor = forms.CharField(label='Основной цвет текста', widget=forms.TextInput(
         attrs=colorAttrs
     ))
-    colorAttrs['id'] = 'bgColor'
+    colorAttrs['id'] = 'formColor'
     formColor = forms.CharField(label='Цвет формы', widget=forms.TextInput(
         attrs=colorAttrs
     ))
@@ -83,7 +83,7 @@ class JamColorForm(ModelForm):
 class JamCriteriaForm(ModelForm):
 
     name = forms.CharField(label='Название критерия', widget=forms.TextInput(
-        attrs=BasicHtmlAttrs.inputFieldAttrs
+        attrs={'class': 'criteria-block__input'}
     ))
     class Meta:
         model = JamCriteria

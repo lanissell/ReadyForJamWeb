@@ -135,8 +135,8 @@ CKEDITOR_CONFIGS = {
         'tabSpaces': 4,
         'skin': 'moono-lisa',
         'extraPlugins': ','.join([
-            'uploadimage',  # the upload image feature
             # your extra plugins here
+            'youtube',
             'div',
             'autolink',
             'autoembed',
@@ -149,7 +149,6 @@ CKEDITOR_CONFIGS = {
             'dialogui',
             'elementspath',
             'codesnippet',
-            'youtube'
         ]),
     }
 }

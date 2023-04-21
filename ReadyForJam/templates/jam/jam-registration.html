@@ -66,20 +66,22 @@
                             <div class="registration-criteria-block criteria-block">
 
                                 <ul class="criteria-block__list">
-
-                                    <li class="criteria-block__item">
-                                        <label>
-                                            <input type="text" class="criteria-block__input">
-                                        </label>
-                                    </li>
-
+                                    {% for criteriaForm in formSet %}
+                                        {% for field in criteriaForm %}
+                                            <li class="criteria-block__item">
+                                                {{ field }}
+                                            </li>
+                                        {% endfor %}
+                                    {% endfor %}
                                 </ul>
-
-
-                                <button class="criteria-block__button-add" type="button">
-                                    <a href="" class="criteria-block__link">Добавить</a>
+                                <button class="criteria-block__button-add" type="button"
+                                        id="criteria_add_btn">
+                                    Добавить
                                 </button>
-
+                                <button class="criteria-block__button-add" type="button"
+                                        id="criteria_remove_btn">
+                                    Убрать
+                                </button>
                             </div>
                         </li>
 
@@ -87,7 +89,7 @@
 
                     <div class="registration__button-block button_block">
                         <button class="button-block__button-complete" type="submit">
-                            <a href="" class="button-block__link">Создать</a>
+                            {{ btnName }}
                         </button>
                     </div>
                 </form>

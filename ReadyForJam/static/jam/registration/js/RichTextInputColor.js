@@ -1,7 +1,7 @@
 let iframe
 
 document.addEventListener("DOMContentLoaded", function () {
-                        const input = document.querySelector(".formColor")
+                        const input = document.querySelector("#formColor")
                         input.addEventListener("change", function () {
                             GetIFrame().contentDocument.body.style.backgroundColor = input.value
                         })

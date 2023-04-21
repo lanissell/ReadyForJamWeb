@@ -1,20 +1,40 @@
 document.addEventListener("DOMContentLoaded", function () {
+
+    const maxCriteriaCount = 5
     let lastFromIndex = 0
 
-    const button = document.querySelector("#criteria_add_btn")
-    button.addEventListener("click", AddForm)
+    const addButton = document.querySelector("#criteria_add_btn")
+    addButton.addEventListener("click", AddForm)
 
     function AddForm() {
-        const lastForm = document.querySelector(
-            GetFormId(lastFromIndex));
-        const newForm = lastForm.cloneNode(true);
+        if (lastFromIndex === maxCriteriaCount) return
+        let lastForm = document.querySelector(
+            GetFormId(lastFromIndex))
+        console.log(lastForm)
+        let newForm = lastForm.cloneNode(true);
         newForm.id = newForm.id.replaceAll(lastFromIndex, lastFromIndex + 1)
         newForm.name = newForm.name.replaceAll(lastFromIndex, lastFromIndex + 1)
-        lastForm.parentNode.insertBefore(newForm, lastForm)
+        InsertAfter(lastForm, newForm)
         lastFromIndex++
     }
 
-    function GetFormId(index) {
-        return "#id_form-" + index + "-name";
+    const removeButton = document.querySelector("#criteria_remove_btn")
+    removeButton.addEventListener("click", RemoveForm)
+
+    function RemoveForm()
+    {
+        if (lastFromIndex === 0) return
+        let lastForm = document.querySelector(
+            GetFormId(lastFromIndex))
+        lastForm.remove()
+        lastFromIndex--
     }
+
+    function GetFormId(index) {
+        return "#id_form-" + index + "-name"
+    }
+
+    function InsertAfter(referenceNode, newNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
+}
 });
