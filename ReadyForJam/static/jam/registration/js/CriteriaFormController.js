@@ -9,11 +9,11 @@ document.addEventListener("DOMContentLoaded", function () {
     function AddForm() {
         if (lastFromIndex === maxCriteriaCount) return
         let lastForm = document.querySelector(
-            GetFormId(lastFromIndex))
-        console.log(lastForm)
+            GetFormId(lastFromIndex)).parentElement
         let newForm = lastForm.cloneNode(true);
-        newForm.id = newForm.id.replaceAll(lastFromIndex, lastFromIndex + 1)
-        newForm.name = newForm.name.replaceAll(lastFromIndex, lastFromIndex + 1)
+        let child = newForm.children[0]
+        child.id = child.id.replaceAll(lastFromIndex, lastFromIndex + 1)
+        child.name = child.name.replaceAll(lastFromIndex, lastFromIndex + 1)
         InsertAfter(lastForm, newForm)
         lastFromIndex++
     }
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     {
         if (lastFromIndex === 0) return
         let lastForm = document.querySelector(
-            GetFormId(lastFromIndex))
+            GetFormId(lastFromIndex)).parentElement
         lastForm.remove()
         lastFromIndex--
     }
