@@ -1,154 +1,101 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-  <link rel="stylesheet" href="../../static/jam/registration/css/jam-registration.css">
-</head>
+{% extends 'base.html' %}
+{% block links %}
+    <link rel="stylesheet" href="../../static/jam/registration/css/jam-registration.css">
+{% endblock %}
+{% block title %}
+    {{ title }}
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <div class="registration">
+            <div class="registration__container">
+                <div class="registration__title">
+                    <h1 class="registration__title-text">{{ title }}</h1>
+                </div>
+                <form method="post" enctype="multipart/form-data" class="registration__form">
+                    {% csrf_token %}
+                    <ul class="registration__list">
+                        {% for field in form %}
+                            {% if field.auto_id != 'id_content' %}
+                                <li class="registration__item">
+                                    <h3 class="registration__item-title">{{ field.label }}</h3>
+                                    {{ field }}
+                                    <div style="color: #CA3E47">{{ field.errors }}</div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
 
-<body>
-<div class="wrapper">
-  <div class="registration">
-    <div class="registration__container">
-      <div class="registration__title">
-        <h1 class="registration__title-text">Создай свой джем</h1>
-      </div>
-      <form action="" class="registration__form">
-        <ul class="registration__list">
+                        <li class="registration__item">
 
-          <li class="registration__item">
-            <h3 class="registration__item-title">Название</h3>
-            <label>
-              <input type="text" name="nickname"
-                     class="registration__item-input" required>
-            </label>
-          </li>
+                            <div class="registration-lists">
+                                <!--        Лист с датами начала,окончания джема и конца голосования-->
+                                <ul class="registration__dates">
+                                    {% for field in date %}
+                                        <li class="registration__dates-item">
+                                            <h3 class="registration__date-title">{{ field.label }}</h3>
+                                            {{ field }}
+                                            <div style="color: #CA3E47">{{ field.errors }}</div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
 
-          <li class="registration__item">
-            <h3 class="registration__item-title">Тема</h3>
-            <label>
-              <input type="password" name="password"
-                     class="registration__item-input" required>
-            </label>
-          </li>
+                                <!--        Лист с Цветами на выбор пользователя-->
+                                <ul class="registration__colors">
+                                    {% for field in color %}
+                                        <li class="registration__color-item">
+                                            <h3 class="registration__color-title">{{ field.label }}</h3>
+                                            {{ field }}
+                                            <div style="color: #CA3E47">{{ field.errors }}</div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
 
-          <li class="registration__item">
+                        </li>
+                        <li class="registration__item">
+                            <h3 class="registration__item-title">Содержание страницы джема</h3>
+                            <label>
+                                {{ form.content }}
+                                {{ form.media }}
+                            </label>
+                        </li>
 
-            <div class="registration-lists">
-              <!--        Лист с датами начала,окончания джема и конца голосования-->
-              <ul class="registration__dates">
+                        <li class="registration__item">
+                            <h3 class="registration__item-title">Критерии для голосования</h3>
 
-                <li class="registration__dates-item">
-                  <h3 class="registration__date-title">Начало джема</h3>
+                            <div class="registration-criteria-block criteria-block">
 
-                  <label>
-                    <input type="date" name="nickname"
-                           class="registration__date-input" required>
-                  </label>
-                </li>
+                                <ul class="criteria-block__list">
 
-                <li class="registration__dates-item">
-                  <h3 class="registration__date-title">Окончание джема</h3>
+                                    <li class="criteria-block__item">
+                                        <label>
+                                            <input type="text" class="criteria-block__input">
+                                        </label>
+                                    </li>
 
-                  <label>
-                    <input type="date" name="nickname"
-                           class="registration__date-input" required>
-                  </label>
-                </li>
-
-                <li class="registration__dates-item">
-                  <h3 class="registration__date-title">Окончание голос</h3>
-
-                  <label>
-                    <input type="date" name="nickname"
-                           class="registration__date-input" required>
-                  </label>
-                </li>
-
-              </ul>
+                                </ul>
 
 
-              <!--        Лист с Цветами на выбор пользователя-->
-              <ul class="registration__colors">
+                                <button class="criteria-block__button-add" type="button">
+                                    <a href="" class="criteria-block__link">Добавить</a>
+                                </button>
 
-                <li class="registration__color-item">
-                  <h3 class="registration__color-title">Цвет фона</h3>
-                  <label>
-                    <input type="color" name="nickname"
-                           class="registration__color-input" required>
-                  </label>
-                </li>
+                            </div>
+                        </li>
 
-                <li class="registration__color-item">
-                  <h3 class="registration__color-title">Цвет формы</h3>
-                  <label>
-                    <input type="color" name="nickname"
-                           class="registration__color-input" required>
-                  </label>
-                </li>
+                    </ul>
 
-                <li class="registration__color-item">
-                  <h3 class="registration__color-title">Основной цвет текста</h3>
-                  <label>
-                    <input type="color" name="nickname"
-                           class="registration__color-input" required>
-                  </label>
-                </li>
+                    <div class="registration__button-block button_block">
+                        <button class="button-block__button-complete" type="submit">
+                            <a href="" class="button-block__link">Создать</a>
+                        </button>
+                    </div>
+                </form>
 
-              </ul>
+                <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>
+                <script src="../../static/jam/registration/js/RichTextInputColor.js"></script>
+                <script src="../../static/jam/registration/js/DateValidController.js"></script>
             </div>
-
-          </li>
-
-
-          <li class="registration__item">
-            <h3 class="registration__item-title">Содержание страницы джема</h3>
-            <label>
-              Здесь штука которая у меня не отображается
-            </label>
-          </li>
-
-          <li class="registration__item">
-            <h3 class="registration__item-title">Аватар</h3>
-            <label>
-              <input class="registration__item-input" type="file"
-                     accept="image/png, image/gif, image/jpeg">
-            </label>
-          </li>
-
-          <li class="registration__item">
-            <h3 class="registration__item-title">Критерии для голосования</h3>
-
-            <div class="registration-criteria-block criteria-block">
-
-              <ul class="criteria-block__list">
-
-                <li class="criteria-block__item">
-                  <label>
-                    <input type="text" class="criteria-block__input">
-                  </label>
-                </li>
-
-              </ul>
-
-
-              <button class="criteria-block__button-add" type="button">
-                <a href="" class="criteria-block__link">Добавить</a>
-              </button>
-
-            </div>
-          </li>
-
-        </ul>
-
-        <div class="registration__button-block button_block">
-          <button class="button-block__button-complete" type="submit">
-            <a href="" class="button-block__link">Создать</a>
-          </button>
         </div>
-      </form>
     </div>
-  </div>
-</div>
-</body>
-</html>
+{% endblock %}

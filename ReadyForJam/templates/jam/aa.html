@@ -24,13 +24,6 @@
                                 </li>
                             {% endif %}
                         {% endfor %}
-                        {% for field in date %}
-                            <li class="registration__item">
-                                <h3 class="registration__item-title">{{ field.label }}</h3>
-                                {{ field }}
-                                <div style="color: #CA3E47">{{ field.errors }}</div>
-                            </li>
-                        {% endfor %}
                         {% for field in color %}
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>

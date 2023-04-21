@@ -15,7 +15,7 @@ class JamRegistrationView(View):
     def get(request, **kwargs):
         if request.user.is_authenticated:
             context = GetJamContext()
-            return render(request, '../templates/jam/form-template.html', context=context)
+            return render(request, '../templates/jam/jam-registration.html', context=context)
         else:
             return redirect('login')
 
@@ -31,7 +31,7 @@ class JamRegistrationView(View):
             return redirect(f'../../jam/{formSaver.jamObject.name}')
         else:
             context = GetJamContext(form, color, date)
-            return render(request, '../templates/jam/form-template.html', context=context)
+            return render(request, '../templates/jam/jam-registration.html', context=context)
 
 
 class JamUpdateView(View):
@@ -53,7 +53,7 @@ class JamUpdateView(View):
                 date = JamDateForm(instance=dateObject)
                 context = GetJamContext(jam, color, date)
                 context.update(self.baseContext)
-                return render(request, '../templates/jam/form-template.html', context=context)
+                return render(request, '../templates/jam/jam-registration.html', context=context)
             else:
                 return redirect('jamList')
         else:
@@ -78,7 +78,7 @@ class JamUpdateView(View):
         else:
             context = GetJamContext(jam, color, date)
             context.update(self.baseContext)
-            return render(request, '../templates/jam/form-template.html', context=context)
+            return render(request, '../templates/jam/jam-registration.html', context=context)
 
 class JamPageView(View):
 
