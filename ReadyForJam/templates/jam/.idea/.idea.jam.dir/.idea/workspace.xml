@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="de29d606-5270-4895-b703-a4a26e71044f" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/../../media/jam/avatar/Off-White-Wallpaper-Hd-60-Pictures.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../media/jam/avatar/cutierover_wallpaper_XldUCfL.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jam-registration.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jam-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/jam-list.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../mainPage/MainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../mainPage/MainPage.html" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2OhIQ1vzoREyfES0mczZmiYs7hr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "settings.editor.selected.configurable": "preferences.lookFeel",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="de29d606-5270-4895-b703-a4a26e71044f" name="Changes" comment="" />
+      <created>1682006368582</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1682006368582</updated>
+      <workItem from="1682006374030" duration="179000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+</project>
