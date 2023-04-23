@@ -39,22 +39,24 @@ html {
 .jam-block__container {
   max-width: 80%;
   align-items: center;
-  //margin: 10px auto 66px;
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .jam-block__list {
-  width: 1000px;
-  height: 1200px;
+  min-width: 70vw;
+  max-width: 70vw;
+  min-height: 1000px;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-columns: repeat(2, 50%);
+  grid-template-rows: repeat(6, 16.6%);
   border: 2px solid #FFFFFF;
   border-radius: 10px;
-  background-color: #916FAD
+  background-color: #916FAD;
 }
 
 .jam-block__text-block {
-
+  grid-area: 1 / 1 / 2 / 3;
   margin: 47px 33px 37px;
 
   h3 {
@@ -121,31 +123,38 @@ html {
 }
 
 .jam-block__participate {
-  width: 70%;
-  height: 60%;
-  grid-area: 1 / 2 / 2 / 2;
+  grid-area: 3 / 1 / 3 / 3;
+  width: 50%;
   text-align: center;
+  justify-content: center;
 
-  margin: auto 40px auto auto;
+  margin: 0 auto;
 
-  background: #FFFFFF;
   border-radius: 10px;
+  background: #505050;
 }
 
 
-.jam-block__timer {
-  width: 100%;
+.jam-block__timer-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 10px;
+}
 
+#timer {
+  display: flex;
+  align-items: center;
+  font-size: 3vw;
+  color: #FFFFFF;
+}
 
-  span {
-    font-family: Roboto, sans-serif;
-    font-style: normal;
-    font-weight: 700;
-    font-size: 55px;
-  }
+.jam-block__time-separator {
+  margin: 0 10px;
 }
 
 .jam-block__form {
+  display: inline;
 }
 
 
@@ -153,14 +162,12 @@ $unactiveColor: #eeeeee;
 $hoverColor: #ffffff;
 
 .jam-block__button {
-  width: 70%;
-
+  width: 30%;
+  margin: 0 10px;
   padding: 9px 15px;
-  cursor: pointer;
 
-
-  background: #916FAD;
   border-radius: 10px;
+  cursor: pointer;
   border: none;
 
   a {
@@ -178,7 +185,7 @@ $hoverColor: #ffffff;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 15px;
+  font-size: 1vw;
 }
 
 /* Component Needs */
@@ -211,9 +218,10 @@ $unactiveHoverColor: #dddddd;
 }
 
 .pc-tab {
-  grid-area: 2 / 1 / 7 / 3;
+  grid-area: 4 / 1 / 7 / 3;
   width: 100%;
-  padding: 0 33px;
+  padding: 37px 33px;
+  margin-bottom: 15%;
 
 
   ul {
@@ -255,7 +263,6 @@ $unactiveHoverColor: #dddddd;
     grid-area: 3 / -1 / 7 / 3;
     font-family: Roboto, sans-serif;
     clear: both;
-    overflow-y: auto;
 
     div {
       padding: 20px 0;
@@ -296,27 +303,20 @@ $unactiveHoverColor: #dddddd;
 
 @media screen and (max-width: 1250px) {
   .jam-block__list {
-    width: 1000px * 0.8;
-    height: 1200px * 0.8;
+    //width: 1000px * 0.8;
+    //height: 1200px * 0.8;
   }
 
-  .jam-block__participate {
-    height: 45%;
-  }
 }
 
 @media screen and (max-width: 1000px) {
   .jam-block__list {
-    width: 1000px * 0.7;
-    height: 1200px * 0.7;
+    //width: 1000px * 0.7;
+    //height: 1200px * 0.7;
   }
 
   .text-block__name {
     font-size: 3em;
-  }
-
-  .jam-block__participate {
-    height: 45%;
   }
 
 
@@ -324,19 +324,14 @@ $unactiveHoverColor: #dddddd;
 
 @media screen and (max-width: 850px) {
   .jam-block__list {
-    width: 1000px * 0.6;
-    height: 1200px * 0.6;
+    //width: 1000px * 0.6;
+    //height: 1200px * 0.6;
   }
 
   .text-block__name {
     font-size: 2.7em;
   }
 
-  .jam-block__timer {
-    span {
-      font-size: 1.1em;
-    }
-  }
 
   .jam-block__button {
     font-size: 0.9em;
@@ -346,9 +341,6 @@ $unactiveHoverColor: #dddddd;
     font-size: 1em;
   }
 
-  .jam-block__participate {
-    height: 45%;
-  }
 
   .text-block__count-member {
     font-size: 1em;
@@ -357,8 +349,8 @@ $unactiveHoverColor: #dddddd;
 
 @media screen and (max-width: 730px) {
   .jam-block__list {
-    width: 1000px * 0.5;
-    height: 1200px * 0.5;
+    //width: 1000px * 0.5;
+    //height: 1200px * 0.5;
   }
 
   .jam-block__text-block {
@@ -387,8 +379,8 @@ $unactiveHoverColor: #dddddd;
 
 @media screen and (max-width: 620px) {
   .jam-block__list {
-    width: 1000px * 0.4;
-    height: 1200px * 0.4;
+    //width: 1000px * 0.4;
+    //height: 1200px * 0.4;
   }
 
   .creator-list__item {
@@ -401,12 +393,6 @@ $unactiveHoverColor: #dddddd;
 
   .text-block__name {
     font-size: 1.8em;
-  }
-
-  .jam-block__timer {
-    span {
-      font-size: 0.9em;
-    }
   }
 
   .jam-block__button {
@@ -430,8 +416,8 @@ $unactiveHoverColor: #dddddd;
 
 @media screen and (max-width: 490px) {
   .jam-block__list {
-    width: 1000px * 0.3;
-    height: 1200px * 0.4;
+    //width: 1000px * 0.3;
+    //height: 1200px * 0.4;
   }
 
   .text-block__name {
@@ -448,11 +434,6 @@ $unactiveHoverColor: #dddddd;
     font-size: 0.7em;
   }
 
-  .jam-block__timer {
-    span {
-      font-size: 0.6em;
-    }
-  }
 
   .jam-block__button {
     width: 80%;
@@ -470,10 +451,6 @@ $unactiveHoverColor: #dddddd;
     section {
       height: 70%;
     }
-  }
-
-  .jam-block__participate {
-    height: 55%;
   }
 }
 
