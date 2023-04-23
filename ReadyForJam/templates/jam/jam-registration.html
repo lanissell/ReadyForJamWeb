@@ -64,16 +64,8 @@
                             <h3 class="registration__item-title">Критерии для голосования</h3>
 
                             <div class="registration-criteria-block criteria-block">
-
                                 <ul class="criteria-block__list">
-                                    {% for criteriaForm in formSet %}
-                                        {% for field in criteriaForm %}
-                                            <li class="criteria-block__item">
-                                                {{ field }}
-                                            </li>
-                                        {% endfor %}
-                                    {% endfor %}
-                                
+                                    {{ formSet.as_ul }}
                                 </ul>
                                 <button class="criteria-block__button-add" type="button"
                                         id="criteria_add_btn">

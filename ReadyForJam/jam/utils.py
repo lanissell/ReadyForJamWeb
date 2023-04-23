@@ -2,21 +2,25 @@ from datetime import datetime
 
 
 from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
-from jam.models import Participant
+from jam.models import Participant, JamCriteria
 
-def GetJamContext(mainForm = None, dataForm = None, colorForm = None):
+
+def GetJamContext(mainForm = None, dataForm = None,
+                  colorForm = None, criteriaForm = None):
     if mainForm is None:
         mainForm = JamRegistrationForm()
     if not dataForm:
         dataForm = JamDateForm()
     if not colorForm:
         colorForm = JamColorForm()
+    if not criteriaForm:
+        criteriaForm = JamCriteriaFormSet(queryset=JamCriteria.objects.none())
 
     context = {
         'form': mainForm,
         'date': dataForm,
         'color': colorForm,
-        'formSet': JamCriteriaFormSet,
+        'formSet': criteriaForm,
         'title': 'Создание джема',
         'btnName': 'Создать'}
 
@@ -50,12 +54,13 @@ class JamFormSaver:
     def __init__(self):
         self.isFormsValidated = True
         self.jamObject = None
+        self.__allRelativeObjects = []
 
     def MainFormSave(self, form, request):
         if form.is_valid() and request.user.is_authenticated:
             self.jamObject = form.save(commit=False)
             self.jamObject.author = request.user
-            self.jamObject.save()
+            self.__allRelativeObjects.append(self.jamObject)
         else:
             self.isFormsValidated = False
 
@@ -67,10 +72,22 @@ class JamFormSaver:
             if form.is_valid():
                 newObject = form.save(commit=False)
                 newObject.jam = self.jamObject
-                newObject.save()
+                self.__allRelativeObjects.append(newObject)
             else:
                 self.isFormsValidated = False
-                break
+                return
 
+    def FormsetSaver (self, formset, jam = None):
+        if jam is None:
+            jam = self.jamObject
+        if formset.is_valid():
+            criteria = formset.save(commit=False)
+            for c in criteria:
+                c.jam = jam
+                self.__allRelativeObjects.append(c)
+        else:
+            self.isFormsValidated = False
 
-
+    def SaveRelativeObjects(self):
+        for obj in self.__allRelativeObjects:
+            obj.save()
