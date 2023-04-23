@@ -5,7 +5,7 @@ from django.views import View
 
 
 from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
-from jam.models import Jam, JamColor, JamDate
+from jam.models import Jam, JamColor, JamDate, JamCriteria
 from jam.utils import JamCard, JamFormSaver, GetJamContext
 
 
@@ -24,13 +24,17 @@ class JamRegistrationView(View):
         form = JamRegistrationForm(request.POST, request.FILES)
         color = JamColorForm(request.POST)
         date = JamDateForm(request.POST)
+        criteria = JamCriteriaFormSet(request.POST)
+
         formSaver = JamFormSaver()
         formSaver.MainFormSave(form, request)
         formSaver.RelativeFormsSave([color, date])
+        formSaver.FormsetSaver(criteria)
         if formSaver.isFormsValidated:
+            formSaver.SaveRelativeObjects()
             return redirect(f'../../jam/{formSaver.jamObject.name}')
         else:
-            context = GetJamContext(form, color, date)
+            context = GetJamContext(form, color, date, criteria)
             return render(request, '../templates/jam/jam-registration.html', context=context)
 
 
@@ -48,10 +52,14 @@ class JamUpdateView(View):
             if jamObject.author.id == user.id:
                 colorObject = JamColor.objects.get(jam=jamObject)
                 dateObject = JamDate.objects.get(jam=jamObject)
+                criteriaObject = JamCriteria.objects.filter(jam=jamObject)
+
                 jam = JamRegistrationForm(instance=jamObject)
                 color = JamColorForm(instance=colorObject)
                 date = JamDateForm(instance=dateObject)
-                context = GetJamContext(jam, color, date)
+                criteria = JamCriteriaFormSet(queryset=criteriaObject)
+
+                context = GetJamContext(jam, color, date, criteria)
                 context.update(self.baseContext)
                 return render(request, '../templates/jam/jam-registration.html', context=context)
             else:
@@ -61,24 +69,43 @@ class JamUpdateView(View):
 
     def post(self, request, **kwargs):
         jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+        criteriaObjects = JamCriteria.objects.filter(jam=jamObject)
 
         jam = JamRegistrationForm(request.POST, request.FILES,
                                   instance=jamObject)
         color = JamColorForm(request.POST)
         date = JamDateForm(request.POST)
+        criteria = JamCriteriaFormSet(request.POST, queryset=criteriaObjects)
 
-        if jam.is_valid() and color.is_valid() and date.is_valid():
+        if jam.is_valid() and color.is_valid() \
+                and date.is_valid() and criteria.is_valid():
             Jam.objects.update_or_create(id=jamObject.id,
                                          defaults=jam.cleaned_data)
             JamColor.objects.update_or_create(jam=jamObject,
                                               defaults=color.cleaned_data)
             JamDate.objects.update_or_create(jam=jamObject,
                                              defaults=date.cleaned_data)
+
+            self.DeleteRedundantCriteria(criteria.cleaned_data, criteriaObjects)
+            formSaver = JamFormSaver()
+            formSaver.FormsetSaver(criteria, jamObject)
+            formSaver.SaveRelativeObjects()
+
             return redirect(f'../../jam/{jamObject.name}')
         else:
+            print(criteria.error_messages)
             context = GetJamContext(jam, color, date)
             context.update(self.baseContext)
             return render(request, '../templates/jam/jam-registration.html', context=context)
+
+    @staticmethod
+    def DeleteRedundantCriteria(template, allObjects):
+        criteriaToSave = [c['id'] for c in template
+                          if c.get('name', '') != '']
+        criteriaToDelete = [c for c in allObjects
+                            if c not in criteriaToSave]
+        for c in criteriaToDelete:
+            c.delete()
 
 class JamPageView(View):
 

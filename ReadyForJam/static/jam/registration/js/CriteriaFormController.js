@@ -1,25 +1,29 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const maxCriteriaCount = 5
-    let lastFromIndex = 0
 
     const addButton = document.querySelector("#criteria_add_btn")
     addButton.addEventListener("click", AddForm)
 
-    function AddForm() {
-        if (lastFromIndex === maxCriteriaCount) return
-        let lastForm = document.querySelector(
-            GetFormId(lastFromIndex)).parentElement
-        let newForm = lastForm.cloneNode(true);
-        let child = newForm.children[0]
-        child.id = child.id.replaceAll(lastFromIndex, lastFromIndex + 1)
-        child.name = child.name.replaceAll(lastFromIndex, lastFromIndex + 1)
-        InsertAfter(lastForm, newForm)
-        lastFromIndex++
-    }
-
     const removeButton = document.querySelector("#criteria_remove_btn")
     removeButton.addEventListener("click", RemoveForm)
+
+    const totalFormCounter = document.querySelector("#id_form-TOTAL_FORMS")
+    let lastFromIndex = totalFormCounter.value - 1
+
+    function AddForm() {
+        if (lastFromIndex === maxCriteriaCount) return
+        let formPattern = document.querySelector(GetFormId(lastFromIndex)).parentElement
+        let newForm = formPattern.cloneNode(true);
+        for (let child of newForm.children){
+            child.id = child.id.replaceAll(lastFromIndex, lastFromIndex + 1)
+            child.name = child.name.replaceAll(lastFromIndex, lastFromIndex + 1)
+            child.value = ""
+        }
+        formPattern.parentElement.appendChild(newForm)
+        lastFromIndex++
+        totalFormCounter.value++
+    }
 
     function RemoveForm()
     {
@@ -28,13 +32,11 @@ document.addEventListener("DOMContentLoaded", function () {
             GetFormId(lastFromIndex)).parentElement
         lastForm.remove()
         lastFromIndex--
+        totalFormCounter.value--
     }
 
     function GetFormId(index) {
         return "#id_form-" + index + "-name"
     }
 
-    function InsertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling)
-}
 });
