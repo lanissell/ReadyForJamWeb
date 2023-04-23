@@ -2,27 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de29d606-5270-4895-b703-a4a26e71044f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../media/jam/avatar/Off-White-Wallpaper-Hd-60-Pictures.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../media/jam/avatar/cutierover_wallpaper_XldUCfL.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jam-registration.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../../db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-list.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-list.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/mainPage/main-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/mainPage/main-page.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/user/css/authorization/user-authorization.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jam-list.html" beforeDir="false" afterPath="$PROJECT_DIR$/jam-list.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../mainPage/MainPage.html" beforeDir="false" afterPath="$PROJECT_DIR$/../mainPage/MainPage.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/js/DateValidController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/js/DateValidController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jam-registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/jam-registration.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,15 +23,15 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -56,6 +41,7 @@
       <option name="presentableId" value="Default" />
       <updated>1682006368582</updated>
       <workItem from="1682006374030" duration="179000" />
+      <workItem from="1682239342330" duration="22000" />
     </task>
     <servers />
   </component>

@@ -2,7 +2,8 @@ from datetime import datetime
 
 
 from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
-from jam.models import Participant
+from jam.models import Participant, JamCriteria
+
 
 def GetJamContext(mainForm = None, dataForm = None,
                   colorForm = None, criteriaForm = None):
@@ -13,7 +14,7 @@ def GetJamContext(mainForm = None, dataForm = None,
     if not colorForm:
         colorForm = JamColorForm()
     if not criteriaForm:
-        criteriaForm = JamCriteriaFormSet()
+        criteriaForm = JamCriteriaFormSet(queryset=JamCriteria.objects.none())
 
     context = {
         'form': mainForm,

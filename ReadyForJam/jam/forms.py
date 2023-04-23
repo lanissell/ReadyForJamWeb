@@ -90,4 +90,5 @@ class JamCriteriaForm(ModelForm):
 
 JamCriteriaFormSet = modelformset_factory(JamCriteria,
                                           form=JamCriteriaForm,
+                                          can_order=False,
                                           extra=1)
