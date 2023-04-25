@@ -123,8 +123,17 @@ class JamPageView(View):
             context['jam'] = jam
             context['jamColor'] = jamColor
             context['jameDate'] = jamDate
-        return render(request, '../templates/jam/jam-page.html', context=context)
 
+            context['isAuthor'] = False
+            context['isPartisipate'] = False
+
+            user = request.user
+            if user.is_authenticated:
+                if jam.author == user:
+                    context['isAuthor'] = True
+            return render(request, '../templates/jam/jam-page.html', context=context)
+        else:
+            return redirect('jamList')
 class JamDeleteView(View):
 
     @staticmethod
