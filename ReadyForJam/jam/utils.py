@@ -1,12 +1,14 @@
+import json
+from urllib.request import urlopen
+
+import pytz
+from tzlocal import get_localzone_name
 from datetime import datetime
-
-
 from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
 from jam.models import Participant, JamCriteria
 
-
-def GetJamContext(mainForm = None, dataForm = None,
-                  colorForm = None, criteriaForm = None):
+def GetJamFormContext(mainForm=None, dataForm=None,
+                      colorForm=None, criteriaForm=None):
     if mainForm is None:
         mainForm = JamRegistrationForm()
     if not dataForm:
@@ -26,16 +28,28 @@ def GetJamContext(mainForm = None, dataForm = None,
 
     return context
 
+def LocalizeDate(dateString:str, dateTimeZone:str):
+    date = datetime.strptime(dateString, '%Y-%m-%dT%H:%M')
+    tz = pytz.timezone(dateTimeZone)
+    date = tz.localize(date)
+    currentTz = get_localzone_name()
+    date = date.astimezone(pytz.timezone(currentTz))
+    return date
+
+def GetCurrentDate():
+    res = urlopen('https://worldtimeapi.org/api/ip')
+    result = json.loads(res.read().strip().decode('utf-8'))
+    date = datetime.strptime(result.get('datetime'), '%Y-%m-%dT%H:%M:%S.%f%z')
+    return date
 
 class JamCard:
-
     __id = 0
 
     def __init__(self, jam):
         self.__id = jam.id
         self.title = jam.name
         self.photo = '/media/' + str(jam.avatar)
-        self.date = self.DateFormat(jam.startDate)
+        self.date = self.DateFormat(jam.startDate, jam.timeZone)
         self.author = jam.author
         self.color = jam.backgroundColor
         self.participantQuantity = self.CountParticipant()
@@ -44,10 +58,11 @@ class JamCard:
         return Participant.objects.filter(jam_id__exact=self.__id).count()
 
     @staticmethod
-    def DateFormat(date:str):
-        datePart = datetime.strptime(date.split('T')[0], "%Y-%m-%d")
-        datePart = datePart.strftime("%d.%m.%Y")
-        return datePart
+    def DateFormat(dateString: str, dateTimeZone:str):
+        date = LocalizeDate(dateString, dateTimeZone)
+        return date.date().strftime('%d.%m.%Y')
+
+
 
 class JamFormSaver:
 
@@ -77,7 +92,15 @@ class JamFormSaver:
                 self.isFormsValidated = False
                 return
 
-    def FormsetSaver (self, formset, jam = None):
+    def DateFormSave(self, form:JamDateForm):
+        if form.is_valid():
+            newObject = form.save(commit=False)
+            newObject.jam = self.jamObject
+            newObject.timeZone = get_localzone_name()
+            self.__allRelativeObjects.append(newObject)
+
+
+    def FormsetSaver(self, formset, jam=None):
         if jam is None:
             jam = self.jamObject
         if formset.is_valid():
@@ -91,3 +114,38 @@ class JamFormSaver:
     def SaveRelativeObjects(self):
         for obj in self.__allRelativeObjects:
             obj.save()
+
+
+class JamPageControlBlock:
+
+    @staticmethod
+    def GetAuthorBlock(jamName, jamColor):
+        block = f"""
+        <div class="jam-block__form">
+            <button type="button" class="jam-block__button"
+                    style="background-color: {jamColor.formColor};
+                    color: {jamColor.mainTextColor}"
+                    onclick="window.location.href='/jam/{jamName}/update'">
+                <div class="button-block__link">РЕДАКТИРОВАТЬ</div>
+            </button>
+            <button type="button" class="jam-block__button"
+                    style="background-color: {jamColor.formColor};
+                            color: {jamColor.mainTextColor}"
+                    onclick="window.location.href='/jam/{jamName}/delete'">
+                <div class="button-block__link">УДАЛИТЬ</div>
+           </button>
+        </div>"""
+        return block
+
+    @staticmethod
+    def GetUserBlock(jamColor, href):
+        block = f"""
+        <div class="jam-block__form">
+            <button type="button" class="jam-block__button"
+                    style="background-color: { jamColor.formColor };
+                    color: { jamColor.mainTextColor };"
+                    onclick="window.location.href='{href}'">                 
+                <div class="button-block__link">УЧАВСТВОВАТЬ</div>
+            </button>
+        </div>"""
+        return block

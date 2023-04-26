@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block links %}
-    <link rel="stylesheet" href="../../static/jam/registration/css/jam-registration.css">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/jam/registration/css/jam-registration.css' %}">
 {% endblock %}
 {% block title %}
     {{ title }}

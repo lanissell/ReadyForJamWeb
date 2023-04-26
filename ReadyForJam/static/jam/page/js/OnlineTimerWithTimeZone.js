@@ -1,13 +1,22 @@
-function calculateRemainingTime() {
-    let url = 'http://worldtimeapi.org/api/ip';
+document.addEventListener("DOMContentLoaded", function () {
+    let startDateValue = 0;
+
+    function calculateRemainingTime() {
+    let url = 'https://worldtimeapi.org/api/ip';
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        let userTimezone = data.timezone;
+
+        if (startDateValue === 0){
+            let startDateElement = document.querySelector("#startDate")
+            startDateValue = startDateElement.value
+            startDateElement.parentElement.remove()
+        }
+        console.log(startDateValue)
         let currentTime = new Date(data.utc_datetime);
-        let targetTime = new Date('2023-04-30T10:30:00Z'); // change this to your target date and time in UTC
-        let targetTimeLocal = new Date(targetTime.toLocaleString("en-US", {timeZone: userTimezone}));
-        let timeDifference = (targetTimeLocal.getTime() - currentTime.getTime()) / 1000;
+        let targetTime = new Date(startDateValue);
+        // change this to your target date and time in UTC
+        let timeDifference = (targetTime.getTime() - currentTime.getTime()) / 1000;
         let days = Math.floor(timeDifference / 86400);
         let hours = Math.floor((timeDifference % 86400) / 3600);
         let minutes = Math.floor((timeDifference % 3600) / 60);
@@ -37,3 +46,4 @@ function calculateRemainingTime() {
   }
 
   calculateRemainingTime();
+})

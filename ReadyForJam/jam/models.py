@@ -16,6 +16,7 @@ class JamDate(models.Model):
     startDate = models.CharField(max_length=30, blank=False, null=False)
     votingStartDate = models.CharField(max_length=30,blank=False, null=False)
     votingEndDate = models.CharField(max_length=30,blank=False, null=False)
+    timeZone = models.CharField(max_length=30,blank=False, null=False, default='Asia/Krasnoyarsk')
 
 class JamColor(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)

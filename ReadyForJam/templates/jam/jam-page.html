@@ -37,62 +37,37 @@
                     <div class="jam-block__participate">
                         <div class="jam-block__timer-container">
                             <div id="timer">
-                                <div id="days">00</div>
-                                <div class="jam-block__time-separator">d:</div>
-                                <div id="hours">00</div>
-                                <div class="jam-block__time-separator">h:</div>
-                                <div id="minutes">00</div>
-                                <div class="jam-block__time-separator">m:</div>
-                                <div id="seconds">00</div>
-                                <div class="jam-block__time-separator">s</div>
+                                {% if theme %}
+                                    <div>{{ theme }}</div>
+                                {% else %}
+                                    <label>
+                                        <textarea id="startDate" style="display: none">{{ startDate }}</textarea>
+                                    </label>
+                                    <div id="days">00</div>
+                                    <div class="jam-block__time-separator">д:</div>
+                                    <div id="hours">00</div>
+                                    <div class="jam-block__time-separator">ч:</div>
+                                    <div id="minutes">00</div>
+                                    <div class="jam-block__time-separator">м:</div>
+                                    <div id="seconds">00</div>
+                                    <div class="jam-block__time-separator">с</div>
+                                    <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
+                                {% endif %}
                             </div>
                         </div>
-
-                        <form action="" class="jam-block__form">
-                            <button type="submit" class="jam-block__button"
-                                    style="background-color: {{ jamColor.formColor }}; color: {{ jamColor.mainTextColor }}">
-                                <a href="" class="button-block__link">УЧАВСТВОВАТЬ</a>
-                            </button>
-                        </form>
-
-                        <form action="" class="jam-block__form">
-                            <button type="submit" class="jam-block__button"
-                                    style="background-color: {{ jamColor.formColor }}; color: {{ jamColor.mainTextColor }}">
-                                <a href="" class="button-block__link">РЕДАКТИРОВАТЬ</a>
-                            </button>
-                        </form>
+                        {% if not theme %}
+                            {{ controlBlock|safe }}
+                        {% endif %}
                     </div>
-
                     <div class="pc-tab">
-                        <input checked="checked" id="tab1" type="radio" name="pct"/>
-                        <input id="tab2" type="radio" name="pct"/>
-                        <input id="tab3" type="radio" name="pct"/>
-                        <nav>
-                            <ul>
-                                <li class="tab1">
-                                    <label for="tab1">Главная</label>
-                                </li>
-                                <li class="tab2">
-                                    <label for="tab2">Проекты</label>
-                                </li>
-                            </ul>
-                        </nav>
-                        <section>
-                            <div class="tab1" style="background-color:{{ jamColor.formColor }};
-                                    color: {{ jamColor.mainTextColor }}">
-                                {{ jam.content|safe }}
-                            </div>
-
-                            <div class="tab2">
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eius eligendi iure laboriosam, laudantium nisi omnis repellat reprehenderit saepe tenetur? Accusamus, laudantium, quae? A aperiam architecto consectetur eius enim est hic nesciunt odit quaerat sit. Aut deserunt harum ipsum maiores non possimus quod vel? Adipisci fugit hic iure? A atque autem beatae culpa esse fuga mollitia, nobis nostrum officia perspiciatis ratione, velit, vero vitae. Accusantium, ad aliquid aut cumque cupiditate debitis dolores doloribus ducimus eos error et facere fuga illo ipsa iusto laboriosam, neque nihil quae quam quas quasi quibusdam ratione sapiente tempora totam ullam veniam voluptatibus! Alias quaerat similique sint.</p>
-                            </div>
-                        </section>
+                        <div class="tab1" style="background-color:{{ jamColor.formColor }};
+                                color: {{ jamColor.mainTextColor }}">
+                            {{ jam.content|safe }}
+                        </div>
                     </div>
 
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
 {% endblock %}

@@ -1,12 +1,13 @@
 <!doctype html>
 <html lang="en">
 <head>
+    {% load static %}
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="/static/base/css/zeroing-style.css">
-    <link rel="stylesheet" href="/static/base/css/style.css">
+    <link rel="stylesheet" href="{% static '/base/css/zeroing-style.css'%}">
+    <link rel="stylesheet" href="{% static '/base/css/style.css' %}">
     <link rel="shortcut icon" href="/media/base/Logo.svg">
     {% block links %}
     {% endblock %}
@@ -46,7 +47,7 @@
                         </a>
                     </li>
                     <li class="right-group__items">
-                        <a class="right-group__link" href="">
+                        <a class="right-group__link" href="{% url 'logout' %}">
                             <img class="right-group__profile" src="/media/base/Profile.svg" alt="">
                         </a>
                     </li>
