@@ -4,7 +4,7 @@ body,
 html {
   font-size: 16px;
   height: 100%;
-  font-family: Monda, sans-serif;
+  font-family: Roboto, serif;
   background: #313131 url("../../media/base/Background-image.svg") repeat;
   background-size: cover;
 }
@@ -252,10 +252,9 @@ $hoverColor: #ffffff;
 
 
 .jam-block {
-  position: absolute;
   width: 100%;
-  height: 600px;
-
+  min-width: 630px;
+  padding-bottom: 60px;
 }
 
 .jam-block__title {
@@ -272,98 +271,105 @@ $hoverColor: #ffffff;
   color: #FFFFFF;
 }
 
-.jam-block__list {
+.jam-block__jam-list {
+  display: flex;
   width: 100%;
-  height: 450px;
+  min-height: 500px;
+  overflow-x: auto;
+  overflow-y: hidden;
 }
 
-//<!--пофиксить момент с тем что list_item при применении к нему технического класса контейнер не встает по контейнеру-->
-.list {
+ul li.jam-list__item:not(:last-child) {
+  margin-right: 20px;
 }
 
 
-.list__item {
-  display: inline-block;
-  width: 377px;
+
+.jam-block__jam-list::-webkit-scrollbar {
+  height: 15px;
+  border-radius: 5px;
+  background-color: #000000;
+}
+
+.jam-block__jam-list::-webkit-scrollbar-thumb {
+  background-color: #E54751;
+  border-radius: 5px;
+}
+
+.jam-list {
+}
+
+.jam-list__item {
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  grid-template-rows: repeat(1 , 100%);
+  width: 100%;
+  min-width: 377px;
+  max-width: 377px;
   height: 450px;
-  background-color: black;
+  background-color: #313131;
+  background-image: url("../../media/base/Background.gif");
+  background-size: cover;
+  background-position: center;
   border-radius: 25px;
 }
 
-ul li.list__item:not(:last-child) {
-  margin-right: 25px;
+ul li.jam-list__item:not(:last-child) {
+  margin-right: 30px;
 }
 
-ul li.list__item:first-child {
-  margin-left: 25px;
-}
-
-.list__item-background-image {
-  background-size: cover;
+.blur {
+  grid-area: 1 / 1 / 2 / 1;
+  z-index: 1;
   width: 100%;
-  min-width: 100%;
-  height: 55%;
-  border-radius: 25px 25px 0 0;
+  max-width: 377px;
+  height: 450px;
+  border-radius: 25px;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(30, 30, 30, 0.9) 70%);
+  backdrop-filter: blur(3px);
 }
 
-.list__text-block {
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
+.jam-list__text-block {
+  grid-area: 1 / 1 / 2 / 1;
+  z-index: 2;
   width: 80%;
+  position: relative;
   margin: 0 auto;
   text-align: left;
   box-sizing: content-box;
+  align-items: center;
 
   h3 {
-    color: #FFFFFF;
+    color: $textColor;
     text-align: center;
   }
 
   h4 {
-    color: #ffffff;
+    color: $textColor;
   }
 
   span {
-    color: #82E1FF;
+    color: #EE525C;
   }
 }
 
-.list__item-title {
-  font-family: 'Roboto', sans-serif;
-  font-style: normal;
-  font-weight: 700;
-  font-size: 25px;
+.jam-list__item-title {
+  width: 100%;
+  font-size: 1.8vw;
   text-transform: uppercase;
-  margin: 5% 0 8% 0;
+  padding: 143px 0 95px 0;
 }
 
-.list__item-text {
+.jam-list__item-text {
+  max-width: 300px;
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 20px;
-  //:not(:last-child) {
-  //  margin-bottom: 10px;
-  //}
-
-}
-
-
-.jam-block__slider {
-  margin: 45px 0 0 /*здесь должен быть отстур 108px но он не появляется */
-  25px;
-  width: 98%;
-  height: 3%;
-  background-color: black;
-  border-radius: 5px;
-}
-
-.slider {
-}
-
-.slider__movable-element {
-  width: 5%;
-  height: 100%;
-  border-radius: 5px;
-  background-color: #E54751;
+  font-size: 1.5vw;
 }
 
 
