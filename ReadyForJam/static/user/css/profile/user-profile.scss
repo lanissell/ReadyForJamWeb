@@ -1,0 +1,299 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body,
+html {
+  font-size: 16px;
+  color: #000;
+  height: 100%;
+  background: #525252 url("../../../../media/base/Background-image.svg") no-repeat fixed center;
+  background-size: cover;
+  font-family: Roboto, serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+
+._container {
+  max-width: 90%;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+
+.profile-header {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: flex-end;
+  background-image: url("../../../../media/base/Background.gif");
+  margin-bottom: 26px;
+}
+
+
+.profile-header__header {
+  width: 174px;
+  height: 174px;
+  margin-left: 11vw;
+  margin-bottom: -11vh;
+}
+
+.profile-header__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.bio-block {
+  width: 100%;
+  height: 20vh;
+  margin-bottom: 100px;
+}
+
+.bio {
+  width: 50%;
+  margin: 0 auto;
+
+  h1 {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 3vw;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+  }
+
+  h3 {
+    padding: 0 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 1.5vw;
+    color: #FFFFFF;
+
+  }
+}
+
+.bio__nickname {
+  text-align: center;
+}
+
+.bio-line-separator {
+  width: 100%;
+  height: 5px;
+  margin-bottom: 18px;
+  border-radius: 3px;
+  background-color: #CA3E47;
+}
+
+.bio__description {
+  text-align: left;
+}
+
+.bio-block__create-command__button {
+  display: inline-block;
+  float: right;
+  width: 200px;
+  height: 40px;
+  background: #CA3E47;
+  border-radius: 5px;
+  border: none;
+}
+
+.bio-block__create-command__link {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 1.2vw;
+  text-decoration: none;
+
+  color: #FFFFFF;
+}
+
+.projects-block {
+  width: 100%;
+  height: 100%;
+}
+
+.projects-block__personal-jam {
+  margin-bottom: 60px;
+}
+
+.personal-jam {
+}
+
+.personal-jam__text {
+  display: flex;
+  width: 100%;
+  margin-bottom: 43px;
+
+  h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.3vw;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+  }
+
+  span {
+    color: #CA3E47;
+  }
+}
+
+.personal-jam__title {
+  margin-right: auto;
+}
+
+.personal-jam__rating {
+  margin-left: auto;
+}
+
+.personal-jam__jam-block {
+}
+
+.personal-jam__list {
+  display: flex;
+  width: 200%;
+  min-height: 500px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.personal-jam__list::-webkit-scrollbar {
+  height: 15px;
+  border-radius: 5px;
+  background-color: #313131;
+}
+
+.personal-jam__list::-webkit-scrollbar-thumb {
+  background-color: #E54751;
+  border-radius: 5px;
+}
+
+.jam-list {
+}
+
+.jam-list__item {
+  display: grid;
+  grid-template-columns: repeat(1, 100%);
+  grid-template-rows: repeat(1 , 100%);
+  width: 100%;
+  min-width: 377px;
+  max-width: 377px;
+  height: 450px;
+  background-color: #313131;
+  background-image: url("../../../../media/base/Background.gif");
+  background-size: cover;
+  background-position: center;
+  border-radius: 25px;
+}
+
+ul li.jam-list__item:not(:last-child) {
+  margin-right: 30px;
+}
+
+.blur {
+  grid-area: 1 / 1 / 2 / 1;
+  z-index: 1;
+  width: 100%;
+  max-width: 377px;
+  height: 450px;
+  border-radius: 25px;
+  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(30, 30, 30, 0.9) 70%);
+  backdrop-filter: blur(3px);
+}
+
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
+.jam-list__text-block {
+  grid-area: 1 / 1 / 2 / 1;
+  z-index: 2;
+  width: 80%;
+  position: relative;
+  margin: 0 auto;
+  text-align: left;
+  box-sizing: content-box;
+  align-items: center;
+
+  h3 {
+    color: $textColor;
+    text-align: center;
+  }
+
+  h4 {
+    color: $textColor;
+  }
+
+  span {
+    color: #EE525C;
+  }
+}
+
+.jam-list__item-title {
+  width: 100%;
+  font-size: 1.8vw;
+  text-transform: uppercase;
+  padding: 143px 0 95px 0;
+}
+
+.jam-list__item-text {
+  max-width: 300px;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5vw;
+}
+
+.projects-block__organized-jam {
+  margin-bottom: 60px;
+}
+
+.organized-jam {
+}
+
+.organized-jam__text {
+
+
+  h3 {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 2.3vw;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+  }
+}
+
+.organized-jam__title {
+  margin-right: auto;
+  margin-bottom: 45px;
+}
+
+.organized-jam__jam-block {
+}
+
+.organized-jam__list {
+  display: flex;
+  width: 100%;
+  min-height: 500px;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.organized-jam__list::-webkit-scrollbar {
+  height: 15px;
+  border-radius: 5px;
+  background-color: #313131;
+}
+
+.organized-jam__list::-webkit-scrollbar-thumb {
+  background-color: #E54751;
+  border-radius: 5px;
+}
+
+
