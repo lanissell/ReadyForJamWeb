@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'jam',
     'ckeditor',
     'ckeditor_uploader',
+    'jinja2'
 ]
 
 MIDDLEWARE = [
@@ -33,15 +34,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_auto_logout.middleware.auto_logout',
 ]
-
 ROOT_URLCONF = 'ReadyForJam.urls'
-
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.jinja2.Jinja2",
-        "DIRS": [
-            os.path.join(BASE_DIR, "templates")
-        ],
+        "DIRS": [os.path.join(BASE_DIR, "templates")],
         "APP_DIRS": True,
         'OPTIONS': {
             'environment': 'ReadyForJam.jinja2.environment',
@@ -49,8 +46,7 @@ TEMPLATES = [
     },
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
-        ,
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -84,6 +80,8 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+NOTIFICATIONS_USE_JSONFIELD = True
+
 LOGOUT_REDIRECT_URL = '/jam/all/'
 
 LANGUAGE_CODE = 'ru'
@@ -104,7 +102,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 AUTO_LOGOUT = {'SESSION_TIME': 600}
 
-CKEDITOR_UPLOAD_PATH="uploads/"
+CKEDITOR_UPLOAD_PATH = "uploads/"
 
 CKEDITOR_CONFIGS = {
     'default': {
@@ -117,10 +115,10 @@ CKEDITOR_CONFIGS = {
              'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
             {'name': 'paragraph',
              'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl'    ]},
+                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
             {'name': 'links', 'items': ['Youtube']},
             {'name': 'insert',
-             'items': ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak',]},
+             'items': ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', ]},
             '/',
             {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
             {'name': 'colors', 'items': ['TextColor', 'BGColor']},
