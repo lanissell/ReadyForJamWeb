@@ -6,6 +6,8 @@ from django.urls import reverse
 def environment(**options):
     env = Environment(**options)
     env.globals.update({
-       'url': reverse,
+        'static': staticfiles_storage.url,
+        'url': reverse,
     })
     return env
+

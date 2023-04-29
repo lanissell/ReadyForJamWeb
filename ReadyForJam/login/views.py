@@ -8,7 +8,7 @@ from login.forms import UserLoginForm
 class UserLoginView(LoginView):
 
     form_class = UserLoginForm
-    template_name = '../templates/user/login.html'
+    template_name = '/user/login.html'
     redirect_authenticated_user = True
 
     def get_success_url(self):

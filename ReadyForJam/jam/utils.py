@@ -50,7 +50,7 @@ class JamCard:
         self.title = jam.name
         self.photo = '/media/' + str(jam.avatar)
         self.date = self.DateFormat(jam.startDate, jam.timeZone)
-        self.author = jam.author
+        self.author = jam.author.username
         self.color = jam.backgroundColor
         self.participantQuantity = self.CountParticipant()
 
@@ -125,7 +125,7 @@ class JamPageControlBlock:
             <button type="button" class="jam-block__button"
                     style="background-color: {jamColor.formColor};
                     color: {jamColor.mainTextColor}"
-                    onclick="window.location.href='/jam/{jamName}/update'">
+                    onclick="window.location.href='/jam/{jamName}/update/'">
                 <div class="button-block__link">РЕДАКТИРОВАТЬ</div>
             </button>
             <button type="button" class="jam-block__button"
@@ -142,9 +142,9 @@ class JamPageControlBlock:
         block = f"""
         <div class="jam-block__form">
             <button type="button" class="jam-block__button"
+                    id="participate_button"
                     style="background-color: { jamColor.formColor };
-                    color: { jamColor.mainTextColor };"
-                    onclick="window.location.href='{href}'">                 
+                    color: { jamColor.mainTextColor };">                 
                 <div class="button-block__link">УЧАВСТВОВАТЬ</div>
             </button>
         </div>"""

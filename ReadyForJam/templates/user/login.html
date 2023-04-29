@@ -12,8 +12,8 @@
                 <div class="registration__title">
                     <h1 class="registration__title-text">Вход в аккаунт</h1>
                 </div>
-                <form method="post" action={% url 'login' %} enctype="multipart/form-data" class="registration__form">
-                    {% csrf_token %}
+                <form method="post" action={{ url('login') }} enctype="multipart/form-data" class="registration__form">
+                    {{ csrf_input }}
                     <ul class="registration__list">
                         {% for field in form %}
                             <li class="registration__item">

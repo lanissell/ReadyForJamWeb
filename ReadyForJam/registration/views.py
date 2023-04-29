@@ -12,7 +12,7 @@ class UserRegistrationView(View):
         if request.user.is_authenticated:
             return redirect('jamList')
         context = GetRegisterFormContext()
-        return render(request, '../templates/user/registration.html', context=context)
+        return render(request, '/user/registration.html', context=context)
 
 
     @staticmethod

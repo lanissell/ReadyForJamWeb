@@ -112,6 +112,19 @@ ul li.right-group__items:not(:last-child) {
   min-width: 40px;
 }
 
+.go-top {
+  position: fixed;
+  left: 95%;
+  top: 90%;
+  display: none;
+  cursor: pointer;
+  padding: 15px 10px;
+}
+
+.go-top--show {
+  display: block;
+}
+
 @media (max-width: 960px) {
   .header_logo {
     width: 58.4px;
