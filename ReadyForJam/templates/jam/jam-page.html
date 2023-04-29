@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block links %}
-    <link rel="stylesheet" href="../../static/jam/page/jam-page.css">
-    <link rel="stylesheet" href="../../static/base/css/zeroing-style.css">
+    <link rel="stylesheet" href="{{ static('/jam/page/jam-page.css' )}}">
+    <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <style>
         body, html {
             background: {{ jamColor.backgroundColor }} !important;

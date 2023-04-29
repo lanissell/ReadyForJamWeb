@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function trackScroll() {
         const scrolled = window.pageYOffset;
         const coords = document.documentElement.clientHeight;
-        if (scrolled > coords/2) {
+        if (scrolled > coords/1.2) {
             goTopBtn.classList.add("go-top--show");
         } else {
             goTopBtn.classList.remove("go-top--show");

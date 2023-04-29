@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block links %}
-    <link rel="stylesheet" href="../../static/user/css/authorization/user-authorization.css">
+    <link rel="stylesheet" href="{{ static('/user/css/authorization/user-authorization.css') }}">
 {% endblock %}
 {% block title %}
     Регистрация
@@ -12,15 +12,15 @@
                 <div class="registration__title">
                     <h1 class="registration__title-text">Регистрация</h1>
                 </div>
-                <form method="post" action={% url 'registration' %} enctype="multipart/form-data"
+                <form method="post" action="" enctype="multipart/form-data"
                       class="registration__form">
-                    {% csrf_token %}
+                    {{ csrf_input }}
                     <ul class="registration__list">
                         {% for field in form %}
                             <li class="registration__item">
                                 <h3 class="registration__item-title">{{ field.label }}</h3>
                                 {{ field }}
-                                <div style="color: #ff6363; max-width: 514px">{{ field.errors.as_ul }}</div>
+                                <div style="color: #ff6363; max-width: 514px">{{ field.errors.as_ul() }}</div>
 
                         {% endfor %}
                         <li class="registration__item">
@@ -52,7 +52,7 @@
                                 id="register_btn"
                                 type="submit">Зарегистрироваться</button>
                     </div>
-                    <script src="../../static/user/js/passwordValidator.js"></script>
+                    <script src="{{ static('/user/js/passwordValidator.js') }}"></script>
                 </form>
             </div>
         </div>
