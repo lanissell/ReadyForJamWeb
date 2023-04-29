@@ -211,7 +211,7 @@ $hoverColor: #ffffff;
   }
 
   a:hover {
-    color:$hoverColor;
+    color: $hoverColor;
   }
 }
 
@@ -284,7 +284,6 @@ ul li.jam-list__item:not(:last-child) {
 }
 
 
-
 .jam-block__jam-list::-webkit-scrollbar {
   height: 15px;
   border-radius: 5px;
@@ -302,7 +301,7 @@ ul li.jam-list__item:not(:last-child) {
 .jam-list__item {
   display: grid;
   grid-template-columns: repeat(1, 100%);
-  grid-template-rows: repeat(1 , 100%);
+  grid-template-rows: repeat(1, 100%);
   width: 100%;
   min-width: 377px;
   max-width: 377px;
@@ -353,7 +352,7 @@ $hoverColor: #ffffff;
   }
 
   span {
-    color: #EE525C;
+    color: #82E1FF;
   }
 }
 
