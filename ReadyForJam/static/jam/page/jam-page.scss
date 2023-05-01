@@ -170,8 +170,8 @@ $hoverColor: #ffffff;
   padding: 9px 15px;
 
   border-radius: 10px;
-  cursor: pointer;
-  border: none;
+  border-width: 2px;
+  border-style: solid;
 
   a {
     color: $unactiveColor;
@@ -187,7 +187,7 @@ $hoverColor: #ffffff;
 .button-block__link {
   font-family: Roboto, sans-serif;
   font-style: normal;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1vw;
 }
 

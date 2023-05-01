@@ -1,5 +1,6 @@
-import json
-from urllib.request import urlopen
+import time
+
+from WorldTimeAPI import service as serv
 
 import pytz
 from tzlocal import get_localzone_name
@@ -37,10 +38,34 @@ def LocalizeDate(dateString:str, dateTimeZone:str):
     return date
 
 def GetCurrentDate():
-    res = urlopen('https://worldtimeapi.org/api/ip')
-    result = json.loads(res.read().strip().decode('utf-8'))
-    date = datetime.strptime(result.get('datetime'), '%Y-%m-%dT%H:%M:%S.%f%z')
+    client = serv.Client('timezone')
+    tz = get_localzone_name().split('/')
+    req = {"area":tz[0],"location":tz[1]}
+    try:
+        date = client.get(**req).datetime
+        date = datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%f%z')
+    except Exception as e:
+        print(e)
+        time.sleep(0.1)
+        date = GetCurrentDate()
     return date
+
+def IsParticipant(user, jam):
+    participants = Participant.objects.raw(f'''
+                            SELECT id, user_id
+                            FROM jam_participant
+                            WHERE jam_id = {jam.id}''')
+    participantsList = [u.user_id for u in participants]
+    if user.id in participantsList:
+        return True
+    else:
+        return False
+
+def IsAuthor(user, jam):
+    if jam.author == user:
+        return True
+    else:
+        return False
 
 class JamCard:
     __id = 0
@@ -115,37 +140,3 @@ class JamFormSaver:
         for obj in self.__allRelativeObjects:
             obj.save()
 
-
-class JamPageControlBlock:
-
-    @staticmethod
-    def GetAuthorBlock(jamName, jamColor):
-        block = f"""
-        <div class="jam-block__form">
-            <button type="button" class="jam-block__button"
-                    style="background-color: {jamColor.formColor};
-                    color: {jamColor.mainTextColor}"
-                    onclick="window.location.href='/jam/{jamName}/update/'">
-                <div class="button-block__link">РЕДАКТИРОВАТЬ</div>
-            </button>
-            <button type="button" class="jam-block__button"
-                    style="background-color: {jamColor.formColor};
-                            color: {jamColor.mainTextColor}"
-                    onclick="window.location.href='/jam/{jamName}/delete'">
-                <div class="button-block__link">УДАЛИТЬ</div>
-           </button>
-        </div>"""
-        return block
-
-    @staticmethod
-    def GetUserBlock(jamColor, href):
-        block = f"""
-        <div class="jam-block__form">
-            <button type="button" class="jam-block__button"
-                    id="participate_button"
-                    style="background-color: { jamColor.formColor };
-                    color: { jamColor.mainTextColor };">                 
-                <div class="button-block__link">УЧАВСТВОВАТЬ</div>
-            </button>
-        </div>"""
-        return block

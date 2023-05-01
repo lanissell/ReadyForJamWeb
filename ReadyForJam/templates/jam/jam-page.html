@@ -13,9 +13,7 @@
 {% endblock %}
 {% block content %}
     <div class="wrapper">
-
         <img src="../../media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
-
         <div class="jam-block">
             <div class="jam-block__container">
                 <div class="jam-block__list" style="background-color:{{ jamColor.formColor }}">
@@ -36,29 +34,9 @@
 
                     <div class="jam-block__participate">
                         <div class="jam-block__timer-container">
-                            <div id="timer">
-                                {% if theme %}
-                                    <div>{{ theme }}</div>
-                                {% else %}
-                                    <label>
-                                        <textarea id="startDate" style="display: none">{{ startDate }}</textarea>
-                                    </label>
-                                    <div id="days">00</div>
-                                    <div class="jam-block__time-separator">д:</div>
-                                    <div id="hours">00</div>
-                                    <div class="jam-block__time-separator">ч:</div>
-                                    <div id="minutes">00</div>
-                                    <div class="jam-block__time-separator">м:</div>
-                                    <div id="seconds">00</div>
-                                    <div class="jam-block__time-separator">с</div>
-                                    <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
-                                {% endif %}
-                            </div>
+                            <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
                         </div>
-                        {% if not theme %}
-                            {{ controlBlock|safe }}
-                        {% endif %}
-                        <script src="{{ static('jam/page/js/Participate.js') }}"></script>
+                        <script src="{{ static('jam/page/js/JamControlBlock.js') }}"></script>
                     </div>
                     <div class="pc-tab">
                         <div class="tab1" style="background-color:{{ jamColor.formColor }};

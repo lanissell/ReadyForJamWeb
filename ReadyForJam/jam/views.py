@@ -1,3 +1,7 @@
+import datetime
+import json
+
+from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.urls import reverse
 
@@ -7,8 +11,9 @@ from django.views import View
 
 from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
 from jam.models import Jam, JamColor, JamDate, JamCriteria, Participant
-from jam.utils import JamCard, JamFormSaver, GetJamFormContext, JamPageControlBlock, LocalizeDate, GetCurrentDate
-from registration.models import User
+from jam.utils import JamCard, JamFormSaver, GetJamFormContext, LocalizeDate, GetCurrentDate, \
+    IsParticipant, IsAuthor
+
 
 class JamRegistrationView(View):
 
@@ -122,38 +127,11 @@ class JamPageView(View):
             print('jam not found')
         if jam is not None:
             jamColor = JamColor.objects.get(jam=jam)
-            context = self.AddDateToContext(jam, context)
-            context = self.AddControlBlockToContext(request.user, jam, jamColor, context)
             context['jam'] = jam
             context['jamColor'] = jamColor
             return render(request, '/jam/jam-page.html', context=context)
         else:
             return redirect('jamList')
-
-    @staticmethod
-    def AddDateToContext(jam, context):
-        jamDate = JamDate.objects.get(jam=jam)
-        localStartDate = LocalizeDate(jamDate.startDate,
-                                      jamDate.timeZone)
-        if localStartDate < GetCurrentDate():
-            context['theme'] = jam.theme
-        context['startDate'] = str(localStartDate)
-        return context
-
-    @staticmethod
-    def AddControlBlockToContext(user, jam, jamColor, context):
-        href = ''
-        context['controlBlock'] = None
-        if user.is_authenticated:
-            if jam.author == user:
-                context['controlBlock'] = \
-                    JamPageControlBlock.GetAuthorBlock(jam.name, jamColor)
-        else:
-            href = reverse('login')
-        if context['controlBlock'] is None:
-            context['controlBlock'] = JamPageControlBlock.GetUserBlock(jamColor, href)
-        return context
-
 
 class JamDeleteView(View):
 
@@ -162,7 +140,7 @@ class JamDeleteView(View):
         user = request.user
         if user.is_authenticated:
             jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
-            if jamObject.author.id == user.id:
+            if IsAuthor(user, jamObject):
                 jamObject.delete()
             return redirect('jamList')
         else:
@@ -195,17 +173,53 @@ class JamParticipate(View):
         data = {'url': None}
         if user.is_authenticated:
             jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
-            userObject = User.objects.get(id=request.user.id)
-            participants = Participant.objects.raw(f'''
-                        SELECT id, user_id
-                        FROM jam_participant
-                        WHERE jam_id = {jamObject.id}''')
-            participantsList = [u.user_id for u in participants]
-            if userObject.id not in participantsList:
-                participant = Participant.objects.create(user=userObject,
+            if IsParticipant(user, jamObject):
+                Participant.objects.get(user=user, jam=jamObject).delete()
+            else:
+                participant = Participant.objects.create(user=user,
                                                          jam=jamObject)
                 participant.save()
             return JsonResponse({'message':'message'})
         else:
             data['url'] = redirect('login').url
             return JsonResponse(data)
+
+class JamBlockControlView(View):
+
+    def get(self, request, jamName):
+        user = request.user
+        jam = None
+        data = {
+            'url': None,
+            'theme': None,
+            'date': None,
+            'isAuthor': False,
+            'isParticipant': False,
+            'color': None,
+        }
+        try:
+            jam = Jam.objects.get(name=jamName)
+        except ObjectDoesNotExist:
+            print('jam not found')
+        if jam is None:
+            data['url'] = redirect('jamList').url
+        else:
+            data = self.AddDateToContext(jam, data)
+            if not data['date']:
+                data['theme'] = jam.theme
+            if user.is_authenticated:
+                if jam.author == user:
+                    data['isAuthor'] = True
+                else:
+                    data['isParticipant'] = IsParticipant(user, jam)
+            data['color'] = model_to_dict(JamColor.objects.get(jam=jam))
+        return JsonResponse(data)
+
+    @staticmethod
+    def AddDateToContext(jam, context):
+        jamDate = JamDate.objects.get(jam=jam)
+        localStartDate = LocalizeDate(jamDate.startDate,
+                                      jamDate.timeZone)
+        if localStartDate > GetCurrentDate():
+            context['date'] = localStartDate
+        return context
