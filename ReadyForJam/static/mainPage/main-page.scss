@@ -205,15 +205,15 @@ $hoverColor: #ffffff;
   border-radius: 25px;
   border: 0;
   cursor: pointer;
-
-  a {
+}
+.title__button {
     color: $unactiveColor;
   }
 
-  a:hover {
+.title__button:hover {
     color: $hoverColor;
-  }
 }
+
 
 .title__link {
   text-decoration: none; //Убирает подчеркивание у ссылок
@@ -352,7 +352,7 @@ $hoverColor: #ffffff;
   }
 
   span {
-    color: #82E1FF;
+    color: #EE525C;
   }
 }
 

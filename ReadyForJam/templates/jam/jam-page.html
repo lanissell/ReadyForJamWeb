@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <style>
         body, html {
-            background: {{ jamColor.backgroundColor }} !important;
+            background: {{ jamColor.background_color }} !important;
         }
     </style>
 {% endblock %}
@@ -16,15 +16,18 @@
         <img src="../../media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
         <div class="jam-block">
             <div class="jam-block__container">
-                <div class="jam-block__list" style="background-color:{{ jamColor.formColor }}">
+                <div class="jam-block__list" style="background-color:{{ jamColor.form_color }}">
                     <div class="jam-block__text-block text-block">
-                        <h3 class="text-block__count-member">1000</h3>
-                        <h1 class="text-block__name">{{ jam.name }}</h1>
+                        <h3 class="text-block__count-member"
+                            style="color:{{ jamColor.main_text_color }}">1000</h3>
+                        <h1 class="text-block__name"
+                            style="color:{{ jamColor.main_text_color }}">{{ jam.name }}</h1>
                         <nav class="text-block__creator">
                             <ul class="text-block__creator-list creator-list">
-                                <li class="creator-list__item">
+                                <li class="creator-list__item"
+                                    style="background-color: {{ jamColor.main_text_color }}">
                                     <a href="" class="creator__link"
-                                       style="color: {{ jamColor.formColor }}">
+                                       style="color: {{ jamColor.form_color }}">
                                         {{ jam.author }}
                                     </a>
                                 </li>
@@ -39,8 +42,7 @@
                         <script src="{{ static('jam/page/js/JamControlBlock.js') }}"></script>
                     </div>
                     <div class="pc-tab">
-                        <div class="tab1" style="background-color:{{ jamColor.formColor }};
-                                color: {{ jamColor.mainTextColor }}">
+                        <div class="tab1" style="background-color:{{ jamColor.form_color }}; color:{{ jamColor.main_text_color }}">
                             {{ jam.content|safe }}
                         </div>
                     </div>

@@ -5,11 +5,13 @@ from django.contrib.auth.views import LogoutView
 from django.template.defaulttags import url
 from django.urls import path, include, re_path
 
+from mainPage.views import MainPageView
 from registration import views as regViews
 from login import views as loginViews
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('', MainPageView.as_view(), name='mainPage'),
     path('register/', regViews.UserRegistrationView.as_view(), name='registration'),
     path('login/', loginViews.UserLoginView.as_view(), name='login'),
     path('jam/', include('jam.urls')),

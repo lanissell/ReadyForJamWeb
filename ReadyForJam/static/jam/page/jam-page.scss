@@ -3,7 +3,6 @@
 body,
 html {
   font-size: 16px;
-  color: #000;
   height: 100%;
   font-family: Roboto, serif;
 }
@@ -46,8 +45,8 @@ html {
 }
 
 .jam-block__list {
-  min-width: 70vw;
-  max-width: 70vw;
+  min-width: 60vw;
+  max-width: 60vw;
   min-height: 100%;
   height: auto;
   display: grid;
@@ -60,7 +59,7 @@ html {
 
 .jam-block__text-block {
   grid-area: 1 / 1 / 2 / 3;
-  margin: 47px 33px 37px;
+  margin: 50px 100px;
 
   h3 {
     color: #FFFFFF;
@@ -224,7 +223,7 @@ $unactiveHoverColor: #dddddd;
   grid-area: 3 / 1 / 7 / 3;
   width: 100%;
   min-height: 100%;
-  padding: 37px 33px;
+  padding: 100px;
   margin-bottom: 15%;
 
 

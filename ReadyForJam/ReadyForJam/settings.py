@@ -63,8 +63,12 @@ WSGI_APPLICATION = 'ReadyForJam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ReadyForJamDb',
+        'USER': 'superuser',
+        'PASSWORD': 'fekod24rfFF',
+        'HOST': 'localhost',
+        'PORT': 5432,
     }
 }
 
@@ -82,7 +86,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 NOTIFICATIONS_USE_JSONFIELD = True
 
-LOGOUT_REDIRECT_URL = '/jam/all/'
+LOGOUT_REDIRECT_URL = '/'
 
 LANGUAGE_CODE = 'ru'
 

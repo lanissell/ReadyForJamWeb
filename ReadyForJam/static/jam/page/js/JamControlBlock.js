@@ -114,8 +114,8 @@ function FlipBtnStyle(btn){
 
 function SetActiveBtnStyle(btn){
     btn.style.borderColor = 'rgba(0,0,0,0)';
-    btn.style.color = jamColor.mainTextColor;
-    btn.style.background = jamColor.formColor;
+    btn.style.color = jamColor.main_text_color;
+    btn.style.background = jamColor.form_color;
     return btn
 }
 

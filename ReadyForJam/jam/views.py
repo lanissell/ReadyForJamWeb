@@ -1,9 +1,5 @@
-import datetime
-import json
-
 from django.forms import model_to_dict
 from django.http import JsonResponse
-from django.urls import reverse
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
@@ -42,7 +38,7 @@ class JamRegistrationView(View):
             return redirect(f'../../jam/{formSaver.jamObject.name}/')
         else:
             context = GetJamFormContext(form, color, date, criteria)
-            return render(request, '../templates/jam/jam-registration.html', context=context)
+            return render(request, '/jam/jam-registration.html', context=context)
 
 
 class JamUpdateView(View):
@@ -104,7 +100,7 @@ class JamUpdateView(View):
         else:
             context = GetJamFormContext(jam, color, date)
             context.update(self.baseContext)
-            return render(request, '../templates/jam/jam-registration.html', context=context)
+            return render(request, '/jam/jam-registration.html', context=context)
 
     @staticmethod
     def DeleteRedundantCriteria(template, allObjects):
@@ -118,7 +114,8 @@ class JamUpdateView(View):
 
 class JamPageView(View):
 
-    def get(self, request, jamName, **kwargs):
+    @staticmethod
+    def get(request, jamName, **kwargs):
         jam = None
         context = {}
         try:
@@ -148,21 +145,25 @@ class JamDeleteView(View):
 
 
 class JamListView(View):
-    @staticmethod
-    def get(request, **kwargs):
-        jams = Jam.objects.raw('''
+
+    _query = '''
             SELECT  jam_jam.id, 
                     jam_jam.name, 
-                    main.jam_jam.avatar,
-                    main.jam_jamcolor.backgroundColor,
-                    main.jam_jamdate.startDate,
-                    main.jam_jamdate.timeZone
-            FROM main.jam_jam
-            JOIN main.jam_jamdate ON (jam_jam.id = jam_jamdate.jam_id)
-            JOIN main.jam_jamcolor ON (jam_jam.id = jam_jamcolor.jam_id)
-            ''')
+                    jam_jam.avatar,
+                    jam_jamcolor.background_color,
+                    jam_jamdate.start_date,
+                    jam_jamdate.time_zone
+            FROM jam_jam
+            INNER JOIN jam_jamdate ON jam_jam.id = jam_jamdate.jam_id
+            JOIN jam_jamcolor ON jam_jam.id = jam_jamcolor.jam_id
+            '''
+
+    _href = '/jam/jam-list.html'
+
+    def get(self, request, **kwargs):
+        jams = Jam.objects.raw(self._query)
         jamCards = [JamCard(jam) for jam in jams]
-        return render(request, '/jam/jam-list.html', context={'jamCards': jamCards})
+        return render(request, self._href, context={'jamCards': jamCards})
 
 
 class JamParticipate(View):
@@ -218,8 +219,8 @@ class JamBlockControlView(View):
     @staticmethod
     def AddDateToContext(jam, context):
         jamDate = JamDate.objects.get(jam=jam)
-        localStartDate = LocalizeDate(jamDate.startDate,
-                                      jamDate.timeZone)
+        localStartDate = LocalizeDate(jamDate.start_date,
+                                      jamDate.time_zone)
         if localStartDate > GetCurrentDate():
             context['date'] = localStartDate
         return context

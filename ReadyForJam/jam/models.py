@@ -13,16 +13,16 @@ class Jam(models.Model):
 
 class JamDate(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
-    startDate = models.CharField(max_length=30, blank=False, null=False)
-    votingStartDate = models.CharField(max_length=30,blank=False, null=False)
-    votingEndDate = models.CharField(max_length=30,blank=False, null=False)
-    timeZone = models.CharField(max_length=30,blank=False, null=False, default='Asia/Krasnoyarsk')
+    start_date = models.CharField(max_length=30, blank=False, null=False)
+    voting_start_date = models.CharField(max_length=30,blank=False, null=False)
+    voting_end_date = models.CharField(max_length=30,blank=False, null=False)
+    time_zone = models.CharField(max_length=30,blank=False, null=False, default='Asia/Krasnoyarsk')
 
 class JamColor(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
-    backgroundColor = models.CharField(max_length=10, blank=False, null=False)
-    formColor = models.CharField(max_length=10, blank=False, null=False)
-    mainTextColor = models.CharField(max_length=10, blank=False, null=False)
+    background_color = models.CharField(max_length=10, blank=False, null=False)
+    form_color = models.CharField(max_length=10, blank=False, null=False)
+    main_text_color = models.CharField(max_length=10, blank=False, null=False)
 
 class JamCriteria(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
@@ -31,7 +31,7 @@ class JamCriteria(models.Model):
 class Participant(models.Model):
     user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
-    isTeam = models.BooleanField(blank=False, null=False, default=True)
+    is_team = models.BooleanField(blank=False, null=False, default=True)
 
 class Project(models.Model):
     participant = models.ForeignKey(Participant, blank=False, null=False, on_delete=models.CASCADE)

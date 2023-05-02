@@ -74,9 +74,9 @@ class JamCard:
         self.__id = jam.id
         self.title = jam.name
         self.photo = '/media/' + str(jam.avatar)
-        self.date = self.DateFormat(jam.startDate, jam.timeZone)
+        self.date = self.DateFormat(jam.start_date, jam.time_zone)
         self.author = jam.author.username
-        self.color = jam.backgroundColor
+        self.color = jam.background_color
         self.participantQuantity = self.CountParticipant()
 
     def CountParticipant(self):

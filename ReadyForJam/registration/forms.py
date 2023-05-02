@@ -48,10 +48,10 @@ class UserDataForm(ModelForm):
     attrs = BasicHtmlAttrs.inputFieldAttrs
     dateAttrs = {
         'class': attrs['class'],
-        'max': f"{datetime.datetime.now().year}-12-31",
-        'min': "1900-12-31"
+        'max': f"{datetime.datetime.now().year-5}-12-31",
+        'min': "1970-12-31"
     }
-    birthDate = forms.DateField(label='Дата рождения', widget=DateInput(
+    birth_date = forms.DateField(label='Дата рождения', widget=DateInput(
         attrs=dateAttrs
     ))
     about = forms.CharField(label='Немного о себе', widget=forms.Textarea(
@@ -59,7 +59,7 @@ class UserDataForm(ModelForm):
     ))
     class Meta:
         model = UserData
-        fields = ['birthDate', 'about']
+        fields = ['birth_date', 'about']
 
 class UserPhotoForm(ModelForm):
     avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(

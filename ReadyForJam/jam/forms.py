@@ -46,38 +46,38 @@ class JamDateForm(ModelForm):
         'min': "1900-12-31"
     }
 
-    startDate = forms.CharField(label='Начало джема', widget=DateInput(
+    start_date = forms.CharField(label='Начало джема', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingStartDate = forms.CharField(label='Начало голосования', widget=DateInput(
+    voting_start_date = forms.CharField(label='Начало голосования', widget=DateInput(
         attrs=dateAttrs
     ))
-    votingEndDate = forms.CharField(label='Конец голосования', widget=DateInput(
+    voting_end_date = forms.CharField(label='Конец голосования', widget=DateInput(
         attrs=dateAttrs
     ))
 
     class Meta:
         model = JamDate
-        fields = ['startDate', 'votingStartDate', 'votingEndDate']
+        fields = ['start_date', 'voting_start_date', 'voting_end_date']
 
 
 class JamColorForm(ModelForm):
     colorAttrs = {'type': 'color', 'value': '#525252', 'class':'registration__color-input'}
 
-    backgroundColor = forms.CharField(label='Цвет фона', widget=forms.TextInput(
+    background_color = forms.CharField(label='Цвет фона', widget=forms.TextInput(
         attrs=colorAttrs
     ))
-    mainTextColor = forms.CharField(label='Основной цвет текста', widget=forms.TextInput(
+    main_text_color = forms.CharField(label='Основной цвет текста', widget=forms.TextInput(
         attrs=colorAttrs
     ))
     colorAttrs['id'] = 'formColor'
-    formColor = forms.CharField(label='Цвет формы', widget=forms.TextInput(
+    form_color = forms.CharField(label='Цвет формы', widget=forms.TextInput(
         attrs=colorAttrs
     ))
 
     class Meta:
         model = JamColor
-        fields = ['backgroundColor', 'formColor', 'mainTextColor']
+        fields = ['background_color', 'form_color', 'main_text_color']
 
 class JamCriteriaForm(ModelForm):
 

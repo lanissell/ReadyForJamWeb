@@ -6,10 +6,12 @@ class UserFormSaver:
     def __init__(self):
         self.isFormsValidated = True
         self.userObject = None
+        self.objectsToSave = []
 
     def MainFormSave(self, form):
         if form.is_valid():
-            self.userObject = form.save(commit=True)
+            self.userObject = form.save(commit=False)
+            self.objectsToSave.append(self.userObject)
         else:
             self.isFormsValidated = False
 
@@ -20,20 +22,16 @@ class UserFormSaver:
         if form.is_valid():
             relativeObject = form.save(commit=False)
             relativeObject.user = self.userObject
-            relativeObject.save()
+            self.objectsToSave.append(relativeObject)
         else:
             self.isFormsValidated = False
 
     def SetCurrentUserRight(self, rightId):
-        self.SetUserRight(self.userObject, rightId)
-
-    @staticmethod
-    def SetUserRight(userObject, rightId):
-        userRight = UserRight()
-        userRight.user = userObject
+        userRight = UserRight(user=self.userObject)
         right = Right.objects.get(pk=rightId)
         userRight.right = right
-        userRight.save()
+        self.objectsToSave.append(userRight)
+
 
 
 def GetRegisterFormContext(regForm = None, dataForm = None, photoForm = None):

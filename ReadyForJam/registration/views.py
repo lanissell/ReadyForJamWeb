@@ -28,7 +28,9 @@ class UserRegistrationView(View):
         formSaver.SetCurrentUserRight(1)
 
         if formSaver.isFormsValidated:
+            for obj in formSaver.objectsToSave:
+                obj.save()
             return redirect('login')
         else:
             context = GetRegisterFormContext(form, dataForm, photoForm)
-            return render(request, '../templates/user/registration.html', context=context)
+            return render(request, '/user/registration.html', context=context)
