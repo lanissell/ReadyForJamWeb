@@ -23,8 +23,12 @@ function SetJamControlBlock() {
                     content = GetThemeHTML(data.theme);
                 blockParent.children[0].append(content)
                 if (data.isAuthor) {
-                    blockParent.append(GetButtonHtml('update', 'Обновить'));
-                    blockParent.append(GetButtonHtml('delete', 'Удалить'));
+                    let btn = GetButtonHtml('update', 'Обновить');
+                    btn.id = 'update_button';
+                    blockParent.append(btn);
+                    btn = GetButtonHtml('', 'Удалить');
+                    btn.id = 'delete_button';
+                    blockParent.append(btn);
                 } else if (!data.theme) {
                     let btn = GetButtonHtml('participate', 'Учавствовать');
                     btn.id = 'participate_button';
@@ -70,7 +74,7 @@ function GetButtonHtml(href, title) {
     btn.type = 'button';
     btn.className = 'jam-block__button';
     btn = SetActiveBtnStyle(btn);
-    if (href !== 'participate') {
+    if (href !== 'participate' && href !== '') {
         btn.addEventListener('click', function () {
             window.location.href = window.location.pathname + href;
         })

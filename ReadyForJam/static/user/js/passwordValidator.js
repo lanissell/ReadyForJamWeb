@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function PasswordNumValid() {
-        let value = passwordField.value.replace(/[^0-9, ]/g, "")
-        if (value.length > 0) {
+        const regular = new RegExp('(?=.*[a-z])(?=.*\\d)')
+        if (passwordField.value.match(regular)) {
             passwordNumError.style.color = successColor
             return true
         } else {

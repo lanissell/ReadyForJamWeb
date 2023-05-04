@@ -152,6 +152,7 @@ class JamListView(View):
                     jam_jam.avatar,
                     jam_jamcolor.background_color,
                     jam_jamdate.start_date,
+                    jam_jamdate.voting_start_date,
                     jam_jamdate.time_zone
             FROM jam_jam
             INNER JOIN jam_jamdate ON jam_jam.id = jam_jamdate.jam_id

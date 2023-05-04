@@ -6,7 +6,9 @@ document.addEventListener("DOMContentLoaded", function () {
         fetch(url)
             .then(response => response.json())
             .then(data => {
-                let startDateValue = document.querySelector('#startDate').value;
+                let startDateValue = document.querySelector('#startDate');
+                if (!startDateValue) return;
+                else startDateValue = startDateValue.value;
                 let currentTime = new Date(data.utc_datetime);
                 let targetTime = new Date(startDateValue);
                 // change this to your target date and time in UTC
