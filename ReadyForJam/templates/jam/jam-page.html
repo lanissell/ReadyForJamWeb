@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 {% block links %}
-    <link rel="stylesheet" href="{{ static('/jam/page/jam-page.css' )}}">
+    <link rel="stylesheet" href="{{ static('/jam/page/jam-page.css' ) }}">
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <style>
         body, html {
@@ -36,13 +36,17 @@
                     </div>
 
                     <div class="jam-block__participate">
+                        <div class="load-wrapper">
+                            <div class="activity"></div>
+                        </div>
                         <div class="jam-block__timer-container">
                             <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
                         </div>
                         <script src="{{ static('jam/page/js/JamControlBlock.js') }}"></script>
                     </div>
                     <div class="pc-tab">
-                        <div class="tab1" style="background-color:{{ jamColor.form_color }}; color:{{ jamColor.main_text_color }}">
+                        <div class="tab1"
+                             style="background-color:{{ jamColor.form_color }}; color:{{ jamColor.main_text_color }}">
                             {{ jam.content|safe }}
                         </div>
                     </div>

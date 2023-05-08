@@ -29,67 +29,70 @@
 
                             <div class="registration-lists">
                                 <!--        Лист с датами начала,окончания джема и конца голосования-->
-                                <ul class="registration__dates">
-                                    {% for field in date %}
-                                        <li class="registration__dates-item">
-                                            <h3 class="registration__date-title">{{ field.label }}</h3>
-                                            {{ field }}
-                                            <div style="color: #CA3E47">{{ field.errors }}</div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
+                                {% if date %}
+                                    <ul class="registration__dates">
+                                        {% for field in date %}
+                                            <li class="registration__dates-item">
+                                                <h3 class="registration__date-title">{{ field.label }}</h3>
+                                                {{ field }}
+                                                <div style="color: #CA3E47">{{ field.errors }}</div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <script src="../../static/jam/registration/js/DateValidController.js"></script>
+                                {% endif %}
 
                                 <!--        Лист с Цветами на выбор пользователя-->
-                                <ul class="registration__colors">
-                                    {% for field in color %}
-                                        <li class="registration__color-item">
-                                            <h3 class="registration__color-title">{{ field.label }}</h3>
-                                            {{ field }}
-                                            <div style="color: #CA3E47">{{ field.errors }}</div>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
+                                {% if color %}
+                                    <ul class="registration__colors">
+                                        {% for field in color %}
+                                            <li class="registration__color-item">
+                                                <h3 class="registration__color-title">{{ field.label }}</h3>
+                                                {{ field }}
+                                                <div style="color: #CA3E47">{{ field.errors }}</div>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                {% endif %}
                             </div>
 
                         </li>
                         <li class="registration__item">
-                            <h3 class="registration__item-title">Содержание страницы джема</h3>
+                            <h3 class="registration__item-title">Описание</h3>
                             <label>
                                 {{ form.content }}
                                 {{ form.media }}
                             </label>
                         </li>
+                        {% if formSet %}
+                            <li class="registration__item">
+                                <h3 class="registration__item-title">Критерии для голосования</h3>
 
-                        <li class="registration__item">
-                            <h3 class="registration__item-title">Критерии для голосования</h3>
-
-                            <div class="registration-criteria-block criteria-block">
-                                <ul class="criteria-block__list">
-                                    {{ formSet.as_ul() }}
-                                </ul>
-                                <button class="criteria-block__button-add" type="button"
-                                        id="criteria_add_btn">
-                                    Добавить
-                                </button>
-                                <button class="criteria-block__button-add" type="button"
-                                        id="criteria_remove_btn">
-                                    Убрать
-                                </button>
-                            </div>
-                        </li>
+                                <div class="registration-criteria-block criteria-block">
+                                    <ul class="criteria-block__list">
+                                        {{ formSet.as_ul() }}
+                                    </ul>
+                                    <button class="criteria-block__button-add" type="button"
+                                            id="criteria_add_btn">
+                                        Добавить
+                                    </button>
+                                    <button class="criteria-block__button-add" type="button"
+                                            id="criteria_remove_btn">
+                                        Убрать
+                                    </button>
+                                </div>
+                            </li>
+                            <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>
+                        {% endif %}
 
                     </ul>
-
                     <div class="registration__button-block button_block">
                         <button class="button-block__button-complete" type="submit">
                             {{ btnName }}
                         </button>
                     </div>
                 </form>
-
-                <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>
                 <script src="../../static/jam/registration/js/RichTextInputColor.js"></script>
-                <script src="../../static/jam/registration/js/DateValidController.js"></script>
             </div>
         </div>
     </div>

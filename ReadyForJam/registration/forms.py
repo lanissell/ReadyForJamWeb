@@ -63,7 +63,7 @@ class UserDataForm(ModelForm):
 
 class UserPhotoForm(ModelForm):
     avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
-        attrs=BasicHtmlAttrs.attrs
+        attrs=BasicHtmlAttrs.inputFieldAttrs
     ))
 
     class Meta:

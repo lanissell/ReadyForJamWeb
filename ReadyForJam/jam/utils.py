@@ -1,8 +1,7 @@
-import time
-
-from WorldTimeAPI import service as serv
+import json
 
 import pytz
+import requests
 from tzlocal import get_localzone_name
 from datetime import datetime
 from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
@@ -29,6 +28,21 @@ def GetJamFormContext(mainForm=None, dataForm=None,
 
     return context
 
+def GetProjectFormContext(mainForm=None, colorForm=None, ):
+    if mainForm is None:
+        mainForm = JamRegistrationForm()
+    if not colorForm:
+        colorForm = JamColorForm()
+
+
+    context = {
+        'form': mainForm,
+        'color': colorForm,
+        'title': 'Добавление проекта',
+        'btnName': 'Добавить'}
+
+    return context
+
 def LocalizeDate(dateString:str, dateTimeZone:str):
     date = datetime.strptime(dateString, '%Y-%m-%dT%H:%M')
     tz = pytz.timezone(dateTimeZone)
@@ -38,17 +52,15 @@ def LocalizeDate(dateString:str, dateTimeZone:str):
     return date
 
 def GetCurrentDate():
-    client = serv.Client('timezone')
-    tz = get_localzone_name().split('/')
-    req = {"area":tz[0],"location":tz[1]}
-    try:
-        date = client.get(**req).datetime
-        date = datetime.strptime(date, '%Y-%m-%dT%H:%M:%S.%f%z')
-    except Exception as e:
-        print(e)
-        time.sleep(0.1)
-        date = GetCurrentDate()
+    url = f'https://timezoneapi.io/api/timezone/?{get_localzone_name()}&token=aaZtuEvfxzbSelVoYmwh'
+    headers = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64; rv:91.0) Gecko/20100101 Firefox/91.0'}
+    r = requests.get(url, headers=headers)
+    result = json.loads(r.content)
+    date = result.get('data').get('datetime').get('date_time_ymd')
+    date = datetime.strptime(date, '%Y-%m-%dT%H:%M:%S%f%z')
     return date
+
+
 
 def IsParticipant(user, jam):
     participants = Participant.objects.raw(f'''

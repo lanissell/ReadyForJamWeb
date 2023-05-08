@@ -4,7 +4,7 @@ from ckeditor.widgets import CKEditorWidget
 from django.forms import ModelForm, modelformset_factory
 from django import forms
 
-from jam.models import Jam, JamColor, JamDate, JamCriteria
+from jam.models import Jam, JamColor, JamDate, JamCriteria, Project, ProjectColor
 from globalUtils import BasicHtmlAttrs
 
 
@@ -62,7 +62,7 @@ class JamDateForm(ModelForm):
 
 
 class JamColorForm(ModelForm):
-    colorAttrs = {'type': 'color', 'value': '#525252', 'class':'registration__color-input'}
+    colorAttrs = BasicHtmlAttrs.colorFieldAttrs
 
     background_color = forms.CharField(label='Цвет фона', widget=forms.TextInput(
         attrs=colorAttrs
@@ -92,3 +92,24 @@ JamCriteriaFormSet = modelformset_factory(JamCriteria,
                                           form=JamCriteriaForm,
                                           can_order=False,
                                           extra=1)
+
+class JamProjectRegisterForm(ModelForm):
+    attrs = BasicHtmlAttrs.inputFieldAttrs
+
+    name = forms.CharField(label='Название', widget=forms.TextInput(
+        attrs=attrs
+    ))
+    avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
+        attrs=attrs
+    ))
+    content = forms.Field(label='Описание',
+                          widget=CKEditorWidget())
+
+    class Meta:
+        model = Project
+        fields = ['name', 'avatar', 'content']
+
+class ProjectColorForm(JamColorForm):
+    class Meta:
+        model = ProjectColor
+        fields = ['background_color', 'form_color', 'main_text_color']

@@ -21,7 +21,7 @@ function SetJamControlBlock() {
                     content = GetTimerHTML(data.date);
                 else
                     content = GetThemeHTML(data.theme);
-                blockParent.children[0].append(content)
+                blockParent.children[1].append(content)
                 if (data.isAuthor) {
                     let btn = GetButtonHtml('update', 'Обновить');
                     btn.id = 'update_button';
@@ -37,7 +37,7 @@ function SetJamControlBlock() {
                     blockParent.append(btn);
                     ActivateParticipateButton();
                 }
-
+                document.querySelector('.load-wrapper').remove()
             }
         }
     })

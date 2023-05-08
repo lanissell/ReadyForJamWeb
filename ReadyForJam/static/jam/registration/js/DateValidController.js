@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
-    const dateStart = document.querySelector("#id_startDate")
-    const votingStartDate = document.querySelector("#id_votingStartDate")
-    const votingEndDate = document.querySelector("#id_votingEndDate")
+    const dateStart = document.querySelector("#id_start_date")
+    const votingStartDate = document.querySelector("#id_voting_start_date")
+    const votingEndDate = document.querySelector("#id_voting_end_date")
 
     dateStart.addEventListener("change", function () {
         votingStartDate.removeAttribute('disabled')

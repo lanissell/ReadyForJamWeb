@@ -10,4 +10,5 @@ urlpatterns = [
     path('<str:jamName>/delete/', jv.JamDeleteView.as_view(), name='jamDelete'),
     path('<str:jamName>/participate/', jv.JamParticipate.as_view(), name='participate'),
     path('<str:jamName>/blockControl/', jv.JamBlockControlView.as_view(), name='participate'),
+    path('<str:jamName>/projectRegister/', jv.ProjectRegisterView.as_view(), name='projectRegister'),
 ]
