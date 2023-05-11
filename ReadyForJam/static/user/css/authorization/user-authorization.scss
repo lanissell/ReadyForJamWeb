@@ -38,7 +38,7 @@ html {
 
 .registration__container {
   min-width: 785px;
-  background: linear-gradient(180deg, #525252 0%, #414141 100%);
+  background: #414141;
   border: 2px solid #313131;
   border-radius: 10px;
   align-items: center;
@@ -51,7 +51,7 @@ html {
   width: 100%;
   max-height: 80px;
   text-align: center;
-  background: #414141;
+  background: #313131;
   border-bottom: 2px solid #CA3E47;
   border-radius: 10px 10px 0 0;
   margin-bottom: 30px;
@@ -97,7 +97,7 @@ ul li.registration__item {
   vertical-align: bottom;
   outline: none;
 
-  background: #525252;
+  background: #515151;
   border: 2px solid #313131;
   border-radius: 5px;
   color: white;

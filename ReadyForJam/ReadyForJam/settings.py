@@ -19,9 +19,11 @@ INSTALLED_APPS = [
     'registration',
     'login',
     'jam',
+    'project',
     'ckeditor',
     'ckeditor_uploader',
-    'jinja2'
+    'jinja2',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
@@ -33,6 +35,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django_auto_logout.middleware.auto_logout',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 ROOT_URLCONF = 'ReadyForJam.urls'
 TEMPLATES = [
@@ -71,6 +74,10 @@ DATABASES = {
         'PORT': 5432,
     }
 }
+
+INTERNAL_IPS = [
+    '127.0.0.1',
+]
 
 AUTH_PASSWORD_VALIDATORS = [
     {

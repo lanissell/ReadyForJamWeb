@@ -1,36 +1,26 @@
+from globalUtils import BaseFormSaver
 from .forms import UserPhotoForm, UserDataForm, UserRegistrationForm
 from registration.models import UserRight, Right
 
-class UserFormSaver:
+class UserFormSaver(BaseFormSaver):
 
-    def __init__(self):
-        self.isFormsValidated = True
-        self.userObject = None
-        self.objectsToSave = []
+    def _SetFK(self, relativeObject):
+        relativeObject.user = self.mainObject
 
-    def MainFormSave(self, form):
+    def MainFormSave(self, form, request):
         if form.is_valid():
-            self.userObject = form.save(commit=False)
-            self.objectsToSave.append(self.userObject)
+            self.mainObject = form.save(commit=False)
+            self._objectsToSave.append(self.mainObject)
         else:
             self.isFormsValidated = False
 
-    def RelativeFormSave(self, form):
-        if not self.isFormsValidated \
-                or self.userObject is None:
-            return
-        if form.is_valid():
-            relativeObject = form.save(commit=False)
-            relativeObject.user = self.userObject
-            self.objectsToSave.append(relativeObject)
-        else:
-            self.isFormsValidated = False
+
 
     def SetCurrentUserRight(self, rightId):
-        userRight = UserRight(user=self.userObject)
+        userRight = UserRight(user=self.mainObject)
         right = Right.objects.get(pk=rightId)
         userRight.right = right
-        self.objectsToSave.append(userRight)
+        self._objectsToSave.append(userRight)
 
 
 

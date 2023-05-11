@@ -5,11 +5,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
 from django.views import View
 
-from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet, \
-    ProjectColorForm, JamProjectRegisterForm
+from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
 from jam.models import Jam, JamColor, JamDate, JamCriteria, Participant
 from jam.utils import JamCard, JamFormSaver, GetJamFormContext, LocalizeDate, GetCurrentDate, \
-    IsParticipant, IsAuthor, GetProjectFormContext
+    IsParticipant, IsAuthor
 
 
 class JamRegistrationView(View):
@@ -36,11 +35,11 @@ class JamRegistrationView(View):
         formSaver.FormsetSaver(criteria)
         if formSaver.isFormsValidated:
             formSaver.SaveRelativeObjects()
-            return redirect(f'../../jam/{formSaver.jamObject.name}/')
+            return redirect(f'../../jam/{formSaver.mainObject.name}/')
         else:
             context = GetJamFormContext(form, color, date, criteria)
             return render(request, '/jam/jam-registration.html', context=context)
-
+        
 
 class JamUpdateView(View):
     baseContext = {
@@ -227,15 +226,8 @@ class JamBlockControlView(View):
             context['date'] = localStartDate
         return context
 
-class ProjectRegisterView(View):
 
-    @staticmethod
-    def get(request, **kwargs):
-        user = request.user
-        if user.is_authenticated:
-            context = GetProjectFormContext()
-            return render(request, '/jam/jam-registration.html', context=context)
-        else:
-            return redirect('login')
+
+
 
 

@@ -22,14 +22,12 @@ class UserRegistrationView(View):
         photoForm = UserPhotoForm(request.POST, request.FILES)
 
         formSaver = UserFormSaver()
-        formSaver.MainFormSave(form)
-        formSaver.RelativeFormSave(dataForm)
-        formSaver.RelativeFormSave(photoForm)
+        formSaver.MainFormSave(form, request)
+        formSaver.RelativeFormsSave([dataForm, photoForm])
         formSaver.SetCurrentUserRight(1)
 
         if formSaver.isFormsValidated:
-            for obj in formSaver.objectsToSave:
-                obj.save()
+            formSaver.SaveRelativeObjects()
             return redirect('login')
         else:
             context = GetRegisterFormContext(form, dataForm, photoForm)

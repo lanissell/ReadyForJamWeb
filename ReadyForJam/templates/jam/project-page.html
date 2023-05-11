@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block links %}
+    <link rel="stylesheet" href="{{ static('/jam/page/jam-page.css' ) }}">
+    <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
+    <style>
+        body, html {
+            background: {{ projectColor.background_color }} !important;
+        }
+    </style>
+{% endblock %}
+{% block title %}
+    {{ project.name }}
+{% endblock %}
+{% block content %}
+    <div class="wrapper">
+        <img src="../../media/{{ project.avatar }}" alt="jamLogo" class="jam-photo">
+        <div class="jam-block">
+            <div class="jam-block__container">
+                <div class="jam-block__list" style="background-color:{{ jamColor.form_color }}">
+                    <div class="jam-block__text-block text-block">
+                        <h1 class="text-block__name"
+                            style="color:{{ projectColor.main_text_color }}">{{ project.name }}</h1>
+                        <nav class="text-block__creator">
+                            <ul class="text-block__creator-list creator-list">
+                                <li class="creator-list__item"
+                                    style="background-color: {{ projectColor.main_text_color }}">
+                                    <a href="" class="creator__link"
+                                       style="color: {{ projectColor.form_color }}">
+                                        {{ participant.name }}
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="pc-tab">
+                        <div class="tab1"
+                             style="background-color:{{ projectColor.form_color }}; color:{{ projectColor.main_text_color }}">
+                            {{ project.content|safe }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

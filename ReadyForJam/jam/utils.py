@@ -4,6 +4,8 @@ import pytz
 import requests
 from tzlocal import get_localzone_name
 from datetime import datetime
+
+from globalUtils import BaseFormSaver
 from jam.forms import JamRegistrationForm, JamDateForm, JamColorForm, JamCriteriaFormSet
 from jam.models import Participant, JamCriteria
 
@@ -25,21 +27,6 @@ def GetJamFormContext(mainForm=None, dataForm=None,
         'formSet': criteriaForm,
         'title': 'Создание джема',
         'btnName': 'Создать'}
-
-    return context
-
-def GetProjectFormContext(mainForm=None, colorForm=None, ):
-    if mainForm is None:
-        mainForm = JamRegistrationForm()
-    if not colorForm:
-        colorForm = JamColorForm()
-
-
-    context = {
-        'form': mainForm,
-        'color': colorForm,
-        'title': 'Добавление проекта',
-        'btnName': 'Добавить'}
 
     return context
 
@@ -101,54 +88,53 @@ class JamCard:
 
 
 
-class JamFormSaver:
-
-    def __init__(self):
-        self.isFormsValidated = True
-        self.jamObject = None
-        self.__allRelativeObjects = []
+class JamFormSaver(BaseFormSaver):
 
     def MainFormSave(self, form, request):
         if form.is_valid() and request.user.is_authenticated:
-            self.jamObject = form.save(commit=False)
-            self.jamObject.author = request.user
-            self.__allRelativeObjects.append(self.jamObject)
+            self.mainObject = form.save(commit=False)
+            self.mainObject.author = request.user
+            self._objectsToSave.append(self.mainObject)
         else:
             self.isFormsValidated = False
 
-    def RelativeFormsSave(self, forms):
-        if not self.isFormsValidated \
-                or self.jamObject is None:
-            return
-        for form in forms:
-            if form.is_valid():
-                newObject = form.save(commit=False)
-                newObject.jam = self.jamObject
-                self.__allRelativeObjects.append(newObject)
-            else:
-                self.isFormsValidated = False
-                return
+    def _SetFK(self, relativeObject):
+        relativeObject.jam = self.mainObject
 
     def DateFormSave(self, form:JamDateForm):
         if form.is_valid():
             newObject = form.save(commit=False)
-            newObject.jam = self.jamObject
+            newObject.jam = self.mainObject
             newObject.timeZone = get_localzone_name()
-            self.__allRelativeObjects.append(newObject)
-
+            self._objectsToSave.append(newObject)
 
     def FormsetSaver(self, formset, jam=None):
         if jam is None:
-            jam = self.jamObject
+            jam = self.mainObject
         if formset.is_valid():
             criteria = formset.save(commit=False)
             for c in criteria:
                 c.jam = jam
-                self.__allRelativeObjects.append(c)
+                self._objectsToSave.append(c)
         else:
             self.isFormsValidated = False
 
-    def SaveRelativeObjects(self):
-        for obj in self.__allRelativeObjects:
-            obj.save()
 
+class ProjectFormSaver(BaseFormSaver):
+    def _SetFK(self, relativeObject):
+        relativeObject.project = self.mainObject
+
+    def MainFormSave(self, form, request):
+        if form.is_valid() and request.user.is_authenticated:
+            self.mainObject = form.save(commit=False)
+            participant = Participant.objects.raw(
+                f'''SELECT jam_participant.id 
+                    FROM jam_participant
+                    JOIN jam_jam ON jam_participant.jam_id = jam_jam.id
+                    WHERE jam_jam.name = {request.jamName} AND 
+                          jam_participant.user_id = {request.user.id}'''
+            )
+            self.mainObject.participant_id = participant
+            self._objectsToSave.append(self.mainObject)
+        else:
+            self.isFormsValidated = False
