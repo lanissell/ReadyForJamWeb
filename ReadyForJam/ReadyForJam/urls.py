@@ -15,6 +15,7 @@ urlpatterns = [
     path('register/', regViews.UserRegistrationView.as_view(), name='registration'),
     path('login/', loginViews.UserLoginView.as_view(), name='login'),
     path('jam/', include('jam.urls')),
+    path('project/', include('project.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
     re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
     re_path(r'^logout/$', LogoutView.as_view(), name='logout'),

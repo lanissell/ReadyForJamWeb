@@ -115,11 +115,11 @@ class JamUpdateView(View):
 class JamPageView(View):
 
     @staticmethod
-    def get(request, jamName, **kwargs):
+    def get(request, **kwargs):
         jam = None
         context = {}
         try:
-            jam = Jam.objects.get(name=jamName)
+            jam = Jam.objects.get(name__exact=kwargs['jamName'])
         except ObjectDoesNotExist:
             print('jam not found')
         if jam is not None:

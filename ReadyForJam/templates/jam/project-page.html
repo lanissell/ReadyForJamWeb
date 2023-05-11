@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <style>
         body, html {
-            background: {{ projectColor.background_color }} !important;
+            background: {{ color.background_color }} !important;
         }
     </style>
 {% endblock %}
@@ -16,17 +16,17 @@
         <img src="../../media/{{ project.avatar }}" alt="jamLogo" class="jam-photo">
         <div class="jam-block">
             <div class="jam-block__container">
-                <div class="jam-block__list" style="background-color:{{ jamColor.form_color }}">
+                <div class="jam-block__list" style="background-color:{{ color.form_color }}">
                     <div class="jam-block__text-block text-block">
                         <h1 class="text-block__name"
-                            style="color:{{ projectColor.main_text_color }}">{{ project.name }}</h1>
+                            style="color:{{ color.main_text_color }}">{{ project.name }}</h1>
                         <nav class="text-block__creator">
                             <ul class="text-block__creator-list creator-list">
                                 <li class="creator-list__item"
-                                    style="background-color: {{ projectColor.main_text_color }}">
+                                    style="background-color: {{ color.main_text_color }}">
                                     <a href="" class="creator__link"
-                                       style="color: {{ projectColor.form_color }}">
-                                        {{ participant.name }}
+                                       style="color: {{ color.form_color }}">
+                                        {{ participant.username }}
                                     </a>
                                 </li>
                             </ul>
@@ -34,7 +34,7 @@
                     </div>
                     <div class="pc-tab">
                         <div class="tab1"
-                             style="background-color:{{ projectColor.form_color }}; color:{{ projectColor.main_text_color }}">
+                             style="background-color:{{ color.form_color }}; color:{{ color.main_text_color }}">
                             {{ project.content|safe }}
                         </div>
                     </div>

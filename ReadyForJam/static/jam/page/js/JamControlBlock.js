@@ -1,10 +1,13 @@
 let jamColor;
 
+const acceptText = 'Принять участие';
+const unAcceptText = 'Отказаться от участия';
+
 SetJamControlBlock();
 
 function SetJamControlBlock() {
-    let data = null
-    let blockParent = document.querySelector('.jam-block__participate')
+    let data = null;
+    let blockParent = document.querySelector('.jam-block__participate');
     let xhr = new XMLHttpRequest();
     xhr.open('GET', window.location.pathname + 'blockControl/', true);
 
@@ -16,12 +19,17 @@ function SetJamControlBlock() {
                 window.location.href = data.url;
             } else {
                 jamColor = data.color;
+                let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
+                projectBtn.id = 'project_btn';
+                blockParent.append(projectBtn);
                 let content;
-                if (data.date)
+                if (data.date){
                     content = GetTimerHTML(data.date);
-                else
+                }
+                else{
                     content = GetThemeHTML(data.theme);
-                blockParent.children[1].append(content)
+                }
+                blockParent.children[1].append(content);
                 if (data.isAuthor) {
                     let btn = GetButtonHtml('update', 'Обновить');
                     btn.id = 'update_button';
@@ -29,8 +37,8 @@ function SetJamControlBlock() {
                     btn = GetButtonHtml('', 'Удалить');
                     btn.id = 'delete_button';
                     blockParent.append(btn);
-                } else if (!data.theme) {
-                    let btn = GetButtonHtml('participate', 'Учавствовать');
+                } else{
+                    let btn = GetButtonHtml('participate', 'a');
                     btn.id = 'participate_button';
                     if (data.isParticipant)
                         btn = FlipBtnStyle(btn);
@@ -73,13 +81,13 @@ function GetButtonHtml(href, title) {
     let btn = document.createElement('button');
     btn.type = 'button';
     btn.className = 'jam-block__button';
-    btn = SetActiveBtnStyle(btn);
     if (href !== 'participate' && href !== '') {
         btn.addEventListener('click', function () {
             window.location.href = window.location.pathname + href;
         })
     }
-    btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`)
+    btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`);
+    SetActiveBtnStyle(btn);
     return btn;
 }
 
@@ -110,24 +118,35 @@ function GetTimerHTML(startDate) {
 }
 
 function FlipBtnStyle(btn){
-    if (btn.style.background === 'none')
+    if (btn.style.background === 'none'){
+        btn.children[0].innerHTML = acceptText;
         return SetActiveBtnStyle(btn);
-    else
+    }
+    else{
+        btn.children[0].innerHTML = unAcceptText;
         return SetUnActiveBtnStyle(btn);
+    }
+
 }
 
 function SetActiveBtnStyle(btn){
     btn.style.borderColor = 'rgba(0,0,0,0)';
     btn.style.color = jamColor.main_text_color;
     btn.style.background = jamColor.form_color;
-    return btn
+
+    let projectBtn = document.querySelector('#project_btn');
+    if (projectBtn) projectBtn.style.display = 'none';
+    return btn;
 }
 
 function SetUnActiveBtnStyle(btn){
     btn.style.borderColor = btn.style.backgroundColor;
     btn.style.color = btn.style.backgroundColor;
     btn.style.background = 'none';
-    return btn
+
+    let projectBtn = document.querySelector('#project_btn');
+    if (projectBtn) projectBtn.style.display = '';
+    return btn;
 }
 
 function GetCookie(name) {

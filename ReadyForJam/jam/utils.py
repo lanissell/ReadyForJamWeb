@@ -120,21 +120,3 @@ class JamFormSaver(BaseFormSaver):
             self.isFormsValidated = False
 
 
-class ProjectFormSaver(BaseFormSaver):
-    def _SetFK(self, relativeObject):
-        relativeObject.project = self.mainObject
-
-    def MainFormSave(self, form, request):
-        if form.is_valid() and request.user.is_authenticated:
-            self.mainObject = form.save(commit=False)
-            participant = Participant.objects.raw(
-                f'''SELECT jam_participant.id 
-                    FROM jam_participant
-                    JOIN jam_jam ON jam_participant.jam_id = jam_jam.id
-                    WHERE jam_jam.name = {request.jamName} AND 
-                          jam_participant.user_id = {request.user.id}'''
-            )
-            self.mainObject.participant_id = participant
-            self._objectsToSave.append(self.mainObject)
-        else:
-            self.isFormsValidated = False
