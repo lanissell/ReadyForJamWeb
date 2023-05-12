@@ -12,4 +12,4 @@ class MainPageView(JamListView):
              "ORDER BY jam_jamdate.start_date" \
              + f" LIMIT {__cardsLimit}"
 
-    _href = '/mainPage/MainPage.html'
+    _template = '/mainPage/MainPage.html'

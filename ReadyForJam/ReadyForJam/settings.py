@@ -24,6 +24,8 @@ INSTALLED_APPS = [
     'ckeditor_uploader',
     'jinja2',
     'debug_toolbar',
+    'jquery',
+    'django_node_assets',
 ]
 
 MIDDLEWARE = [
@@ -105,8 +107,18 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
+    os.path.join(BASE_DIR, 'static'),
+    ('node_modules', os.path.join(BASE_DIR, 'node_modules/')),
 ]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'django_node_assets.finders.NodeModulesFinder',
+]
+
+NODE_MODULES_ROOT = os.path.join(BASE_DIR, 'node_modules')
+
+NODE_PACKAGE_JSON = os.path.join(BASE_DIR, 'package.json')
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -165,3 +177,5 @@ CKEDITOR_CONFIGS = {
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+

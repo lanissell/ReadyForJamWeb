@@ -5,7 +5,7 @@ from registration.models import User
 
 
 class Jam(models.Model):
-    name = models.CharField(max_length=128, blank=False, null=False, unique=True)
+    name = models.CharField(max_length=15, blank=False, null=False, unique=True)
     theme = models.CharField(max_length=128, blank=False, null=False)
     avatar = models.ImageField(upload_to='jam/avatar')
     content = RichTextUploadingField(default='', blank=False, null=False,)

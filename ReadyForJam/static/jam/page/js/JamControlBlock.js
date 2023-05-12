@@ -12,6 +12,7 @@ function SetJamControlBlock() {
     xhr.open('GET', window.location.pathname + 'blockControl/', true);
 
     xhr.addEventListener('readystatechange', function () {
+
         if ((xhr.readyState === 4) && (xhr.status === 200)) {
             data = JSON.parse(xhr.response);
             let url = data.url;
@@ -22,28 +23,11 @@ function SetJamControlBlock() {
                 let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
                 projectBtn.id = 'project_btn';
                 blockParent.append(projectBtn);
-                let content;
-                if (data.date){
-                    content = GetTimerHTML(data.date);
-                }
-                else{
-                    content = GetThemeHTML(data.theme);
-                }
-                blockParent.children[1].append(content);
+                AppendTimer(data, blockParent);
                 if (data.isAuthor) {
-                    let btn = GetButtonHtml('update', 'Обновить');
-                    btn.id = 'update_button';
-                    blockParent.append(btn);
-                    btn = GetButtonHtml('', 'Удалить');
-                    btn.id = 'delete_button';
-                    blockParent.append(btn);
-                } else{
-                    let btn = GetButtonHtml('participate', 'a');
-                    btn.id = 'participate_button';
-                    if (data.isParticipant)
-                        btn = FlipBtnStyle(btn);
-                    blockParent.append(btn);
-                    ActivateParticipateButton();
+                    AppendAuthorControl(blockParent);
+                } else {
+                    AppendUserControl(data, blockParent);
                 }
                 document.querySelector('.load-wrapper').remove()
             }
@@ -52,6 +36,34 @@ function SetJamControlBlock() {
 
     xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
     xhr.send();
+}
+
+function AppendTimer(data, parent) {
+    let content;
+    if (data.date) {
+        content = GetTimerHTML(data.date);
+    } else {
+        content = GetThemeHTML(data.theme);
+    }
+    parent.children[1].append(content);
+}
+
+function AppendAuthorControl(blockParent) {
+    let btn = GetButtonHtml('update', 'Обновить');
+    btn.id = 'update_button';
+    blockParent.append(btn);
+    btn = GetButtonHtml('', 'Удалить');
+    btn.id = 'delete_button';
+    blockParent.append(btn);
+}
+
+function AppendUserControl(data, blockParent) {
+    let btn = GetButtonHtml('participate', acceptText);
+    btn.id = 'participate_button';
+    if (data.isParticipant)
+        btn = FlipBtnStyle(btn);
+    blockParent.append(btn);
+    ActivateParticipateButton();
 }
 
 function ActivateParticipateButton() {
@@ -74,8 +86,6 @@ function ActivateParticipateButton() {
         xhr.send();
     })
 }
-
-
 
 function GetButtonHtml(href, title) {
     let btn = document.createElement('button');
@@ -117,19 +127,18 @@ function GetTimerHTML(startDate) {
     return timer
 }
 
-function FlipBtnStyle(btn){
-    if (btn.style.background === 'none'){
+function FlipBtnStyle(btn) {
+    if (btn.style.background === 'none') {
         btn.children[0].innerHTML = acceptText;
         return SetActiveBtnStyle(btn);
-    }
-    else{
+    } else {
         btn.children[0].innerHTML = unAcceptText;
         return SetUnActiveBtnStyle(btn);
     }
 
 }
 
-function SetActiveBtnStyle(btn){
+function SetActiveBtnStyle(btn) {
     btn.style.borderColor = 'rgba(0,0,0,0)';
     btn.style.color = jamColor.main_text_color;
     btn.style.background = jamColor.form_color;
@@ -139,7 +148,7 @@ function SetActiveBtnStyle(btn){
     return btn;
 }
 
-function SetUnActiveBtnStyle(btn){
+function SetUnActiveBtnStyle(btn) {
     btn.style.borderColor = btn.style.backgroundColor;
     btn.style.color = btn.style.backgroundColor;
     btn.style.background = 'none';
@@ -155,7 +164,6 @@ function GetCookie(name) {
         const cookies = document.cookie.split(';');
         for (let i = 0; i < cookies.length; i++) {
             const cookie = cookies[i].trim();
-            // Does this cookie string begin with the name we want?
             if (cookie.substring(0, name.length + 1) === (name + '=')) {
                 cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
                 break;

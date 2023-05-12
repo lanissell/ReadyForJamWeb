@@ -27,17 +27,11 @@
                 </li>
 
                 <li class="filter-block__item">
-                    <p class="filter-block__item-text">Рейтинг организаторов</p>
-                    <img src="../../media/jam/pageImages/filter-block__triangle.svg" alt=""
-                         class="filter-block__triangle-image">
-                </li>
-
-                <li class="filter-block__item">
                     <p class="filter-block__item-text">Количество участников</p>
                     <img src="../../media/jam/pageImages/filter-block__triangle.svg" alt=""
-                         class="filter-block__triangle-image">
+                         class="filter-block__triangle-image" id="quantity_sort_btn">
                 </li>
-
+                <script src="{{ static('/jam/page/js/JamListSort.js') }}"></script>
                 <li class="filter-block__item">
                     <form action="/jam/register/" class="filter-block__form">
                         <button type="submit" class="filter-block__button">

@@ -46,11 +46,11 @@ html {
   outline: none;
 }
 
-ul li.filter-block__item:not(:nth-child(4) and :nth-child(5)) {
+ul li.filter-block__item:not(:nth-child(3) and :nth-child(4)) {
   margin-right: 2%;
 }
 
-ul li.filter-block__item:nth-child(5) {
+ul li.filter-block__item:nth-child(4) {
   margin-left: auto;
 }
 
@@ -150,6 +150,7 @@ ul li.filter-block__item:nth-child(5) {
   font-size: 1.8vw;
   text-transform: uppercase;
   padding: 143px 0 95px 0;
+  white-space: nowrap;
 }
 
 .list__item-text {

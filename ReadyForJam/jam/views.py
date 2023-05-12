@@ -3,6 +3,7 @@ from django.http import JsonResponse
 
 from django.core.exceptions import ObjectDoesNotExist
 from django.shortcuts import render, redirect
+from django.template.loader import render_to_string
 from django.views import View
 
 from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteriaFormSet
@@ -159,12 +160,26 @@ class JamListView(View):
             JOIN jam_jamcolor ON jam_jam.id = jam_jamcolor.jam_id
             '''
 
-    _href = '/jam/jam-list.html'
+    _template = '/jam/jam-list.html'
 
     def get(self, request, **kwargs):
         jams = Jam.objects.raw(self._query)
         jamCards = [JamCard(jam) for jam in jams]
-        return render(request, self._href, context={'jamCards': jamCards})
+        jamCards = sorted(jamCards, key=lambda c: c.participantQuantity, reverse=True)
+        return render(request, self._template, context={'jamCards': jamCards})
+
+    def post(self, request):
+        isQuantityReverse = request.POST.get('is_quantity_reverse')
+        jams = Jam.objects.raw(self._query)
+        jamCards = sorted([JamCard(jam) for jam in jams],
+                          key=lambda c: c.participantQuantity,
+                          reverse=isQuantityReverse)
+        cards = render_to_string(
+            template_name = self._template,
+            context= {'jamCards': jamCards}
+        )
+        json_sort = {"sort_by_choice": cards}
+        return JsonResponse(data=json_sort, safe=False)
 
 
 class JamParticipate(View):
