@@ -58,11 +58,12 @@ ul li.filter-block__item:nth-child(4) {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 1.2vw;
+  font-size: 1.3vw;
 }
 
 .filter-block__triangle-image {
   margin-left: 3px;
+  width: 2vh;
 }
 
 .filter-block__button {
@@ -159,6 +160,10 @@ ul li.filter-block__item:nth-child(4) {
   font-style: normal;
   font-weight: 700;
   font-size: 1.5vw;
+}
+
+.rotate {
+  transform: rotate(180deg);
 }
 
 /* Adjust the grid layout for smaller screens */

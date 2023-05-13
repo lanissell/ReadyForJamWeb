@@ -25,13 +25,11 @@
 {#                        <option value="s3">3</option>#}
 {#                    </select>#}
                 </li>
-
                 <li class="filter-block__item">
                     <p class="filter-block__item-text">Количество участников</p>
                     <img src="../../media/jam/pageImages/filter-block__triangle.svg" alt=""
                          class="filter-block__triangle-image" id="quantity_sort_btn">
                 </li>
-                <script src="{{ static('/jam/page/js/JamListSort.js') }}"></script>
                 <li class="filter-block__item">
                     <form action="/jam/register/" class="filter-block__form">
                         <button type="submit" class="filter-block__button">
@@ -43,7 +41,7 @@
             </ul>
         </div>
 
-        <div class="jam-list list">
+        <div class="jam-list list" id="jam-list">
             <div class="list__container">
                 {% for card in jamCards %}
                     <a href="/jam/{{ card.title }}" style="text-decoration: none">
@@ -62,8 +60,8 @@
                         </div>
                     </a>
                 {% endfor %}
-
             </div>
+            <script src="{{ static('/jam/page/js/JamListSort.js') }}"></script>
         </div>
     </div>
 {% endblock %}
