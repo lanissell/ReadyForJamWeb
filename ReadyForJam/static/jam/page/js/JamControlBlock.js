@@ -62,7 +62,7 @@ function AppendUserControl(data, blockParent) {
     btn.id = 'participate_button';
     if (data.isParticipant)
         btn = FlipBtnStyle(btn);
-    blockParent.append(btn);
+    blockParent.parentElement.append(btn);
     ActivateParticipateButton();
 }
 
@@ -122,7 +122,8 @@ function GetTimerHTML(startDate) {
         '              <div class="jam-block__time-separator">ч:</div>\n' +
         '              <div id="minutes">00</div>\n' +
         '              <div class="jam-block__time-separator">м:</div>\n' +
-        '              <div id="seconds">00</div>'
+        '              <div id="seconds">00</div>' +
+        '              <div class="jam-block__time-separator">с</div>\n'
     timer.insertAdjacentHTML('beforeend', html)
     return timer
 }

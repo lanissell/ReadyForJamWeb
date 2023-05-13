@@ -17,23 +17,30 @@
         <div class="jam-block">
             <div class="jam-block__container">
                 <div class="jam-block__list" style="background-color:{{ jamColor.form_color }}">
-                    <div class="jam-block__text-block text-block">
-                        <h3 class="text-block__count-member"
-                            style="color:{{ jamColor.main_text_color }}">1000</h3>
-                        <h1 class="text-block__name"
-                            style="color:{{ jamColor.main_text_color }}">{{ jam.name }}</h1>
-                        <nav class="text-block__creator">
-                            <ul class="text-block__creator-list creator-list">
-                                <li class="creator-list__item"
-                                    style="background-color: {{ jamColor.main_text_color }}">
-                                    <a href="" class="creator__link"
-                                       style="color: {{ jamColor.form_color }}">
-                                        {{ jam.author }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+
+
+                    <div class="jam-block__info">
+                        <div class="jam-block__count">
+                            <h3 class="text-block__count-member"
+                                style="color:{{ jamColor.main_text_color }}">1000 участников</h3>
+                        </div>
+                        <div class="jam-block__text-block text-block">
+                            <h1 class="text-block__name"
+                                style="color:{{ jamColor.main_text_color }}">{{ jam.name }}</h1>
+                            <nav class="text-block__creator">
+                                <ul class="text-block__creator-list creator-list">
+                                    <li class="creator-list__item"
+                                        style="background-color: {{ jamColor.main_text_color }}">
+                                        <a href="" class="creator__link"
+                                           style="color: {{ jamColor.form_color }}">
+                                            {{ jam.author }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
+
                     <div class="jam-block__participate">
                         <div class="load-wrapper">
                             <div class="activity"></div>
