@@ -52,6 +52,10 @@ $hoverColor: #ffffff;
     color: $textColor;
   }
 
+  p:first-child {
+    padding-left: 10px;
+  }
+
   a {
     color: $textColor;
     outline: none;
