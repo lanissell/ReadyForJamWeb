@@ -2,7 +2,6 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.contrib.auth.views import LogoutView
-from django.template.defaulttags import url
 from django.urls import path, include, re_path
 
 from mainPage.views import MainPageView
@@ -17,7 +16,7 @@ urlpatterns = [
     path('jam/', include('jam.urls')),
     path('project/', include('project.urls')),
     path('__debug__/', include('debug_toolbar.urls')),
-    re_path(r'^ckeditor/', include('ckeditor_uploader.urls')),
+    path("ckeditor5/", include('django_ckeditor_5.urls'), name="ck_editor_5_upload_file"),
     re_path(r'^logout/$', LogoutView.as_view(), name='logout'),
 ]
 

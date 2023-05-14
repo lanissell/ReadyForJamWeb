@@ -20,12 +20,11 @@ INSTALLED_APPS = [
     'login',
     'jam',
     'project',
-    'ckeditor',
-    'ckeditor_uploader',
     'jinja2',
     'debug_toolbar',
     'jquery',
     'django_node_assets',
+    'django_ckeditor_5',
 ]
 
 MIDDLEWARE = [
@@ -123,59 +122,63 @@ NODE_PACKAGE_JSON = os.path.join(BASE_DIR, 'package.json')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-AUTO_LOGOUT = {'SESSION_TIME': 600}
+CKEDITOR_5_FILE_STORAGE = 'globalUtils.CustomStorage'
 
-CKEDITOR_UPLOAD_PATH = "uploads/"
-
-CKEDITOR_CONFIGS = {
+CKEDITOR_5_CONFIGS = {
     'default': {
-        'toolbar_Custom': [
-            {'name': 'document', 'items': ['Source', 'Preview']},
-            {'name': 'clipboard', 'items': ['Cut', 'Copy', 'Paste', 'PasteText', 'PasteFromWord', '-', 'Undo', 'Redo']},
-            {'name': 'editing', 'items': ['Find', 'Replace', '-', 'SelectAll']},
-            '/',
-            {'name': 'basicstyles',
-             'items': ['Bold', 'Italic', 'Underline', 'Strike', 'Subscript', 'Superscript', '-', 'RemoveFormat']},
-            {'name': 'paragraph',
-             'items': ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'Blockquote', 'CreateDiv', '-',
-                       'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock', '-', 'BidiLtr', 'BidiRtl']},
-            {'name': 'links', 'items': ['Youtube']},
-            {'name': 'insert',
-             'items': ['Table', 'HorizontalRule', 'Smiley', 'SpecialChar', 'PageBreak', ]},
-            '/',
-            {'name': 'styles', 'items': ['Styles', 'Format', 'Font', 'FontSize']},
-            {'name': 'colors', 'items': ['TextColor', 'BGColor']},
-            {'name': 'tools', 'items': ['Maximize', 'ShowBlocks']},
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link',
+                    'bulletedList', 'numberedList', 'blockQuote', 'imageUpload', ],
+
+    },
+    'extends': {
+        "language": "ru",
+        'mediaEmbed':{
+            'previewsInData': 'True',
+        },
+        'blockToolbar': [
+            'paragraph', 'heading1', 'heading2', 'heading3',
+            '|',
+            'bulletedList', 'numberedList',
+            '|',
+            'blockQuote',
         ],
-        'toolbar': 'Custom',  # put selected toolbar config here
-        'toolbarGroups': [{'name': 'document', 'groups': ['mode', 'document', 'doctools']}],
-        'height': 200,
-        'width': '100%',
-        'filebrowserWindowHeight': 725,
-        'filebrowserWindowWidth': 940,
-        'toolbarCanCollapse': True,
-        'mathJaxLib': '//cdn.mathjax.org/mathjax/2.2-latest/MathJax.js?config=TeX-AMS_HTML',
-        'tabSpaces': 4,
-        'skin': 'moono-lisa',
-        'extraPlugins': ','.join([
-            # your extra plugins here
-            'youtube',
-            'div',
-            'autolink',
-            'autoembed',
-            'embedsemantic',
-            'autogrow',
-            'widget',
-            'lineutils',
-            'clipboard',
-            'dialog',
-            'dialogui',
-            'elementspath',
-            'codesnippet',
-        ]),
-    }
+        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
+                    'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing',
+                    'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
+                    'insertTable', ],
+        'image': {
+            'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',
+                        'imageStyle:alignRight', 'imageStyle:alignCenter', 'imageStyle:side', '|'],
+            'styles': [
+                'full',
+                'side',
+                'alignLeft',
+                'alignRight',
+                'alignCenter',
+            ]
+
+        },
+        'table': {
+            'contentToolbar': ['tableColumn', 'tableRow', 'mergeTableCells',
+                               'tableProperties', 'tableCellProperties'],
+        },
+        'heading': {
+            'options': [
+                {'model': 'paragraph', 'title': 'Paragraph', 'class': 'ck-heading_paragraph'},
+                {'model': 'heading1', 'view': 'h1', 'title': 'Heading 1', 'class': 'ck-heading_heading1'},
+                {'model': 'heading2', 'view': 'h2', 'title': 'Heading 2', 'class': 'ck-heading_heading2'},
+                {'model': 'heading3', 'view': 'h3', 'title': 'Heading 3', 'class': 'ck-heading_heading3'}
+            ]
+        },
+        'list': {
+            'properties': {
+                'styles': 'true',
+                'startIndex': 'true',
+                'reversed': 'true',
+            }
+        },
+    },
 }
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-

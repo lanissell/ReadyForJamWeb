@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% block links %}
     <link rel="stylesheet" href="{{ static('/jam/registration/css/jam-registration.css') }}">
+    {{ form.media }}
 {% endblock %}
 {% block title %}
     {{ title }}
@@ -39,7 +40,7 @@
                                             </li>
                                         {% endfor %}
                                     </ul>
-                                    <script src="../../static/jam/registration/js/DateValidController.js"></script>
+                                    <script src="{{ static('/jam/registration/js/DateValidController.js')}}"></script>
                                 {% endif %}
 
                                 <!--        Лист с Цветами на выбор пользователя-->
@@ -57,12 +58,12 @@
                             </div>
 
                         </li>
-                        <li class="registration__item">
+                        <li class="registration__item rich-text">
                             <h3 class="registration__item-title">Описание</h3>
                             <label>
                                 {{ form.content }}
-                                {{ form.media }}
                             </label>
+                            <div id="deleting_form"> {{ form }}</div>
                         </li>
                         {% if formSet %}
                             <li class="registration__item">
@@ -82,7 +83,7 @@
                                     </button>
                                 </div>
                             </li>
-                            <script src="../../static/jam/registration/js/CriteriaFormController.js"></script>
+                            <script src="{{ static('/jam/registration/js/CriteriaFormController.js') }}"></script>
                         {% endif %}
 
                     </ul>
@@ -91,8 +92,9 @@
                             {{ btnName }}
                         </button>
                     </div>
+
                 </form>
-                <script src="../../static/jam/registration/js/RichTextInputColor.js"></script>
+                <script src="{{ static('/jam/registration/js/RichTextInputColor.js') }}"></script>
             </div>
         </div>
     </div>

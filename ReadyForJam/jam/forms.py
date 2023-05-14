@@ -3,6 +3,7 @@ from datetime import datetime
 from ckeditor.widgets import CKEditorWidget
 from django.forms import ModelForm, modelformset_factory
 from django import forms
+from django_ckeditor_5.widgets import CKEditor5Widget
 
 from jam.models import Jam, JamColor, JamDate, JamCriteria
 from globalUtils import BasicHtmlAttrs
@@ -25,14 +26,17 @@ class JamRegistrationForm(ModelForm):
     avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
         attrs=attrs
     ))
-    content = forms.Field(label='Содержание страницы',
-                              widget=CKEditorWidget())
 
     class Meta:
         model = Jam
         fields = ['name', 'theme', 'avatar', 'content']
+        widgets = {
+            "content": CKEditor5Widget(
+                attrs={"class": "django_ckeditor_5"}, config_name="extends"
+            )
+        }
 
-    field_order = ['name', 'theme', 'avatar']
+    field_order = ['name', 'theme', 'avatar', 'content']
 
 
 class DateInput(forms.DateInput):

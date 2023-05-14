@@ -36,6 +36,7 @@ html {
 
 .registration__container {
   min-width: 785px;
+  max-width: 1000px;
   background: #414141;
   border: 2px solid #313131;
   border-radius: 10px;
