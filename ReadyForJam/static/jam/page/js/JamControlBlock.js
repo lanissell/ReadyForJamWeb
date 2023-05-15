@@ -174,7 +174,3 @@ function GetCookie(name) {
     }
     return cookieValue;
 }
-
-function InsertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
-}
