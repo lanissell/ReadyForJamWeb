@@ -67,19 +67,18 @@ def IsAuthor(user, jam):
         return False
 
 class JamCard:
-    __id = 0
 
     def __init__(self, jam):
-        self.__id = jam.id
         self.title = jam.name
         self.photo = '/media/' + str(jam.avatar)
         self.date = self.DateFormat(jam.start_date, jam.time_zone)
         self.author = jam.author.username
         self.color = jam.background_color
-        self.participantQuantity = self.CountParticipant()
+        self.participantQuantity = self.CountParticipant(jam.id)
 
-    def CountParticipant(self):
-        return Participant.objects.filter(jam_id__exact=self.__id).count()
+    @staticmethod
+    def CountParticipant(id):
+        return Participant.objects.filter(jam_id__exact=id).count()
 
     @staticmethod
     def DateFormat(dateString: str, dateTimeZone:str):

@@ -1,27 +1,31 @@
-let iframe
+
+let inputFormColor;
+let inputTextColor;
 
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelector('#deleting_form').remove();
 
-    const input = document.querySelector("#formColor")
-    const contentBlock = document.querySelector(".ck-editor__main").children[0];
+    inputFormColor = document.querySelector("#formColor")
+    inputTextColor = document.querySelector("#id_main_text_color")
 
 
-    SetColorToContent(input.value);
-    input.addEventListener("change", function () {
-        SetColorToContent(input.value);
+    SetColorToContent();
+    inputFormColor.addEventListener("change", function () {
+        SetColorToContent();
     })
-
-
+    inputTextColor.addEventListener("change", function () {
+        SetColorToContent();
+    })
 })
 
-function SetColorToContent(color){
+function SetColorToContent(){
     RemoveContentStyle();
     const style = document.createElement('style');
     style.id = '#content-style';
     style.innerHTML = `
     .content-color {
-        background-color: ${color};
+        background-color: ${inputFormColor.value};
+        color: ${inputTextColor.value};
     }`
     document.head.appendChild(style);
 }
