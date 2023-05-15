@@ -1,5 +1,5 @@
-from ckeditor_uploader.fields import RichTextUploadingField
 from django.db import models
+from django_ckeditor_5.fields import CKEditor5Field
 
 from jam.models import Participant
 
@@ -8,7 +8,7 @@ class Project(models.Model):
     participant = models.OneToOneField(Participant, blank=False, null=False, on_delete=models.CASCADE)
     name = models.CharField(max_length=128, blank=False, null=False, unique=True)
     avatar = models.ImageField(upload_to='jam/project/avatar', default='')
-    content = RichTextUploadingField(default='', blank=False, null=False,)
+    content = CKEditor5Field(config_name='extends')
 
 class ProjectColor(models.Model):
     project = models.ForeignKey(Project, blank=False, null=False, on_delete=models.CASCADE)
