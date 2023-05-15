@@ -127,7 +127,7 @@ html {
 .jam-block__participate {
   width: 60%;
   text-align: center;
-  margin: 0 auto 25px;
+  margin: 0 auto;
   border-radius: 10px;
   border: 2px solid #FFFFFF;
 }
@@ -136,6 +136,7 @@ html {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 10px;
 }
 
 #timer {
@@ -154,21 +155,12 @@ html {
   display: inline;
 }
 
-.jam-block__button-block {
-  width: 100%;
-  text-align: center;
-  margin-top: 50px;
-}
-.jam-block__button-block :not(:last-child) {
-  margin-right: 30px;
-}
-
 .jam-block__button {
   width: 30%;
-  padding: 15px;
-  margin: auto;
-  text-align: center;
+  margin: 0 auto;
+  padding: 30px;
   border-radius: 10px;
+  border: 1px solid #FFFFFF !important;
   background: rgba(70, 70, 70, 0.4) !important;
   text-transform: uppercase;
 }
@@ -253,6 +245,7 @@ html {
   width: 100%;
   min-height: 100%;
   padding: 100px;
+  margin-bottom: 15%;
 }
 .pc-tab ul {
   list-style: none;

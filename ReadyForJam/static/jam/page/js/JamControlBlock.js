@@ -7,7 +7,7 @@ SetJamControlBlock();
 
 function SetJamControlBlock() {
     let data = null;
-    let blockParent = document.querySelector('.jam-block__button-block');
+    let blockParent = document.querySelector('.jam-block__participate');
     let xhr = new XMLHttpRequest();
     xhr.open('GET', window.location.pathname + 'blockControl/', true);
 
@@ -23,7 +23,7 @@ function SetJamControlBlock() {
                 let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
                 projectBtn.id = 'project_btn';
                 blockParent.append(projectBtn);
-                AppendTimer(data);
+                AppendTimer(data, blockParent);
                 if (data.isAuthor) {
                     AppendAuthorControl(blockParent);
                 } else {
@@ -38,15 +38,14 @@ function SetJamControlBlock() {
     xhr.send();
 }
 
-function AppendTimer(data) {
+function AppendTimer(data, parent) {
     let content;
     if (data.date) {
         content = GetTimerHTML(data.date);
     } else {
         content = GetThemeHTML(data.theme);
     }
-    let parent = document.querySelector('.jam-block__timer-container');
-    parent.append(content);
+    parent.children[1].append(content);
 }
 
 function AppendAuthorControl(blockParent) {
@@ -63,7 +62,7 @@ function AppendUserControl(data, blockParent) {
     btn.id = 'participate_button';
     if (data.isParticipant)
         btn = FlipBtnStyle(btn);
-    blockParent.append(btn);
+    blockParent.parentElement.append(btn);
     ActivateParticipateButton();
 }
 
@@ -173,4 +172,8 @@ function GetCookie(name) {
         }
     }
     return cookieValue;
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> parent of af91888 (redesign button in the jam-page)
