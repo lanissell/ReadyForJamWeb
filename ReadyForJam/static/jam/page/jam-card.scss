@@ -1,0 +1,160 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+body,
+html {
+  font-size: 16px;
+  color: #ffffff;
+  height: 100%;
+  background-size: cover;
+  font-family: Roboto, serif;
+}
+
+.wrapper {
+  min-height: 100%;
+  overflow: hidden;
+}
+
+
+._container {
+  max-width: 90%;
+  padding: 0 15px;
+  margin: 0 auto;
+  box-sizing: content-box;
+}
+
+
+.list-block {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.jam {
+}
+
+.jam-list {
+  width: 100%;
+  height: 100%;
+}
+
+.jam-list__item {
+  display: flex;
+  width: 57vw;
+  margin-bottom: 30px;
+  padding: 10px;
+
+
+  border-radius: 10px;
+  background-color: #B49CC8;
+}
+.jam-list__img-container  {
+  width: 30%;
+  margin-right: 30px;
+}
+
+.jam-list__image {
+  width: 90%;
+  max-height: 90%;
+  height: auto;
+  margin-left: 10px;
+  margin-top: 10px;
+
+  border-radius: 10px 10px;
+}
+
+.jam-list__info-container {
+}
+
+.jam-list__name {
+  margin: 0 0 20px;
+  font-style: normal;
+  font-size: 3vw;
+  text-transform: uppercase;
+
+  color: #FFFFFF;
+}
+
+.text-block__creator-list {
+}
+
+.creator-list {
+  padding-inline-start: 0;
+  margin-bottom: 30px;
+}
+
+.creator-list__item {
+  display: inline-block;
+  text-align: center;
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 0 10px;
+  margin-bottom: 1.5%;
+}
+
+.creator__link {
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.5vw;
+  text-decoration: none;
+}
+
+
+
+.jam-list__table {
+
+  border-collapse: collapse;
+
+  tr:first-child {
+    border-bottom: 2px solid #916FAD;
+  }
+
+  tr:not(:first-child) {
+    border-bottom: 2px solid rgba(145, 111, 173, 0.5);;
+  }
+
+  td:not(:first-child), td:not(:last-child) {
+    padding-right: 50px;
+  }
+
+  th:not(:first-child), th:not(:last-child) {
+    padding-right: 50px;
+  }
+
+  td:nth-child(4n-3) {
+    padding-right: 200px;
+  }
+
+  td, th {
+    padding: 5px 5px 9px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+
+    color: #FFFFFF;
+  }
+}
+
+.jam-list__button-apply {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../img/jam-card/button-apply.svg");
+  background-color: #B49CC8;
+  border: none;
+
+
+  &:hover {
+    background-color: #a692bd;
+  }
+}
+
+.jam-list__button-cancel {
+  width: 30px;
+  height: 30px;
+  background-image: url("../../img/jam-card/button-cancel.svg");
+  background-color: #B49CC8;
+  border: none;
+
+  &:hover {
+    background-color: #a692bd;
+  }
+}
