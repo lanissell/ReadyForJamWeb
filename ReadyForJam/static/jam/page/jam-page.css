@@ -169,7 +169,9 @@ html {
   margin: auto;
   text-align: center;
   border-radius: 10px;
-  background: rgba(70, 70, 70, 0.4) !important;
+  border-color: transparent;
+  border-style: solid;
+  background: rgba(70, 70, 70, 0.4);
   text-transform: uppercase;
 }
 .jam-block__button a {
@@ -230,7 +232,6 @@ html {
 
 .modal-yes-btn {
   margin: 10px;
-  border-color: #313131;
   background-color: #CA3E47;
   color: white;
 }

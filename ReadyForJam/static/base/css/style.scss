@@ -196,12 +196,12 @@ ul li.right-group__items:not(:last-child) {
 
 .load-wrapper{
   position: relative;
-  height: 100%;
+  height: 10vw;
   width: 100%;
   background-color: #313131;
   z-index: 44;
   overflow: hidden;
-  border-radius: 5px;
+  border-radius: 0.5vw;
 }
 .activity{
   position: absolute;

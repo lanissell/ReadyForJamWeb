@@ -129,6 +129,7 @@ class JamPageView(View):
             jamColor = JamColor.objects.get(jam=jam)
             context['jam'] = jam
             context['jamColor'] = jamColor
+            context['jamCount'] = JamCard.CountParticipant(jam.id)
             return render(request, '/jam/jam-page.html', context=context)
         else:
             return redirect('jamList')

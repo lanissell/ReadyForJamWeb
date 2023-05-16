@@ -99,6 +99,14 @@ function GetButtonHtml(href, title) {
     }
     btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`);
     SetActiveBtnStyle(btn);
+    btn.onmouseover = function (){
+        btn.style.borderColor = jamColor.main_text_color;
+        btn.style.transform = 'scale(1.1)'
+    }
+    btn.onmouseout = function (){
+        btn.style.borderColor = 'transparent';
+        btn.style.transform = 'scale(1)'
+    }
     return btn;
 }
 
@@ -125,6 +133,7 @@ function GetTimerHTML(startDate) {
         '              <div class="jam-block__time-separator">м:</div>\n' +
         '              <div id="seconds">00</div>' +
         '              <div class="jam-block__time-separator">с</div>\n'
+    timer.style.color = jamColor.main_text_color;
     timer.insertAdjacentHTML('beforeend', html)
     return timer
 }
@@ -142,8 +151,8 @@ function FlipBtnStyle(btn) {
 
 function SetActiveBtnStyle(btn) {
     btn.style.borderColor = 'rgba(0,0,0,0)';
-    btn.style.color = jamColor.main_text_color;
-    btn.style.background = jamColor.form_color;
+    btn.style.color = jamColor.form_color;
+    btn.style.background = jamColor.background_color;
 
     let projectBtn = document.querySelector('#project_btn');
     if (projectBtn) projectBtn.style.display = 'none';
@@ -173,8 +182,4 @@ function GetCookie(name) {
         }
     }
     return cookieValue;
-}
-
-function InsertAfter(referenceNode, newNode) {
-    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
 }
