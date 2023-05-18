@@ -132,7 +132,7 @@ CKEDITOR_5_CONFIGS = {
     },
     'extends': {
         "language": "ru",
-        'mediaEmbed':{
+        'mediaEmbed': {
             'previewsInData': 'True',
         },
         'blockToolbar': [
@@ -142,10 +142,10 @@ CKEDITOR_5_CONFIGS = {
             '|',
             'blockQuote',
         ],
-        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'link', 'underline', 'strikethrough',
-                    'code', 'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing',
-                    'bulletedList', 'numberedList', 'todoList', '|', 'blockQuote', 'imageUpload', '|',
-                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor', 'mediaEmbed', 'removeFormat',
+        'toolbar': ['heading', '|', 'outdent', 'indent', '|', 'bold', 'italic', 'underline', 'link',
+                    'fontSize', 'fontFamily', 'fontColor', 'fontBackgroundColor',
+                    'subscript', 'superscript', 'highlight', '|', 'codeBlock', 'sourceEditing',
+                    'bulletedList', 'numberedList', 'todoList', '|', 'imageUpload', 'mediaEmbed', '|',
                     'insertTable', ],
         'image': {
             'toolbar': ['imageTextAlternative', '|', 'imageStyle:alignLeft',

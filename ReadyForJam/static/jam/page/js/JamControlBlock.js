@@ -1,5 +1,5 @@
 let jamColor;
-
+let isStart = false;
 const acceptText = 'Принять участие';
 const unAcceptText = 'Отказаться от участия';
 
@@ -19,10 +19,12 @@ function SetJamControlBlock() {
             if (url) {
                 window.location.href = data.url;
             } else {
+                if (data.theme) isStart=true;
                 jamColor = data.color;
                 let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
                 projectBtn.id = 'project_btn';
                 blockParent.append(projectBtn);
+                DisableProjectBtn();
                 AppendTimer(data);
                 if (data.isAuthor) {
                     AppendAuthorControl(blockParent);
@@ -40,10 +42,10 @@ function SetJamControlBlock() {
 
 function AppendTimer(data) {
     let content;
-    if (data.date) {
-        content = GetTimerHTML(data.date);
-    } else {
+    if (isStart) {
         content = GetThemeHTML(data.theme);
+    } else {
+        content = GetTimerHTML(data.date);
     }
     let parent = document.querySelector('.jam-block__timer-container');
     parent.append(content);
@@ -53,6 +55,7 @@ function AppendAuthorControl(blockParent) {
     let btn = GetButtonHtml('update', 'Обновить');
     btn.id = 'update_button';
     blockParent.append(btn);
+
     btn = GetButtonHtml('', 'Удалить');
     btn.id = 'delete_button';
     blockParent.append(btn);
@@ -62,7 +65,7 @@ function AppendUserControl(data, blockParent) {
     let btn = GetButtonHtml('participate', acceptText);
     btn.id = 'participate_button';
     if (data.isParticipant)
-        btn = FlipBtnStyle(btn);
+        btn = FlipParticipateBtnStyle(btn);
     blockParent.append(btn);
     ActivateParticipateButton();
 }
@@ -80,7 +83,7 @@ function ActivateParticipateButton() {
                 if (url)
                     window.location.href = data.url;
                 else
-                    btn.replaceWith(FlipBtnStyle(btn));
+                    btn.replaceWith(FlipParticipateBtnStyle(btn));
             }
         })
         xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
@@ -101,10 +104,11 @@ function GetButtonHtml(href, title) {
     SetActiveBtnStyle(btn);
     btn.onmouseover = function (){
         btn.style.borderColor = jamColor.main_text_color;
+        btn.style.color = jamColor.main_text_color;
         btn.style.transform = 'scale(1.1)'
     }
     btn.onmouseout = function (){
-        btn.style.borderColor = 'transparent';
+        btn = SetActiveBtnStyle(btn)
         btn.style.transform = 'scale(1)'
     }
     return btn;
@@ -138,34 +142,33 @@ function GetTimerHTML(startDate) {
     return timer
 }
 
-function FlipBtnStyle(btn) {
-    if (btn.style.background === 'none') {
+function FlipParticipateBtnStyle(btn) {
+    if (btn.children[0].innerHTML === unAcceptText) {
         btn.children[0].innerHTML = acceptText;
+
+        DisableProjectBtn();
+
         return SetActiveBtnStyle(btn);
     } else {
         btn.children[0].innerHTML = unAcceptText;
-        return SetUnActiveBtnStyle(btn);
+
+        let projectBtn = document.querySelector('#project_btn');
+        if (projectBtn && isStart) projectBtn.style.display = '';
+
+        return btn;
     }
 
+}
+
+function DisableProjectBtn(){
+    let projectBtn = document.querySelector('#project_btn');
+    if (projectBtn) projectBtn.style.display = 'none';
 }
 
 function SetActiveBtnStyle(btn) {
     btn.style.borderColor = 'rgba(0,0,0,0)';
     btn.style.color = jamColor.form_color;
     btn.style.background = jamColor.background_color;
-
-    let projectBtn = document.querySelector('#project_btn');
-    if (projectBtn) projectBtn.style.display = 'none';
-    return btn;
-}
-
-function SetUnActiveBtnStyle(btn) {
-    btn.style.borderColor = btn.style.backgroundColor;
-    btn.style.color = btn.style.backgroundColor;
-    btn.style.background = 'none';
-
-    let projectBtn = document.querySelector('#project_btn');
-    if (projectBtn) projectBtn.style.display = '';
     return btn;
 }
 

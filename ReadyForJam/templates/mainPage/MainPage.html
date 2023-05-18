@@ -7,13 +7,14 @@
 {% endblock %}
 {% block content %}
     <div class="title">
-        <img class="title__background" src="../../media/base/Background.gif" alt="SHOW">
+        <div class="title_image_container"><img class="title__background" src="../../media/base/Background.gif"
+                                                alt="SHOW"></div>
         <div class="title__text-group">
             <h1 class="title__item-title">READY FOR JAM</h1>
             <h2 class="title__item-subtitle">СОЗДАВАЙ И УЧАВСТВУЙ В ИГРОВЫХ ДЖЕМАХ</h2>
             <form action="" class="title__form" method="get">
                 <button class="title__button" type="button"
-                        onclick="location.href='{{ url('registration') }}'" >
+                        onclick="location.href='{{ url('registration') }}'">
                     <div class="title__link">НАЧАТЬ</div>
                 </button>
             </form>
@@ -30,12 +31,12 @@
                         background-color: {{ card.color }};
                         background-image: url('{{ card.photo }}') !important;">
                     <div class="blur"></div>
-                    <div class="jam-list__text-block">
-                        <h3 class="jam-list__item-title">{{ card.title }}</h3>
-                        <h4 class="jam-list__item-text"><span>Начало: </span>{{ card.date }}</h4>
-                        <h4 class="jam-list__item-text"><span>Организатор: </span>{{ card.author }}</h4>
-                        <h4 class="jam-list__item-text"><span>Участники: </span> {{ card.participantQuantity }}</h4>
-                    </div>
+                        <div class="jam-list__text-block">
+                            <h3 class="jam-list__item-title">{{ card.title }}</h3>
+                            <h4 class="jam-list__item-text"><span>Начало: </span>{{ card.date }}</h4>
+                            <h4 class="jam-list__item-text"><span>Организатор: </span>{{ card.author }}</h4>
+                            <h4 class="jam-list__item-text"><span>Участники: </span> {{ card.participantQuantity }}</h4>
+                        </div>
                 </li>
             {% endfor %}
         </ul>

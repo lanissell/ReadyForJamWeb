@@ -12,20 +12,18 @@ class JamProjectRegisterForm(ModelForm):
 
     name = forms.CharField(label='Название', widget=forms.TextInput(
         attrs=attrs
-    ))
+    ), required=False)
     avatar = forms.ImageField(label='Аватар', widget=forms.FileInput(
         attrs=attrs
     ))
-
+    content = forms.CharField(label='Описание', required=False, widget=CKEditor5Widget(
+        attrs={'class': 'django_ckeditor_5'}, config_name="extends",
+    ))
 
     class Meta:
         model = Project
         fields = ['name', 'avatar', 'content']
-        widgets = {
-            "content": CKEditor5Widget(
-                attrs={"class": "django_ckeditor_5"}, config_name="extends"
-            )
-        }
+
 
 class ProjectColorForm(JamColorForm):
     class Meta:
