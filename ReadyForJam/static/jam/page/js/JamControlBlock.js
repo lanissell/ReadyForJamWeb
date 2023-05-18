@@ -1,5 +1,6 @@
 let jamColor;
 let isStart = false;
+const localPath = window.location.pathname.replace('projects/', '')
 const acceptText = 'Принять участие';
 const unAcceptText = 'Отказаться от участия';
 
@@ -9,7 +10,7 @@ function SetJamControlBlock() {
     let data = null;
     let blockParent = document.querySelector('.jam-block__button-block');
     let xhr = new XMLHttpRequest();
-    xhr.open('GET', window.location.pathname + 'blockControl/', true);
+    xhr.open('GET', localPath + 'blockControl/', true);
 
     xhr.addEventListener('readystatechange', function () {
 
@@ -75,7 +76,7 @@ function ActivateParticipateButton() {
 
     btn.addEventListener("click", function () {
         let xhr = new XMLHttpRequest();
-        xhr.open('GET', window.location.pathname + 'participate/', true);
+        xhr.open('GET', localPath + 'participate/', true);
         xhr.addEventListener('readystatechange', function () {
             if ((xhr.readyState === 4) && (xhr.status === 200)) {
                 let data = JSON.parse(xhr.response);
@@ -97,7 +98,7 @@ function GetButtonHtml(href, title) {
     btn.className = 'jam-block__button';
     if (href !== 'participate' && href !== '') {
         btn.addEventListener('click', function () {
-            window.location.href = window.location.pathname + href;
+            window.location.href = localPath + href;
         })
     }
     btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`);

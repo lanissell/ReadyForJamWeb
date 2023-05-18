@@ -58,7 +58,6 @@ html {
   font-style: normal;
   font-size: 3vw;
   text-transform: uppercase;
-  color: #FFFFFF;
 }
 
 .creator-list {
@@ -69,7 +68,6 @@ html {
 .creator-list__item {
   display: inline-block;
   text-align: center;
-  background: #FFFFFF;
   border-radius: 10px;
   padding: 0 10px;
   margin-bottom: 1.5%;
@@ -90,7 +88,7 @@ html {
   border-bottom: 2px solid #916FAD;
 }
 .jam-list__table tr:not(:first-child) {
-  border-bottom: 2px solid rgba(145, 111, 173, 0.5);
+  border-bottom: 2px dashed;
 }
 .jam-list__table td:not(:first-child), .jam-list__table td:not(:last-child) {
   padding-right: 50px;
@@ -106,7 +104,6 @@ html {
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
-  color: #FFFFFF;
 }
 
 .jam-list__button-apply {

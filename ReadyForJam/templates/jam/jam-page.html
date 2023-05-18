@@ -2,6 +2,7 @@
 {% block links %}
     <link rel="stylesheet" href="{{ static('/jam/page/jam-page.css' ) }}">
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
+    <link rel="stylesheet" href="{{ static('/jam/page/jam-card.css') }}">
     <style>
         body, html {
             background: {{ jamColor.background_color }} !important;
@@ -13,7 +14,7 @@
 {% endblock %}
 {% block content %}
     <div class="wrapper">
-        <img src="../../media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
+        <img src="/media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
         <div class="jam-block">
             <div class="jam-block__container">
                 <div class="jam-block__list" style="background-color:{{ jamColor.form_color }}">
@@ -38,6 +39,41 @@
                                     </li>
                                 </ul>
                             </nav>
+                            <ul class="text-block__creator-list creator-list">
+                                {% if cards %}
+                                    <li class="creator-list__item"
+                                        style="background-color: transparent">
+                                        <a href="../" class="creator__link"
+                                           style="color: {{ jamColor.main_text_color }}">
+                                            Главная
+                                        </a>
+                                    </li>
+                                    <li class="creator-list__item"
+                                        style="background-color: transparent">
+                                        <div class="creator__link"
+                                             style="color: {{ jamColor.main_text_color }};
+                                                     text-decoration: underline">
+                                            Проекты
+                                        </div>
+                                    </li>
+                                {% else %}
+                                    <li class="creator-list__item"
+                                        style="background-color: transparent">
+                                        <div class="creator__link"
+                                             style="color: {{ jamColor.main_text_color }};
+                                                     text-decoration: underline">
+                                            Главная
+                                        </div>
+                                    </li>
+                                    <li class="creator-list__item"
+                                        style="background-color: transparent">
+                                        <a href="projects/" class="creator__link"
+                                           style="color: {{ jamColor.main_text_color }}">
+                                            Проекты
+                                        </a>
+                                    </li>
+                                {% endif %}
+                            </ul>
                         </div>
                     </div>
 
@@ -47,7 +83,7 @@
                         </div>
                         <div class="jam-block__timer-container">
                         </div>
-                        <script src="../../static/jam/page/js/OnlineTimerWithTimeZone.js"></script>
+                        <script src="{{ static('jam/page/js/OnlineTimerWithTimeZone.js') }}"></script>
                     </div>
 
                     <div class="jam-block__button-block"></div>
@@ -57,7 +93,67 @@
                     <div class="pc-tab">
                         <div class="tab1"
                              style="background-color:{{ jamColor.form_color }}; color:{{ jamColor.main_text_color }}">
-                            {{ jam.content|safe }}
+                            {% if cards %}
+                                {% if cards == 'No projects' %}
+                                    <div style="margin: 0 auto; text-align: center"><h2>Проектов пока нет :(</h2></div>
+                                {% else %}
+                                    {% for card in cards %}
+                                        <ul class="jam-list">
+                                            <li class="jam-list__item" style="background-color: {{ jamColor.background_color }}">
+
+                                                <div class="jam-list__img-container">
+                                                    <img src="/media/{{ card.avatar }}" alt="project_logo"
+                                                         class="jam-list__image">
+                                                </div>
+
+                                                <div class="jam-list__info-container">
+                                                    <h2 class="jam-list__name">
+                                                        <a style="text-decoration: none; color: {{ jamColor.main_text_color }}" href="/project/{{ card.name }}">{{ card.name }}</a>
+                                                    </h2>
+                                                    <ul class="text-block__creator-list creator-list">
+                                                        <li class="creator-list__item">
+                                                            <a href=""
+                                                               class="creator__link"
+                                                               style="background-color: {{ jamColor.main_text_color }};
+                                                                       color: {{ jamColor.form_color }}">{{ card.participant.user.username }}</a>
+                                                        </li>
+                                                    </ul>
+
+                                                    <table class="jam-list__table" style="color: {{ jamColor.main_text_color }}">
+                                                        <tr style="border-color: {{ jamColor.form_color }}">
+                                                            <th>Критерий</th>
+                                                            <th> Место</th>
+                                                            <th>Счёт</th>
+                                                            <th></th>
+                                                        </tr>
+
+                                                        <tr style="border-color: {{ jamColor.form_color }};">
+                                                            <td>Геймплей</td>
+                                                            <td>#1</td>
+                                                            <td>20</td>
+                                                            <td>
+                                                                <button class="jam-list__button-apply"></button>
+                                                            </td>
+                                                        </tr>
+                                                        <tr style="border-color: {{ jamColor.form_color }};">
+                                                            <td>Креативность</td>
+                                                            <td>#5</td>
+                                                            <td>15</td>
+                                                            <td>
+                                                                <button class="jam-list__button-cancel"></button>
+                                                            </td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+
+
+                                            </li>
+                                        </ul>
+                                    {% endfor %}
+                                {% endif %}
+                            {% else %}
+                                {{ jam.content|safe }}
+                            {% endif %}
                         </div>
                     </div>
 

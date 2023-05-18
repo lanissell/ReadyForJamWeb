@@ -4,7 +4,7 @@ from django.forms import model_to_dict
 from django.http import JsonResponse
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.template.loader import render_to_string
 from django.views import View
 
@@ -12,6 +12,7 @@ from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteri
 from jam.models import Jam, JamColor, JamDate, JamCriteria, Participant
 from jam.utils import JamCard, JamFormSaver, GetJamFormContext, LocalizeDate, GetCurrentDate, \
     IsParticipant, IsAuthor
+from project.models import Project
 
 
 class JamRegistrationView(View):
@@ -117,22 +118,41 @@ class JamUpdateView(View):
 
 class JamPageView(View):
 
+    def __init__ (self, **kwargs):
+        self._context = {}
+        super().__init__(**kwargs)
+
     @staticmethod
-    def get(request, **kwargs):
+    def GetJam(name):
+        return get_object_or_404(Jam, name__exact=name)
+
+    def get(self, request, **kwargs):
         jam = None
-        context = {}
         try:
-            jam = Jam.objects.get(name__exact=kwargs['jamName'])
+            jam = self._context.get('jam')
+            if jam is None:
+                jam = self.GetJam(kwargs['jamName'])
+                self._context['jam'] = jam
         except ObjectDoesNotExist:
             print('jam not found')
         if jam is not None:
             jamColor = JamColor.objects.get(jam=jam)
-            context['jam'] = jam
-            context['jamColor'] = jamColor
-            context['jamCount'] = JamCard.CountParticipant(jam.id)
-            return render(request, '/jam/jam-page.html', context=context)
+            self._context['jamColor'] = jamColor
+            self._context['jamCount'] = JamCard.CountParticipant(jam.id)
+            return render(request, '/jam/jam-page.html', context=self._context)
         else:
             return redirect('jamList')
+
+class JamProjectsPageView(JamPageView):
+
+    def get(self, request, **kwargs):
+        jam = self.GetJam(kwargs['jamName'])
+        self._context['jam'] = jam
+        projects = Project.objects.filter(participant__jam=jam)
+        if len(projects) == 0:
+            projects = 'No projects'
+        self._context['cards'] = projects
+        return super().get(request, **kwargs)
 
 class JamDeleteView(View):
 
