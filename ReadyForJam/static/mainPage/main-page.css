@@ -50,100 +50,61 @@ html {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 100%;
-  max-width: 69.1666666667%;
+  max-width: 90%;
   text-align: center;
   box-sizing: border-box;
   flex-wrap: wrap;
 }
 
-.title__item-text {
-  margin-top: 0;
-  font-size: 40px;
-  color: white;
-  text-align: center;
-  align-items: center;
-}
-
 .title__item-title {
   margin-bottom: 30px;
-  font-family: Monda, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 55px;
-  line-height: 90px;
+  font-size: 3.5vw;
   text-transform: uppercase;
   color: #FFFFFF;
 }
 
 .title__item-subtitle {
   margin-bottom: 64px;
-  font-family: Monda, sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 45px;
-  line-height: 73px;
+  font-size: 3vw;
   color: #E64751;
 }
 
 .title__button {
   background: linear-gradient(270deg, #525252 0%, #414141 100%);
   height: 90px;
-  width: 500px;
+  width: 35%;
   border-radius: 25px;
   border: 0;
   cursor: pointer;
-}
-
-.title__button {
   color: #c5c5c5;
 }
 
 .title__button:hover {
   color: #ffffff;
+  border: 0.5px solid #FFFFFF;
 }
 
 .title__link {
-  text-decoration: none;
-  font-family: Monda, sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 30px;
-  line-height: 49px;
+  font-size: 2vw;
   text-transform: uppercase;
-}
-
-.title__author-url {
-  z-index: 50;
-  position: absolute;
-  width: 113px;
-  height: 34px;
-  top: 71.0843373494%;
-  user-select: none;
-  outline: none;
-  font-family: Monda, sans-serif;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 20px;
-  line-height: 33px;
-  display: flex;
-  align-items: center;
-  text-align: center;
-  text-transform: lowercase;
-  color: rgba(82, 82, 82, 0.73);
+  text-decoration: none;
 }
 
 .jam-block {
   width: 100%;
-  min-width: 630px;
   padding-bottom: 30px;
 }
 
 .jam-block__title {
-  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 55px;
-  line-height: 64px;
+  font-size: 4vw;
   text-align: center;
   align-items: center;
   text-transform: uppercase;
@@ -157,10 +118,6 @@ html {
   min-height: 500px;
   overflow-x: auto;
   overflow-y: hidden;
-}
-
-ul li.jam-list__item:not(:last-child) {
-  margin-right: 20px;
 }
 
 .jam-block__jam-list::-webkit-scrollbar {
@@ -179,17 +136,12 @@ ul li.jam-list__item:not(:last-child) {
   grid-template-columns: repeat(1, 100%);
   grid-template-rows: repeat(1, 100%);
   width: 100%;
-  min-width: 377px;
+  min-width: 300px;
   max-width: 377px;
   height: 450px;
-  background-color: #313131;
-  background-image: url("../../media/base/Background.gif");
   background-size: cover;
   background-position: center;
   border-radius: 25px;
-}
-
-ul li.jam-list__item:not(:last-child) {
   margin-right: 30px;
 }
 
@@ -214,6 +166,9 @@ ul li.jam-list__item:not(:last-child) {
   box-sizing: content-box;
   align-items: center;
 }
+.jam-list__text-block a {
+  text-decoration: none;
+}
 .jam-list__text-block h3 {
   color: #ffffff;
   text-align: center;
@@ -234,10 +189,69 @@ ul li.jam-list__item:not(:last-child) {
 
 .jam-list__item-text {
   max-width: 300px;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 1.5vw;
+}
+
+/* Adjust the grid layout for smaller screens */
+@media only screen and (max-width: 1270px) {
+  .jam-list__item-text {
+    font-size: 1.6vw;
+  }
+}
+@media only screen and (max-width: 1024px) {
+  .jam-list__item-title {
+    font-size: 3vw;
+  }
+  .jam-list__item-text {
+    font-size: 2.8vw;
+  }
+}
+@media only screen and (max-width: 780px) {
+  .jam-block__title {
+    font-size: 6vw;
+  }
+  .title__item-title {
+    font-size: 5vw;
+  }
+  .title__item-subtitle {
+    font-size: 5vw;
+  }
+  .title__link {
+    font-size: 4vw;
+  }
+  .jam-list__item-title {
+    font-size: 3.2vw;
+  }
+  .jam-list__item-text {
+    font-size: 3.2vw;
+  }
+}
+@media only screen and (max-width: 490px) {
+  .jam-block__title {
+    font-size: 6vw;
+  }
+  .title__item-title {
+    font-size: 8vw;
+  }
+  .title__item-subtitle {
+    font-size: 7vw;
+  }
+  .title__button {
+    width: 60%;
+    height: 60px;
+    border-radius: 15px;
+  }
+  .title__link {
+    font-size: 5vw;
+  }
+  .jam-list__item-title {
+    font-size: 6vw;
+  }
+  .jam-list__item-text {
+    font-size: 5.5vw;
+  }
 }
 
 /*# sourceMappingURL=main-page.css.map */

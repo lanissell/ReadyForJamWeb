@@ -169,6 +169,9 @@ html {
   background-position: center;
   border-radius: 25px;
 }
+.jam-list__item a {
+  text-decoration: none;
+}
 
 ul li.jam-list__item:not(:last-child) {
   margin-right: 30px;

@@ -49,7 +49,7 @@ html {
   outline: none;
 }
 
-ul li.filter-block__item:not(:nth-child(3) and :nth-child(4)) {
+ul li.filter-block__item:not(:nth-child(4)) {
   margin-right: 2%;
 }
 
@@ -216,14 +216,21 @@ ul li.filter-block__item:nth-child(4) {
   .filter-block__list {
     display: inline-block;
   }
-  .filter-block__item {
+  .filter-block__item p {
+    padding-left: 2px;
+  }
+  .filter-block__item:not(:last-child) {
     margin-bottom: 20px;
+  }
+  .filter-block__item:last-child {
+    margin-bottom: 10px;
   }
   .filter-block__item-text {
     font-size: 5vw;
   }
   .filter-block__button {
     width: 163%;
+    margin-left: 10px;
   }
   .filter-block_button-text {
     font-size: 5vw;

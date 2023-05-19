@@ -60,12 +60,12 @@ html {
   text-transform: uppercase;
 }
 
-.creator-list {
+.card-list {
   padding-inline-start: 0;
   margin-bottom: 30px;
 }
 
-.creator-list__item {
+.card__item {
   display: inline-block;
   text-align: center;
   border-radius: 10px;
@@ -73,7 +73,7 @@ html {
   margin-bottom: 1.5%;
 }
 
-.creator__link {
+.card__link {
   font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
@@ -109,7 +109,6 @@ html {
 .jam-list__button-apply {
   width: 30px;
   height: 30px;
-  background-image: url("../../img/jam-card/button-apply.svg");
   background-color: #B49CC8;
   border: none;
 }
@@ -120,7 +119,6 @@ html {
 .jam-list__button-cancel {
   width: 30px;
   height: 30px;
-  background-image: url("../../img/jam-card/button-cancel.svg");
   background-color: #B49CC8;
   border: none;
 }

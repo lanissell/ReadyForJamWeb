@@ -24,22 +24,23 @@
 
     <div class="jam-block _container">
         <h1 class="jam-block__title">ГРЯДУЩИЕ ДЖЕМЫ</h1>
-        <!--пофиксить момент с тем что list_item при применении к нему технического класса контейнер не встает по контейнеру-->
-        <ul class="jam-block__jam-list jam-list">
+        <div class="jam-block__jam-list jam-list">
             {% for card in jamCards %}
-                <li class="jam-list__item" style="
-                        background-color: {{ card.color }};
-                        background-image: url('{{ card.photo }}') !important;">
-                    <div class="blur"></div>
+                <a href="" style="text-decoration: none">
+                    <div class="jam-list__item" style="
+                            background-color: {{ card.color }};
+                            background-image: url('{{ card.photo }}') !important;">
+                        <div class="blur"></div>
                         <div class="jam-list__text-block">
                             <h3 class="jam-list__item-title">{{ card.title }}</h3>
                             <h4 class="jam-list__item-text"><span>Начало: </span>{{ card.date }}</h4>
                             <h4 class="jam-list__item-text"><span>Организатор: </span>{{ card.author }}</h4>
                             <h4 class="jam-list__item-text"><span>Участники: </span> {{ card.participantQuantity }}</h4>
                         </div>
-                </li>
+                    </div>
+                </a>
             {% endfor %}
-        </ul>
+        </div>
     </div>
 {% endblock %}
 
