@@ -32,7 +32,7 @@ function SetJamControlBlock() {
                 } else {
                     AppendUserControl(data, blockParent);
                 }
-                document.querySelector('.load-wrapper').remove()
+                document.querySelector('.load-wrapper').remove();
             }
         }
     })
@@ -106,11 +106,9 @@ function GetButtonHtml(href, title) {
     btn.onmouseover = function (){
         btn.style.borderColor = jamColor.main_text_color;
         btn.style.color = jamColor.main_text_color;
-        btn.style.transform = 'scale(1.1)'
     }
     btn.onmouseout = function (){
         btn = SetActiveBtnStyle(btn)
-        btn.style.transform = 'scale(1)'
     }
     return btn;
 }

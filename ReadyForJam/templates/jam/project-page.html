@@ -17,21 +17,32 @@
         <div class="jam-block">
             <div class="jam-block__container">
                 <div class="jam-block__list" style="background-color:{{ color.form_color }}">
-                    <div class="jam-block__text-block text-block">
-                        <h1 class="text-block__name"
-                            style="color:{{ color.main_text_color }}">{{ project.name }}</h1>
-                        <nav class="text-block__creator">
-                            <ul class="text-block__creator-list creator-list">
-                                <li class="creator-list__item"
-                                    style="background-color: {{ color.main_text_color }}">
-                                    <a href="" class="creator__link"
-                                       style="color: {{ color.form_color }}">
-                                        {{ participant.username }}
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div class="jam-block__info">
+                        <div class="jam-block__text-block text-block">
+                            <h1 class="text-block__name"
+                                style="color:{{ color.main_text_color }}">{{ project.name }}</h1>
+                            <nav class="text-block__creator">
+                                <ul class="text-block__creator-list creator-list">
+                                    <li class="creator-list__item"
+                                        style="background-color: {{ color.main_text_color }}">
+                                        <a href="" class="creator__link"
+                                           style="color: {{ color.form_color }}">
+                                            {{ participant.user.username }}
+                                        </a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
+                    <div class="jam-block__participate" style="border-color: {{ color.main_text_color }}">
+                        <div class="load-wrapper">
+                            <div class="activity"></div>
+                        </div>
+                        <div class="jam-block__timer-container">
+                        </div>
+                    </div>
+                    <div class="jam-block__button-block"></div>
+                    <script src="{{ static('/project/js/ProjectControlBlock.js') }}"></script>
                     <div class="pc-tab">
                         <div class="tab1"
                              style="background-color:{{ color.form_color }}; color:{{ color.main_text_color }}">
@@ -41,5 +52,13 @@
                 </div>
             </div>
         </div>
+        <div class="modal">
+            <div class="modal-content">
+                <div class="creator__link" style="margin: 10px 10px 0">Вы точно хотите удалить джем?</div>
+                <button class="jam-block__button modal-yes-btn">Да</button>
+                <button class="jam-block__button modal-no-btn">Нет</button>
+            </div>
+        </div>
+        <script src="{{ static('/jam/page/js/JamDeleteModal.js') }}"></script>
     </div>
 {% endblock %}

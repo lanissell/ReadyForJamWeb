@@ -1,7 +1,8 @@
+from django.contrib.auth.models import User
 from django.db import models
 from django_ckeditor_5.fields import CKEditor5Field
 
-from jam.models import Participant
+from jam.models import Participant, JamCriteria
 
 
 class Project(models.Model):
@@ -15,3 +16,8 @@ class ProjectColor(models.Model):
     background_color = models.CharField(max_length=10, blank=False, null=False)
     form_color = models.CharField(max_length=10, blank=False, null=False)
     main_text_color = models.CharField(max_length=10, blank=False, null=False)
+
+class Vote(models.Model):
+    project = models.ForeignKey(Project, blank=False, null=False, on_delete=models.CASCADE)
+    criteria = models.ForeignKey(JamCriteria, blank=False, null=False, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE, default='')

@@ -183,6 +183,10 @@ html {
   text-decoration: none;
 }
 
+.jam-block__button:hover {
+  scale: 1.1;
+}
+
 .button-block__link {
   font-style: normal;
   font-weight: 400;
@@ -253,7 +257,7 @@ html {
 .pc-tab {
   width: 100%;
   min-height: 100%;
-  padding: 100px;
+  padding: 35px 100px 60px;
 }
 .pc-tab ul {
   list-style: none;

@@ -12,7 +12,7 @@ from jam.forms import JamRegistrationForm, JamColorForm, JamDateForm, JamCriteri
 from jam.models import Jam, JamColor, JamDate, JamCriteria, Participant
 from jam.utils import JamCard, JamFormSaver, GetJamFormContext, LocalizeDate, GetCurrentDate, \
     IsParticipant, IsAuthor
-from project.models import Project
+from project.models import Project, Vote
 
 
 class JamRegistrationView(View):
@@ -215,13 +215,15 @@ class JamParticipate(View):
         data = {'url': None}
         if user.is_authenticated:
             jamObject = Jam.objects.get(name__exact=kwargs['jamName'])
+            if IsAuthor(user, jamObject):
+                return JsonResponse({})
             if IsParticipant(user, jamObject):
                 Participant.objects.get(user=user, jam=jamObject).delete()
             else:
                 participant = Participant.objects.create(user=user,
                                                          jam=jamObject)
                 participant.save()
-            return JsonResponse({'message':'message'})
+            return JsonResponse({})
         else:
             data['url'] = redirect('login').url
             return JsonResponse(data)
@@ -267,7 +269,29 @@ class JamBlockControlView(View):
         return context
 
 
+class JamCriteriaView(View):
+
+    def get(self, request, **kwargs):
+        jam = get_object_or_404(Jam, name=kwargs['jamName'])
+        criteria = JamCriteria.objects.filter(jam=jam)
+        projects = Project.objects.filter(participant__jam=jam)
+        data = {}
+        for project in projects:
+            projectCriteria = []
+            for row in criteria:
+                projectCriteria.append(json.dumps(CriteriaRow(row, project).__dict__))
+            data[project.name] = projectCriteria
+        return JsonResponse(data, safe=False)
 
 
+class CriteriaRow:
 
+    def __init__(self, criteria, project):
+        self.name = criteria.name
+        self.position = 0
+        self.count = self.GetVoteCount(project.name)
 
+    def GetVoteCount(self, projectName):
+         votes = Vote.objects.filter(criteria__name=self.name,
+                                     project__name=projectName)
+         return len(votes)

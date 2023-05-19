@@ -216,6 +216,10 @@ $hoverColor: #ffffff;
   }
 }
 
+.jam-block__button:hover{
+  scale: 1.1;
+}
+
 .button-block__link {
   font-style: normal;
   font-weight: 400;
@@ -297,7 +301,7 @@ $unactiveHoverColor: #dddddd;
 .pc-tab {
   width: 100%;
   min-height: 100%;
-  padding: 100px;
+  padding: 35px 100px 60px;
 
 
   ul {
