@@ -1,7 +1,7 @@
 from globalUtils import BaseFormSaver
 from jam.models import Participant
 from project.forms import JamProjectRegisterForm, ProjectColorForm
-from project.models import Project
+from project.models import Project, ProjectColor
 
 
 def GetRegisterProjectFormContext(mainForm=None, colorForm=None, ):
@@ -22,6 +22,16 @@ def GetParticipantProject(user, jamName):
     if project.count() == 0:
         return None
     return project[0]
+
+def IsProjectAuthor(user, project):
+    return project.participant.user == user
+
+def GetProjectInstanceForm(project):
+    color = ProjectColor.objects.get(project=project)
+
+    projectForm = JamProjectRegisterForm(instance=project)
+    colorForm = ProjectColorForm(instance=color)
+    return GetRegisterProjectFormContext(projectForm, colorForm)
 
 
 class ProjectFormSaver(BaseFormSaver):

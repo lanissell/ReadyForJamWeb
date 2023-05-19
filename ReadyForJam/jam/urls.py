@@ -9,6 +9,7 @@ urlpatterns = [
     path('<str:jamName>/', jv.JamPageView.as_view(), name='jamPage'),
     path('<str:jamName>/update/', jv.JamUpdateView.as_view(), name='jamUpdate'),
     path('<str:jamName>/delete/', jv.JamDeleteView.as_view(), name='jamDelete'),
+    path('<str:jamName>/criteria/', jv.JamCriteriaView.as_view(), name='jamCriteria'),
     path('<str:jamName>/participate/', jv.JamParticipate.as_view(), name='participate'),
     path('<str:jamName>/blockControl/', jv.JamBlockControlView.as_view(), name='blockControl'),
     path('<str:jamName>/projectRegister/', ProjectRegisterView.as_view(), name='projectRegister'),
