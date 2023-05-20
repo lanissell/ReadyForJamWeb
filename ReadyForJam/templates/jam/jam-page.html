@@ -108,12 +108,11 @@
                                                         <a style="text-decoration: none; color: {{ jamColor.main_text_color }}"
                                                            href="/project/{{ card.name }}">{{ card.name }}</a>
                                                     </h2>
-                                                    <ul class="text-block__creator-list creator-list">
-                                                        <li class="creator-list__item">
+                                                    <ul class="card__creator-list card-list">
+                                                        <li class="card__item">
                                                             <a href=""
-                                                               class="creator__link"
-                                                               style="background-color: {{ jamColor.main_text_color }};
-                                                                       color: {{ jamColor.form_color }}">{{ card.participant.user.username }}</a>
+                                                               class="card__link"
+                                                               style="color: {{ jamColor.form_color }}">{{ card.participant.user.username }}</a>
                                                         </li>
                                                     </ul>
 
