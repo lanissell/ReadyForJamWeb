@@ -162,14 +162,15 @@ div .jam-block__time-separator:last-child {
   margin-top: 30px;
 }
 .jam-block__button-block :not(:last-child) {
-  margin-right: 30px;
+  margin-bottom: 30px;
 }
 
 .jam-block__button {
-  width: 30%;
+  width: 51%;
   padding: 15px;
-  margin: auto;
+  margin: 0 auto;
   text-align: center;
+  align-items: center;
   border-radius: 10px;
   border-style: solid;
   text-transform: uppercase;
@@ -183,6 +184,7 @@ div .jam-block__time-separator:last-child {
   font-style: normal;
   font-weight: 400;
   font-size: 1vw;
+  text-align: center;
 }
 
 /* Component Needs */
@@ -325,7 +327,7 @@ div .jam-block__time-separator:last-child {
     font-size: 3vw;
   }
   .text-block__count-member {
-    font-size: 2.5vw;
+    font-size: 2vw;
   }
   .button-block__link {
     font-style: normal;
@@ -400,7 +402,7 @@ div .jam-block__time-separator:last-child {
     font-size: 1.8em;
   }
   .text-block__count-member {
-    font-size: 0.6em;
+    font-size: 2.1vw;
   }
   .button-block__link {
     font-style: normal;
