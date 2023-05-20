@@ -105,7 +105,6 @@ function GetButtonHtml(href, title) {
     SetActiveBtnStyle(btn);
     btn.onmouseover = function (){
         btn.style.borderColor = jamColor.main_text_color;
-        btn.style.color = jamColor.main_text_color;
     }
     btn.onmouseout = function (){
         btn = SetActiveBtnStyle(btn)
@@ -166,7 +165,7 @@ function DisableProjectBtn(){
 
 function SetActiveBtnStyle(btn) {
     btn.style.borderColor = 'rgba(0,0,0,0)';
-    btn.style.color = jamColor.form_color;
+    btn.style.color = jamColor.main_text_color;
     btn.style.background = jamColor.background_color;
     return btn;
 }

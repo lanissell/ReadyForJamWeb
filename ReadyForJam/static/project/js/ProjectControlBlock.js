@@ -34,6 +34,10 @@ function GetJamNameHTML(jamName) {
     let themeDiv = document.createElement('div');
     themeDiv.append(jamName);
     themeDiv.id = 'timer'
+    themeDiv.onclick = function (){
+        window.location.href = `/jam/${jamName}`
+    }
+    themeDiv.style.cursor = 'pointer';
     return themeDiv;
 }
 

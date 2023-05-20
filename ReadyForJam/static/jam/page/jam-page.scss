@@ -200,21 +200,12 @@ $hoverColor: #ffffff;
 
   text-align: center;
   border-radius: 10px;
-  color: #FFFFFF !important;
   border-style: solid;
   text-transform: uppercase;
+}
 
-
-  a {
-    color: $unactiveColor;
-    text-decoration: none;
-
-  }
-
-  a:hover {
-    color: $hoverColor;
-    text-decoration: none;
-  }
+.jam-block__button:hover{
+  scale: 1.1;
 }
 
 .button-block__link {
