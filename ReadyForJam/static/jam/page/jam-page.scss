@@ -203,6 +203,7 @@ $hoverColor: #ffffff;
   border-radius: 10px;
   border-style: solid;
   text-transform: uppercase;
+  transition: scale 250ms;
 }
 
 .jam-block__button:hover{

@@ -134,8 +134,13 @@ ul li.filter-block__item:nth-child(4) {
   background-position: center;
   border-radius: 25px;
   position: relative;
-
+  transition: transform 250ms;
 }
+
+.list__item:hover{
+   transform: translateY(-10px);
+}
+
 
 .blur {
   width: 100%;

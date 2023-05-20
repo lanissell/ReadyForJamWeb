@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="de29d606-5270-4895-b703-a4a26e71044f" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../../db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/../../db.sqlite3" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.css.map" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/css/jam-registration.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../static/jam/registration/js/DateValidController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/registration/js/DateValidController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jam-registration.html" beforeDir="false" afterPath="$PROJECT_DIR$/jam-registration.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../media/jam/project/avatar/jam.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../media/user/avatar/image-hY0qJemr--transformed.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-card.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-card.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-card.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-card.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-card.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-card.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.css.map" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" beforeDir="false" afterPath="$PROJECT_DIR$/../../static/jam/page/jam-page.scss" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jam-page.html" beforeDir="false" afterPath="$PROJECT_DIR$/jam-page.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +45,7 @@
       <updated>1682006368582</updated>
       <workItem from="1682006374030" duration="179000" />
       <workItem from="1682239342330" duration="22000" />
+      <workItem from="1684565971897" duration="143000" />
     </task>
     <servers />
   </component>
