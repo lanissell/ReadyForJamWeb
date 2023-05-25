@@ -12,6 +12,10 @@ html {
   background-size: cover;
 }
 
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
@@ -59,12 +63,11 @@ html {
 }
 
 .registration__title-text {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 49px;
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .registration__form {
@@ -93,11 +96,10 @@ html {
   align-content: center;
 
   h3 {
-    font-family: Roboto, sans-serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1.55vw;
-    color: #ffffff;
+    color: $textColor;
   }
 }
 
@@ -109,7 +111,7 @@ html {
 .registration__date-input {
   width: 80%;
   background: #515151;
-  color: #ffffff;
+  color: $textColor;
   border: 2px solid #313131;
   border-radius: 5px;
 }
@@ -128,11 +130,10 @@ html {
   align-content: center;
 
   h3 {
-    font-family: Roboto, serif;
     font-style: normal;
     font-weight: 400;
     font-size: 1.55vw;
-    color: #ffffff;
+    color: $textColor;
   }
 }
 
@@ -156,12 +157,11 @@ ul li.registration__item {
 }
 
 .registration__item-title {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 35px;
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .registration__item-input {
@@ -218,18 +218,14 @@ ul li.registration__item {
 }
 
 .criteria-block__link {
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.55vw;
   line-height: 33px;
-  color: #ffffff;
+  text-decoration: none;
+  color: $textColor;
 }
 
-
-$unactiveColor: #eeeeee;
-$hoverColor: #ffffff;
 
 .registration__button-block {
   width: 100%;
@@ -258,15 +254,14 @@ $hoverColor: #ffffff;
   border: 2px solid #313131;
   border-radius: 5px;
 
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
   text-align: center;
+  text-decoration: none;
 
-  color: #FFFFFF;
+  color: $textColor;;
 
   cursor: pointer;
 }

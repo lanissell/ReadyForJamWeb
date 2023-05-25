@@ -12,12 +12,10 @@
         <div class="title__text-group">
             <h1 class="title__item-title">READY FOR JAM</h1>
             <h2 class="title__item-subtitle">СОЗДАВАЙ И УЧАВСТВУЙ В ИГРОВЫХ ДЖЕМАХ</h2>
-            <form action="" class="title__form" method="get">
-                <button class="title__button" type="button"
-                        onclick="location.href='{{ url('registration') }}'">
-                    <div class="title__link">НАЧАТЬ</div>
-                </button>
-            </form>
+            <button class="title__button" type="button"
+                    onclick="location.href='{{ url('registration') }}'">
+                <div class="title__link">НАЧАТЬ</div>
+            </button>
         </div>
     </div>
 
@@ -26,7 +24,7 @@
         <h1 class="jam-block__title">ГРЯДУЩИЕ ДЖЕМЫ</h1>
         <div class="jam-block__jam-list jam-list">
             {% for card in jamCards %}
-                <a href="" style="text-decoration: none">
+                <a class="jam-list__item" href="" style="text-decoration: none">
                     <div class="jam-list__item" style="
                             background-color: {{ card.color }};
                             background-image: url('{{ card.photo }}') !important;">

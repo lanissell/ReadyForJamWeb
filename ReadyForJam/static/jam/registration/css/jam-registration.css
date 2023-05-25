@@ -55,12 +55,11 @@ html {
 }
 
 .registration__title-text {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 49px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .registration__list {
@@ -86,7 +85,6 @@ html {
   align-content: center;
 }
 .registration__dates-item h3 {
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.55vw;
@@ -119,7 +117,6 @@ html {
   align-content: center;
 }
 .registration__color-item h3 {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.55vw;
@@ -142,12 +139,11 @@ ul li.registration__item {
 }
 
 .registration__item-title {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 35px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .registration__item-input {
@@ -191,12 +187,11 @@ ul li.registration__item {
 }
 
 .criteria-block__link {
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.55vw;
   line-height: 33px;
+  text-decoration: none;
   color: #ffffff;
 }
 
@@ -220,14 +215,13 @@ ul li.registration__item {
   background: #CA3E47;
   border: 2px solid #313131;
   border-radius: 5px;
-  text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
   text-align: center;
-  color: #FFFFFF;
+  text-decoration: none;
+  color: #ffffff;
   cursor: pointer;
 }
 

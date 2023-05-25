@@ -67,10 +67,10 @@ html {
   margin-top: 3vh;
 }
 .jam-block__text-block h3 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 .jam-block__text-block h1 {
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .jam-block__count {
@@ -176,8 +176,9 @@ div .jam-block__time-separator:last-child {
   text-transform: uppercase;
   transition: scale 250ms;
 }
-
 .jam-block__button:hover {
+  color: #ffffff;
+  border: 0.5px solid #FFFFFF;
   scale: 1.1;
 }
 
@@ -252,7 +253,7 @@ div .jam-block__time-separator:last-child {
 .pc-tab {
   width: 100%;
   min-height: 100%;
-  padding: 10%;
+  padding: 5%;
 }
 .pc-tab ul {
   list-style: none;
@@ -260,7 +261,6 @@ div .jam-block__time-separator:last-child {
   padding: 0;
 }
 .pc-tab ul li label {
-  font-family: Roboto, sans-serif;
   float: left;
   border-bottom: 0;
   color: #444;
@@ -278,7 +278,6 @@ div .jam-block__time-separator:last-child {
 }
 .pc-tab section {
   width: 100%;
-  font-family: Roboto, sans-serif;
   clear: both;
 }
 .pc-tab section div {
@@ -289,14 +288,13 @@ div .jam-block__time-separator:last-child {
 }
 .pc-tab section div h2 {
   margin: 0;
-  font-family: Roboto, sans-serif;
   letter-spacing: 1px;
   color: #ffffff;
 }
 
 #tab1:checked ~ nav .tab1 label,
 #tab2:checked ~ nav .tab2 label {
-  color: #FFFFFF;
+  color: #ffffff;
   position: relative;
 }
 #tab1:checked ~ nav .tab1 label:after,

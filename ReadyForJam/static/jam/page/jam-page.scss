@@ -7,11 +7,24 @@ html {
   font-family: Roboto, serif;
 }
 
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
 .wrapper {
   min-height: 100%;
   overflow: hidden;
 }
 
+@mixin button_animation {
+  transition: scale 250ms;
+
+  &:hover {
+    color: $hoverColor;
+    border: .5px solid #FFFFFF;
+    scale: 1.1;
+  }
+}
 
 ._container {
   max-width: 90%;
@@ -72,11 +85,11 @@ html {
   margin-top: 3vh;
 
   h3 {
-    color: #FFFFFF;
+    color: $textColor;
   }
 
   h1 {
-    color: #FFFFFF;
+    color: $textColor;
   }
 }
 
@@ -179,8 +192,6 @@ div .jam-block__time-separator:last-child {
   margin-right: 0;
 }
 
-$unactiveColor: #eeeeee;
-$hoverColor: #ffffff;
 
 .jam-block__button-block {
   width: 100%;
@@ -203,12 +214,10 @@ $hoverColor: #ffffff;
   border-radius: 10px;
   border-style: solid;
   text-transform: uppercase;
-  transition: scale 250ms;
+
+  @include button_animation;
 }
 
-.jam-block__button:hover{
-  scale: 1.1;
-}
 
 .button-block__link {
   font-style: normal;
@@ -292,8 +301,7 @@ $unactiveHoverColor: #dddddd;
 .pc-tab {
   width: 100%;
   min-height: 100%;
-  padding: 10%;
-  //word-wrap: anywhere;
+  padding: 5%;
 
 
   ul {
@@ -303,7 +311,6 @@ $unactiveHoverColor: #dddddd;
 
     li {
       label {
-        font-family: Roboto, sans-serif;
         float: left;
         border-bottom: 0;
         color: #444;
@@ -327,7 +334,6 @@ $unactiveHoverColor: #dddddd;
 
   section {
     width: 100%;
-    font-family: Roboto, sans-serif;
     clear: both;
 
     div {
@@ -338,9 +344,8 @@ $unactiveHoverColor: #dddddd;
 
       h2 {
         margin: 0;
-        font-family: Roboto, sans-serif;
         letter-spacing: 1px;
-        color: #ffffff;
+        color: $textColor;
       }
     }
   }
@@ -350,7 +355,7 @@ $unactiveHoverColor: #dddddd;
 #tab2:checked ~ nav .tab2 {
   label {
     //background: white;
-    color: #FFFFFF;
+    color: $textColor;
     position: relative;
 
     &:after {
@@ -494,7 +499,6 @@ $unactiveHoverColor: #dddddd;
 
 
   .pc-tab {
-
     section {
       height: 100%;
     }

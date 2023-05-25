@@ -4,16 +4,30 @@ body,
 html {
   font-size: 16px;
   height: 100%;
-  font-family: Roboto, serif;
+  font-family: Roboto, sans-serif;
   background: #313131 url("../../media/base/Background-image.svg") repeat;
   background-size: cover;
 }
+
+
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
 
 .wrapper {
   min-height: 100%;
   overflow: hidden;
 }
 
+@mixin button_animation {
+  transition: scale 250ms;
+
+  &:hover {
+    color: $hoverColor;
+    border: .5px solid #FFFFFF;
+    scale: 1.1;
+  }
+}
 
 ._container {
   max-width: 90%;
@@ -70,7 +84,7 @@ html {
   font-size: 3.5vw;
   text-transform: uppercase;
 
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .title__item-subtitle {
@@ -93,12 +107,10 @@ $hoverColor: #ffffff;
   border: 0;
   cursor: pointer;
 
-  color: $unactiveColor;
-}
+  @include button_animation;
 
-.title__button:hover {
-  color: $hoverColor;
-  border: .5px solid #FFFFFF;
+
+  color: $unactiveColor;
 }
 
 
@@ -128,7 +140,7 @@ $hoverColor: #ffffff;
   text-transform: uppercase;
   margin: 60px 0;
 
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .jam-block__jam-list {
@@ -139,6 +151,8 @@ $hoverColor: #ffffff;
   overflow-y: hidden;
 
 }
+
+
 
 
 .jam-block__jam-list::-webkit-scrollbar {
@@ -166,8 +180,13 @@ $hoverColor: #ffffff;
   background-size: cover;
   background-position: center;
   border-radius: 25px;
-  margin-right: 30px;
+
+  &:not(:last-child) {
+    margin-right: 30px;
+  }
 }
+
+
 
 .blur {
   grid-area: 1 / 1 / 2 / 1;

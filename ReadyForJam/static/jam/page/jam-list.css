@@ -5,7 +5,7 @@ html {
   font-size: 16px;
   height: 100%;
   width: 100%;
-  font-family: Monda, sans-serif;
+  font-family: Roboto, sans-serif;
   background: #525252 url("../../../media/jam/pageImages/background-image.svg");
   background-size: cover;
   z-index: 1;
@@ -26,6 +26,7 @@ html {
   display: flex;
   flex-wrap: wrap;
   width: 100%;
+  min-height: 40px;
   align-items: center;
   background: #313131;
   border-radius: 5px;
@@ -58,7 +59,6 @@ ul li.filter-block__item:nth-child(4) {
 }
 
 .filter-block__item-text {
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 1.3vw;
@@ -71,7 +71,8 @@ ul li.filter-block__item:nth-child(4) {
 
 .filter-block__button {
   width: 241px;
-  height: 100%;
+  min-height: 100%;
+  margin-right: 5px;
   background: #CA3E47;
   border-radius: 5px;
   border: none;
@@ -85,7 +86,6 @@ ul li.filter-block__item:nth-child(4) {
 }
 
 .filter-block_button-text {
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -102,17 +102,15 @@ ul li.filter-block__item:nth-child(4) {
 }
 
 .list__item {
+  position: relative;
   width: 100%;
   max-width: 377px;
   height: 450px;
-  background-color: #313131;
+  background: #313131 center;
   background-size: cover;
-  background-position: center;
   border-radius: 25px;
-  position: relative;
   transition: transform 250ms;
 }
-
 .list__item:hover {
   transform: translateY(-10px);
 }
@@ -164,7 +162,6 @@ ul li.filter-block__item:nth-child(4) {
 
 .list__item-text {
   max-width: 300px;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 1.5vw;
@@ -234,7 +231,7 @@ ul li.filter-block__item:nth-child(4) {
     font-size: 5vw;
   }
   .filter-block__button {
-    width: 163%;
+    width: 155%;
     margin-left: 10px;
   }
   .filter-block_button-text {
