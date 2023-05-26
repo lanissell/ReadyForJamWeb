@@ -24,7 +24,7 @@
         <h1 class="jam-block__title">ГРЯДУЩИЕ ДЖЕМЫ</h1>
         <div class="jam-block__jam-list jam-list">
             {% for card in jamCards %}
-                <a class="jam-list__item" href="" style="text-decoration: none">
+                <a class="jam-list__item" href="/jam/{{ card.title }}" style="text-decoration: none">
                     <div class="jam-list__item" style="
                             background-color: {{ card.color }};
                             background-image: url('{{ card.photo }}') !important;">

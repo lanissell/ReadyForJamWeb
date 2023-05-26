@@ -7,13 +7,17 @@ html {
   height: 100%;
   background: #525252 url("../../../../media/base/Background-image.svg") no-repeat fixed center;
   background-size: cover;
-  font-family: Roboto, serif;
+  font-family: Roboto, sans-serif;
 }
 
 .wrapper {
   min-height: 100%;
   overflow: hidden;
 }
+
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
 
 
 ._container {
@@ -64,7 +68,7 @@ html {
     font-size: 3vw;
     text-transform: uppercase;
 
-    color: #FFFFFF;
+    color: $textColor;
   }
 
   h3 {
@@ -72,7 +76,7 @@ html {
     font-style: normal;
     font-weight: 400;
     font-size: 1.5vw;
-    color: #FFFFFF;
+    color: $textColor;
 
   }
 }
@@ -101,6 +105,16 @@ html {
   background: #CA3E47;
   border-radius: 5px;
   border: none;
+
+  a {
+    color: $unactiveColor;
+  }
+
+  &:hover {
+    a {
+      color: $textColor;
+    }
+  }
 }
 
 .bio-block__create-command__link {
@@ -108,8 +122,6 @@ html {
   font-weight: 400;
   font-size: 1.2vw;
   text-decoration: none;
-
-  color: #FFFFFF;
 }
 
 .projects-block {
@@ -135,7 +147,7 @@ html {
     font-size: 2.3vw;
     text-transform: uppercase;
 
-    color: #FFFFFF;
+    color: $textColor;
   }
 
   span {
@@ -179,7 +191,7 @@ html {
 .jam-list__item {
   display: grid;
   grid-template-columns: repeat(1, 100%);
-  grid-template-rows: repeat(1 , 100%);
+  grid-template-rows: repeat(1, 100%);
   width: 100%;
   min-width: 377px;
   max-width: 377px;
@@ -209,10 +221,6 @@ ul li.jam-list__item:not(:last-child) {
   background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(30, 30, 30, 0.9) 70%);
   backdrop-filter: blur(3px);
 }
-
-$textColor: #ffffff;
-$unactiveColor: #eeeeee;
-$hoverColor: #ffffff;
 
 .jam-list__text-block {
   grid-area: 1 / 1 / 2 / 1;
@@ -247,7 +255,6 @@ $hoverColor: #ffffff;
 
 .jam-list__item-text {
   max-width: 300px;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 700;
   font-size: 1.5vw;
@@ -269,7 +276,7 @@ $hoverColor: #ffffff;
     font-size: 2.3vw;
     text-transform: uppercase;
 
-    color: #FFFFFF;
+    color: $textColor;
   }
 }
 

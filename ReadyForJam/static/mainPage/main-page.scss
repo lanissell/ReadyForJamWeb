@@ -19,6 +19,14 @@ $hoverColor: #ffffff;
   overflow: hidden;
 }
 
+@mixin jam-item__animation-up {
+  transition: transform 250ms;
+
+  &:hover {
+    transform: translateY(-10px);
+  }
+}
+
 @mixin button_animation {
   transition: scale 250ms;
 
@@ -153,8 +161,6 @@ $hoverColor: #ffffff;
 }
 
 
-
-
 .jam-block__jam-list::-webkit-scrollbar {
   height: 15px;
   border-radius: 5px;
@@ -175,17 +181,19 @@ $hoverColor: #ffffff;
   grid-template-rows: repeat(1, 100%);
   width: 100%;
   min-width: 300px;
-  max-width: 377px;
+  max-width: 350px;
   height: 450px;
+  margin-top: 20px;
   background-size: cover;
   background-position: center;
   border-radius: 25px;
+
+  @include jam-item__animation-up;
 
   &:not(:last-child) {
     margin-right: 30px;
   }
 }
-
 
 
 .blur {

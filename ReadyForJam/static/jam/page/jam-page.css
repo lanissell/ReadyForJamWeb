@@ -244,7 +244,6 @@ div .jam-block__time-separator:last-child {
   color: white;
 }
 
-/* Visual Styles */
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -300,13 +299,13 @@ div .jam-block__time-separator:last-child {
 }
 #tab1:checked ~ nav .tab1 label:after,
 #tab2:checked ~ nav .tab2 label:after {
-  content: "";
-  display: block;
   position: absolute;
-  height: 2px;
+  display: block;
   width: 100%;
   left: 0;
   bottom: -1px;
+  height: 2px;
+  content: "";
 }
 
 @media screen and (max-width: 1250px) {

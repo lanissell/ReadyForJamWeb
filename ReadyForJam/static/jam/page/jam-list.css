@@ -206,6 +206,7 @@ ul li.filter-block__item:nth-child(4) {
   }
   .filter-block_button-text {
     font-size: 1.8vw;
+    text-align: center;
   }
   .list__item-title {
     font-size: 3.2vw;
@@ -236,6 +237,7 @@ ul li.filter-block__item:nth-child(4) {
   }
   .filter-block_button-text {
     font-size: 5vw;
+    text-align: center;
   }
   .list__container {
     grid-template-columns: repeat(1, 1fr);
