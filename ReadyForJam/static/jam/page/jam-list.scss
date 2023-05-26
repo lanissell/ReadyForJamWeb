@@ -16,7 +16,7 @@ $textColor: #ffffff;
 $unactiveColor: #eeeeee;
 $hoverColor: #ffffff;
 
-@mixin jam-item__animation {
+@mixin jam-item__animation-up {
   transition: transform 250ms;
 
   &:hover {
@@ -154,7 +154,7 @@ ul li.filter-block__item:nth-child(4) {
   background-size: cover;
   border-radius: 25px;
 
-  @include jam-item__animation;
+  @include jam-item__animation-up;
 }
 
 
@@ -269,6 +269,7 @@ ul li.filter-block__item:nth-child(4) {
 
   .filter-block_button-text {
     font-size: 1.8vw;
+    text-align: center;
   }
 
 
@@ -313,6 +314,7 @@ ul li.filter-block__item:nth-child(4) {
 
   .filter-block_button-text {
     font-size: 5vw;
+    text-align: center;
   }
 
   .list__container {

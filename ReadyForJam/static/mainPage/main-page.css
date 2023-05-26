@@ -138,11 +138,16 @@ html {
   grid-template-rows: repeat(1, 100%);
   width: 100%;
   min-width: 300px;
-  max-width: 377px;
+  max-width: 350px;
   height: 450px;
+  margin-top: 20px;
   background-size: cover;
   background-position: center;
   border-radius: 25px;
+  transition: transform 250ms;
+}
+.jam-list__item:hover {
+  transform: translateY(-10px);
 }
 .jam-list__item:not(:last-child) {
   margin-right: 30px;

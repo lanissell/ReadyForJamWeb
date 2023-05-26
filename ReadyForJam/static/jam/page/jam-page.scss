@@ -286,12 +286,6 @@ div .jam-block__time-separator:last-child {
 }
 
 
-/* Visual Styles */
-
-$activeColor: #ffffff;
-$unactiveColor: #eeeeee;
-$unactiveHoverColor: #dddddd;
-
 *, *:after, *:before {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -320,7 +314,7 @@ $unactiveHoverColor: #dddddd;
         }
 
         &:active {
-          background: $activeColor;
+          background: $textColor;
         }
       }
 
@@ -354,19 +348,17 @@ $unactiveHoverColor: #dddddd;
 #tab1:checked ~ nav .tab1,
 #tab2:checked ~ nav .tab2 {
   label {
-    //background: white;
     color: $textColor;
     position: relative;
 
     &:after {
-      content: '';
-      display: block;
       position: absolute;
-      height: 2px;
+      display: block;
       width: 100%;
-      //background: $activeColor;
       left: 0;
       bottom: -1px;
+      height: 2px;
+      content: '';
     }
   }
 }
