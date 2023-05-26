@@ -20,4 +20,4 @@ class ProjectColor(models.Model):
 class Vote(models.Model):
     project = models.ForeignKey(Project, blank=False, null=False, on_delete=models.CASCADE)
     criteria = models.ForeignKey(JamCriteria, blank=False, null=False, on_delete=models.CASCADE)
-    user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE, default='')
+    user = models.ForeignKey(User, blank=True, null=True, on_delete=models.CASCADE)

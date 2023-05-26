@@ -43,7 +43,7 @@ class JamRegistrationView(View):
         else:
             context = GetJamFormContext(form, color, date, criteria)
             return render(request, '/jam/jam-registration.html', context=context)
-        
+
 
 class JamUpdateView(View):
     baseContext = {
@@ -118,7 +118,7 @@ class JamUpdateView(View):
 
 class JamPageView(View):
 
-    def __init__ (self, **kwargs):
+    def __init__(self, **kwargs):
         self._context = {}
         super().__init__(**kwargs)
 
@@ -143,6 +143,7 @@ class JamPageView(View):
         else:
             return redirect('jamList')
 
+
 class JamProjectsPageView(JamPageView):
 
     def get(self, request, **kwargs):
@@ -153,6 +154,7 @@ class JamProjectsPageView(JamPageView):
             projects = 'No projects'
         self._context['cards'] = projects
         return super().get(request, **kwargs)
+
 
 class JamDeleteView(View):
 
@@ -169,7 +171,6 @@ class JamDeleteView(View):
 
 
 class JamListView(View):
-
     _query = '''
             SELECT  jam_jam.id, 
                     jam_jam.name, 
@@ -198,8 +199,8 @@ class JamListView(View):
                           key=lambda c: c.participantQuantity,
                           reverse=isQuantityReverse)
         cards = render_to_string(
-            template_name = self._template,
-            context= {'jamCards': jamCards},
+            template_name=self._template,
+            context={'jamCards': jamCards},
             request=request
         )
         print(isQuantityReverse)
@@ -227,6 +228,7 @@ class JamParticipate(View):
         else:
             data['url'] = redirect('login').url
             return JsonResponse(data)
+
 
 class JamBlockControlView(View):
 
@@ -273,25 +275,28 @@ class JamCriteriaView(View):
 
     def get(self, request, **kwargs):
         jam = get_object_or_404(Jam, name=kwargs['jamName'])
-        criteria = JamCriteria.objects.filter(jam=jam)
+        criteriaList = JamCriteria.objects.filter(jam=jam)
         projects = Project.objects.filter(participant__jam=jam)
         data = {}
+        criteriaTop = {}
+        for criteria in criteriaList:
+            top = Vote.objects.raw(f'''
+                                SELECT rank() over (order by count(id) - 1 desc ) as id,
+                                        count(id) - 1 as vote_count, project_id
+                                FROM project_vote
+                                where criteria_id = {criteria.id}
+                                GROUP BY project_id
+                            ''')
+            criteriaTop[criteria.name] = [{'rank': t.id,
+                                           'count': t.vote_count,
+                                           'project_id': t.project_id}
+                                          for t in top]
         for project in projects:
-            projectCriteria = []
-            for row in criteria:
-                projectCriteria.append(json.dumps(CriteriaRow(row, project).__dict__))
+            projectCriteria = {}
+            for key, value in criteriaTop.items():
+                position = [p for p in value if p['project_id'] == project.id]
+                if len(position) > 0:
+                    projectCriteria[key] = position[0]
+
             data[project.name] = projectCriteria
         return JsonResponse(data, safe=False)
-
-
-class CriteriaRow:
-
-    def __init__(self, criteria, project):
-        self.name = criteria.name
-        self.position = 0
-        self.count = self.GetVoteCount(project.name)
-
-    def GetVoteCount(self, projectName):
-         votes = Vote.objects.filter(criteria__name=self.name,
-                                     project__name=projectName)
-         return len(votes)

@@ -3,10 +3,10 @@ from django.http import JsonResponse
 from django.shortcuts import render, redirect
 from django.views import View
 
-from jam.models import Jam
+from jam.models import Jam, JamCriteria
 from jam.utils import IsParticipant
 from project.forms import JamProjectRegisterForm, ProjectColorForm
-from project.models import Project, ProjectColor
+from project.models import Project, ProjectColor, Vote
 from project.utils import GetRegisterProjectFormContext, ProjectFormSaver, GetParticipantProject, IsProjectAuthor, \
     GetProjectInstanceForm
 
@@ -38,6 +38,11 @@ class ProjectRegisterView(View):
         formSaver.RelativeFormsSave([color])
         if formSaver.isFormsValidated:
             formSaver.SaveRelativeObjects()
+            criteriaList = JamCriteria.objects.filter(jam__name__exact=kwargs['jamName'])
+            for criteria in criteriaList:
+                vote = Vote(project=formSaver.mainObject)
+                vote.criteria = criteria
+                vote.save()
             return redirect('projectPage', formSaver.mainObject.name)
         else:
             context = GetRegisterProjectFormContext(form, color)
