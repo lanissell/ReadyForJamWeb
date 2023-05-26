@@ -1,54 +1,64 @@
 let jamColor;
+let blockParent = $('.jam-block__button-block');
 let isStart = false;
 const localPath = window.location.pathname.replace('projects/', '')
 const acceptText = 'Принять участие';
 const unAcceptText = 'Отказаться от участия';
 
-SetJamControlBlock();
-
-function SetJamControlBlock() {
-    let data = null;
-    let blockParent = document.querySelector('.jam-block__button-block');
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', localPath + 'blockControl/', true);
-
-    xhr.addEventListener('readystatechange', function () {
-
-        if ((xhr.readyState === 4) && (xhr.status === 200)) {
-            data = JSON.parse(xhr.response);
+$.when(
+    $.ajax({
+        url: localPath + 'blockControl/',
+        method: 'get',
+        dataType: 'json',
+        success: function (data) {
             let url = data.url;
             if (url) {
                 window.location.href = data.url;
             } else {
-                if (data.theme) isStart=true;
                 jamColor = data.color;
-                let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
-                projectBtn.id = 'project_btn';
-                blockParent.append(projectBtn);
-                DisableProjectBtn();
-                AppendTimer(data);
-                if (data.isAuthor) {
-                    AppendAuthorControl(blockParent);
-                } else {
-                    AppendUserControl(data, blockParent);
-                }
-                document.querySelector('.load-wrapper').remove();
+                AppendControlBlock(data);
             }
         }
+    }).done(function () {
+        const time = 300;
+        const dfd = $.Deferred();
+        $('.load-wrapper').fadeOut(time, dfd.resolve);
+        dfd.done(function () {
+            $('#timer').fadeIn(time);
+        });
+    }).fail(function () {
+        alert('Ошибка загрузки даты, попробуйте перезагрузить страницу')
     })
+);
 
-    xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
-    xhr.send();
+function AppendControlBlock(data) {
+    let projectBtn = GetButtonHtml('projectRegister', 'Добавить проект');
+    projectBtn.id = 'project_btn';
+    blockParent.append(projectBtn);
+    DisableProjectBtn();
+    let parent = document.querySelector('.jam-block__timer-container');
+    if (data.theme) {
+        AppendTheme(parent, data)
+        isStart = true;
+    } else {
+        AppendTimer(parent, data)
+    }
+    if (data.isAuthor) {
+        AppendAuthorControl(blockParent);
+    } else {
+        AppendUserControl(data, blockParent);
+    }
 }
 
-function AppendTimer(data) {
-    let content;
-    if (isStart) {
-        content = GetThemeHTML(data.theme);
-    } else {
-        content = GetTimerHTML(data.date);
-    }
-    let parent = document.querySelector('.jam-block__timer-container');
+function AppendTimer(parent, data) {
+    let content = GetTimerHTML(data.date);
+    content.style.display = 'none';
+    parent.append(content);
+}
+
+function AppendTheme(parent, data) {
+    let content = GetThemeHTML(data.theme);
+    content.style.display = 'none';
     parent.append(content);
 }
 
@@ -72,23 +82,20 @@ function AppendUserControl(data, blockParent) {
 }
 
 function ActivateParticipateButton() {
-    let btn = document.querySelector("#participate_button");
-
-    btn.addEventListener("click", function () {
-        let xhr = new XMLHttpRequest();
-        xhr.open('GET', localPath + 'participate/', true);
-        xhr.addEventListener('readystatechange', function () {
-            if ((xhr.readyState === 4) && (xhr.status === 200)) {
-                let data = JSON.parse(xhr.response);
+    let btn = $('#participate_button');
+    btn.click(function () {
+        $.ajax({
+            url: localPath + 'participate/',
+            method: 'get',
+            dataType: 'json',
+            success: function (data) {
                 let url = data.url;
                 if (url)
                     window.location.href = data.url;
                 else
-                    btn.replaceWith(FlipParticipateBtnStyle(btn));
+                    btn[0].replaceWith(FlipParticipateBtnStyle(btn[0]));
             }
         })
-        xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
-        xhr.send();
     })
 }
 
@@ -103,10 +110,10 @@ function GetButtonHtml(href, title) {
     }
     btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`);
     SetActiveBtnStyle(btn);
-    btn.onmouseover = function (){
+    btn.onmouseover = function () {
         btn.style.borderColor = jamColor.main_text_color;
     }
-    btn.onmouseout = function (){
+    btn.onmouseout = function () {
         btn = SetActiveBtnStyle(btn)
     }
     return btn;
@@ -158,7 +165,7 @@ function FlipParticipateBtnStyle(btn) {
 
 }
 
-function DisableProjectBtn(){
+function DisableProjectBtn() {
     let projectBtn = document.querySelector('#project_btn');
     if (projectBtn) projectBtn.style.display = 'none';
 }

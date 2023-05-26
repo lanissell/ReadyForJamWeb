@@ -163,12 +163,16 @@ ul li.right-group__items:not(:last-child) {
 
 .load-wrapper {
   position: relative;
-  height: 10vw;
   width: 100%;
-  background-color: #313131;
-  z-index: 44;
+  background-color: #414141;
+  z-index: 1;
   overflow: hidden;
   border-radius: 0.5vw;
+}
+.load-wrapper p {
+  padding: 25px;
+  font-size: 3vw;
+  color: #414141;
 }
 
 .activity {
