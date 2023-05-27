@@ -86,7 +86,6 @@ ul li.filter-block__item:nth-child(4) {
   color: #eeeeee;
 }
 .filter-block__button:hover {
-  border: 0.5px solid #FFFFFF;
   color: #ffffff;
 }
 

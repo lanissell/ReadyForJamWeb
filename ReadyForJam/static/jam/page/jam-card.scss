@@ -1,12 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+$hoverColor: #ffffff;
+
 body,
 html {
   font-size: 16px;
-  color: #ffffff;
+  color: $textColor;
   height: 100%;
   background-size: cover;
-  font-family: Roboto, serif;
+  font-family: Roboto, sans-serif;
 }
 
 .wrapper {

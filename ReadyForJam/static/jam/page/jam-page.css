@@ -175,7 +175,9 @@ div .jam-block__time-separator:last-child {
   border-radius: 10px;
   border-style: solid;
   text-transform: uppercase;
+  transform: scale(1);
   transition: scale 250ms;
+  transform-origin: center center;
 }
 .jam-block__button:hover {
   color: #ffffff;

@@ -17,7 +17,9 @@ $hoverColor: #ffffff;
 }
 
 @mixin button_animation {
+  transform: scale(1);
   transition: scale 250ms;
+  transform-origin: center center;
 
   &:hover {
     color: $hoverColor;
