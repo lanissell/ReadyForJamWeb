@@ -15,16 +15,70 @@ $.ajax({
                 InsertTh(tr, key);
                 InsertTh(tr, value['rank']);
                 InsertTh(tr, value['count']);
-                InsertTh(tr, '+');
+                InsertTh(tr, GetVoteBtn(value['isVote']));
                 table.insertAdjacentElement('beforeend', tr)
-            })
-        })
+            });
+        });
     }
-})
-
+}).done(function () {
+    $('.vote_button').on('click', function (event) {
+        let target = event.target
+        let criteriaName = GetParent(target, 2)
+            .firstElementChild.innerHTML;
+        let projectName = GetParent(target, 5).firstElementChild.firstElementChild.innerHTML
+        $.ajax({
+            url: window.location.pathname + 'vote/',
+            method: 'post',
+            headers: {'X-CSRFToken': $('meta[name="csrf-token"]').attr('content')},
+            dataType: 'json',
+            data: {'criteriaName': criteriaName, 'projectName': projectName},
+            success: function (data) {
+                let command = data['command'];
+                switch (command) {
+                    case 'cant':
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Упс...',
+                            text: 'Вы проглосовали по этому критерию за другой проект :(',
+                            background: '#414141',
+                            color: 'white',
+                            confirmButtonColor: '#CA3E47',
+                            iconColor: '#CA3E47'
+                        })
+                        break;
+                    case 'reduce':
+                        target.innerHTML = '+';
+                        target.parentElement.previousElementSibling.innerHTML--;
+                        break;
+                    case 'voted':
+                        target.innerHTML = '-';
+                        target.parentElement.previousElementSibling.innerHTML++;
+                        break;
+                }
+            }
+        });
+    });
+});
 
 function InsertTh(tableRow, thInnerHtml) {
     let th = document.createElement('th');
-    th.innerHTML = thInnerHtml;
+    th.append(thInnerHtml);
     tableRow.insertAdjacentElement('beforeend', th)
+}
+
+function GetVoteBtn(isVote) {
+    let btn = document.createElement('button');
+    let text = '+';
+    if (isVote) text = '-'
+    btn.innerHTML = text;
+    btn.className = 'vote_button';
+    return btn;
+}
+
+function GetParent(element, count) {
+    let parent = element;
+    for (let i = 0; i < count; i++) {
+        parent = parent.parentElement;
+    }
+    return parent;
 }

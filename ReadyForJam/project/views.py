@@ -1,3 +1,5 @@
+import json
+
 from django.forms import model_to_dict
 from django.http import JsonResponse
 from django.shortcuts import render, redirect
@@ -48,6 +50,7 @@ class ProjectRegisterView(View):
             context = GetRegisterProjectFormContext(form, color)
             return render(request, '/jam/jam-registration.html', context=context)
 
+
 class ProjectUpdateView(View):
 
     def get(self, request, **kwargs):
@@ -90,6 +93,7 @@ class ProjectPageView(View):
         }
         return render(request, '/jam/project-page.html', context=context)
 
+
 class ProjectControlBlockView(View):
 
     def get(self, request, **kwargs):
@@ -105,3 +109,27 @@ class ProjectControlBlockView(View):
         if user.is_authenticated:
             data['isAuthor'] = IsProjectAuthor(user, project)
         return JsonResponse(data)
+
+
+class ProjectVoteView(View):
+
+    def post(self, request, **kwargs):
+        user = request.user
+        data = {'command': ''}
+        if user.is_authenticated:
+            jam = Jam.objects.get(name__exact=kwargs['jamName'])
+            criteria = JamCriteria.objects.get(name__exact=request.POST['criteriaName'])
+            project = Project.objects.get(name__exact=request.POST['projectName'])
+            voteObjects = Vote.objects.filter(user=user,
+                                              criteria=criteria,
+                                              project__participant__jam_id=jam.id)
+            if len(voteObjects) > 0:
+                if voteObjects[0].project == project:
+                    data['command'] = 'reduce'
+                    voteObjects[0].delete()
+                else:
+                    data['command'] = 'cant'
+            else:
+                data['command'] = 'voted'
+                Vote(project=project, criteria=criteria, user=user).save()
+        return JsonResponse(data, safe=False)

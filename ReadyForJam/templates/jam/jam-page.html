@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <link rel="stylesheet" href="{{ static('/jam/page/jam-card.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <style>
         body, html {
             background: {{ jamColor.background_color }} !important;
@@ -14,6 +15,7 @@
     {{ jam.name }}
 {% endblock %}
 {% block content %}
+    <meta name="csrf-token" content="{{ csrf_token }}">
     <div class="wrapper">
         <img src="/media/{{ jam.avatar }}" alt="jamLogo" class="jam-photo">
         <div class="jam-block">
