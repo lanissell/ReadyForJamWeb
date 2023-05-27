@@ -122,7 +122,7 @@ html {
   //}
 
   th:not(:first-child), th:not(:last-child) {
-    padding-right: 3.5vw;
+    padding-right: 3vw;
   }
 
   th:nth-child(4n-3) {
@@ -130,26 +130,15 @@ html {
   }
 }
 
-.jam-list__button-apply {
-  width: 30px;
-  height: 30px;
-  background-color: #B49CC8;
-  border: none;
-
-
-  &:hover {
-    background-color: #a692bd;
-  }
-}
-
-.jam-list__button-cancel {
-  width: 30px;
-  height: 30px;
-  background-color: #B49CC8;
+.vote_button {
+  min-width: 100%;
+  min-height: 100%;
+  border-radius: 5px;
+  background: rgba(70, 70, 70, 0.7);
   border: none;
 
   &:hover {
-    background-color: #a692bd;
+    background: rgba(70, 70, 70, 1);
   }
 }
 
