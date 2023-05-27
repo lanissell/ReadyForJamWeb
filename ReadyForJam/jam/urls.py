@@ -1,7 +1,7 @@
 from django.urls import path
 
 import jam.views as jv
-from project.views import ProjectRegisterView
+from project.views import ProjectRegisterView, ProjectVoteView
 
 urlpatterns = [
     path('register/', jv.JamRegistrationView.as_view(), name='jamRegister'),
@@ -13,5 +13,6 @@ urlpatterns = [
     path('<str:jamName>/participate/', jv.JamParticipate.as_view(), name='participate'),
     path('<str:jamName>/blockControl/', jv.JamBlockControlView.as_view(), name='blockControl'),
     path('<str:jamName>/projectRegister/', ProjectRegisterView.as_view(), name='projectRegister'),
+    path('<str:jamName>/projects/vote/', ProjectVoteView.as_view(), name='projectVote'),
     path('<str:jamName>/projects/', jv.JamProjectsPageView.as_view(), name='projects'),
 ]

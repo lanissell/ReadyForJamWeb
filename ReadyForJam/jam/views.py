@@ -291,12 +291,23 @@ class JamCriteriaView(View):
                                            'count': t.vote_count,
                                            'project_id': t.project_id}
                                           for t in top]
+
+        userVotes = []
+        user = request.user
+        if user.is_authenticated:
+            userVotes = Vote.objects.filter(user=user,
+                                            project__participant__jam_id=jam.id)
         for project in projects:
             projectCriteria = {}
             for key, value in criteriaTop.items():
-                position = [p for p in value if p['project_id'] == project.id]
-                if len(position) > 0:
-                    projectCriteria[key] = position[0]
-
+                position = [p for p in value if p['project_id'] == project.id][0]
+                isVoted = False
+                if userVotes is not None:
+                    criteriaVote = [v for v in userVotes
+                                    if v.criteria.name == key
+                                    and v.project == project]
+                    isVoted = len(criteriaVote) > 0
+                position['isVote'] = isVoted
+                projectCriteria[key] = position
             data[project.name] = projectCriteria
         return JsonResponse(data, safe=False)
