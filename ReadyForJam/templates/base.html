@@ -39,7 +39,11 @@
 {#                    </li>#}
                     <li id="dropdown_elem" class="right-group__items">
                         <div id="dropdown_elem" class="dropdown">
-                            <img id="dropdown_elem" class="right-group__profile" src="/media/base/Profile.svg" alt="Selected Icon">
+                            {% set img=get_cache('user_avatar') %}
+                            {% if not img %}
+                                {% set img='base/Profile.svg' %}
+                            {% endif %}
+                            <img id="dropdown_elem" class="right-group__profile" src='/media/{{ img }}' alt="Selected Icon">
                             <div id="dropdown_elem" class="dropdown-content">
                                 <a id="dropdown_elem" href="">Профиль</a>
                                 {% if request.user.is_authenticated %}

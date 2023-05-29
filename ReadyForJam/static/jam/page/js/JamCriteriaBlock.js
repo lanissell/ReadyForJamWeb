@@ -1,3 +1,7 @@
+const bgColor = $('body').css('backgroundColor');
+const formColor = $('.jam-block__list').css('backgroundColor');
+const textColor = $('.text-block__name').css('color');
+
 $.ajax({
     url: window.location.pathname.replace('projects/', '')
         + 'criteria/',
@@ -72,6 +76,17 @@ function GetVoteBtn(isVote) {
     if (isVote) text = '-'
     btn.innerHTML = text;
     btn.className = 'vote_button';
+    $(btn).css({'backgroundColor': formColor, 'color': textColor});
+
+    $(btn).mouseenter(function () {
+        $(this).css({
+            'backgroundColor': bgColor
+        });
+    }).mouseleave(function () {
+        $(this).css({
+            'backgroundColor': formColor
+        }, 1);
+    });
     return btn;
 }
 

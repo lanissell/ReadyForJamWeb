@@ -122,6 +122,13 @@ NODE_PACKAGE_JSON = os.path.join(BASE_DIR, 'package.json')
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': os.path.join(BASE_DIR, 'cache'),
+    }
+}
+
 CKEDITOR_5_FILE_STORAGE = 'globalUtils.CustomStorage'
 
 CKEDITOR_5_CONFIGS = {
