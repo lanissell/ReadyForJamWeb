@@ -8,8 +8,6 @@
     <link rel="stylesheet" href="{{ static('/base/css/zeroing-style.css') }}">
     <link rel="stylesheet" href="{{ static('/base/css/style.css') }}">
     <link rel="shortcut icon" href="/media/base/Logo.svg">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     {% block links %}
     {% endblock %}
     <title>
@@ -34,11 +32,6 @@
             </nav>
             <nav class="header__right-group right-group">
                 <ul class="right-group__list">
-                    {#                    <li class="right-group__items">#}
-                    {#                        <a class="right-group__link" href="">#}
-                    {#                            <img class="right-group__notification" src="/media/base/alarm.svg" alt="">#}
-                    {#                        </a>#}
-                    {#                    </li>#}
                     <li id="dropdown_elem" class="right-group__items">
                         <div id="dropdown_elem" class="dropdown">
                             {% set img=get_cache('user_avatar') %}
