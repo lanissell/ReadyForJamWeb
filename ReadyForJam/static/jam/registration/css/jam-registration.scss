@@ -3,13 +3,13 @@
 
 body,
 html {
-  font-size: 20px;
   height: 100%;
   width: 100%;
+  font-size: 20px;
   font-family: Roboto, sans-serif;
-  z-index: 1;
   background: #525252 url("../../../../media/jam/reg/sr2c127de97d54e.gif") no-repeat fixed center;
   background-size: cover;
+  z-index: 1;
 }
 
 $textColor: #ffffff;
@@ -44,22 +44,22 @@ $hoverColor: #ffffff;
 .registration__container {
   min-width: 785px;
   max-width: 1000px;
-  background: #414141;
+  top: 50%;
   border: 2px solid #313131;
   border-radius: 10px;
   align-items: center;
-  top: 50%;
+  background: #414141;
 }
 
 
 .registration__title {
   width: 100%;
   max-height: 80px;
+  margin-bottom: 30px;
   text-align: center;
-  background: #313131;
   border-bottom: 2px solid #CA3E47;
   border-radius: 10px 10px 0 0;
-  margin-bottom: 30px;
+  background: #313131;
 }
 
 .registration__title-text {
@@ -207,14 +207,15 @@ ul li.registration__item {
 
 .criteria-block__button-add {
   width: 55%;
-  text-align: center;
-  color: white;
-  background: #CA3E47;
-  border: 2px solid #313131;
-  border-radius: 5px;
-
   margin-bottom: 20px;
+  text-align: center;
+  border-radius: 5px;
+  border: 2px solid #313131;
+
+  color: white;
   cursor: pointer;
+
+  background: #CA3E47;
 }
 
 .criteria-block__link {
