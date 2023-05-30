@@ -62,6 +62,16 @@ html {
   color: #ffffff;
 }
 
+.registration__form button {
+  color: #eeeeee;
+}
+.registration__form button:hover {
+  color: #ffffff;
+}
+.registration__form:hover {
+  color: #ffffff;
+}
+
 .registration__list {
   flex-wrap: wrap;
   align-items: center;
@@ -181,7 +191,6 @@ ul li.registration__item {
   text-align: center;
   border-radius: 5px;
   border: 2px solid #313131;
-  color: white;
   cursor: pointer;
   background: #CA3E47;
 }
@@ -202,12 +211,6 @@ ul li.registration__item {
   text-align: center;
   align-items: center;
 }
-.registration__button-block a {
-  color: #eeeeee;
-}
-.registration__button-block a:hover {
-  color: #ffffff;
-}
 
 .button-block__button-complete {
   max-height: 40px;
@@ -221,7 +224,6 @@ ul li.registration__item {
   line-height: 33px;
   text-align: center;
   text-decoration: none;
-  color: #ffffff;
   cursor: pointer;
 }
 

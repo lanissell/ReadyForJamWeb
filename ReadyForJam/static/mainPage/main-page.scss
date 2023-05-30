@@ -31,8 +31,7 @@ $hoverColor: #ffffff;
   transition: scale 250ms;
 
   &:hover {
-    color: $hoverColor;s
-    border: .5px solid #FFFFFF;
+    color: $hoverColor;
     scale: 1.1;
   }
 }
