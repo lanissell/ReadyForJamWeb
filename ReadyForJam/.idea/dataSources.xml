@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="ReadyForJamDb@localhost" uuid="fa7021db-807e-4bd4-b28c-c1e2b08284be">
+    <data-source source="LOCAL" name="bfs@localhost" uuid="444a32c6-a8eb-436a-ab7a-39ada90dbe11">
       <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/ReadyForJamDb</jdbc-url>
+      <jdbc-url>jdbc:postgresql://localhost:5432/bfs</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>

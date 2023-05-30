@@ -3,6 +3,8 @@ const localPath = window.location.pathname;
 
 document.addEventListener('DOMContentLoaded', SetControlBlock)
 
+$.ajax()
+
 function SetControlBlock() {
     let data = null;
     let blockParent = document.querySelector('.jam-block__button-block');

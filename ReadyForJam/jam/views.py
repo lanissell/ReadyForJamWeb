@@ -204,7 +204,7 @@ class JamListView(View):
             request=request
         )
         print(isQuantityReverse)
-        json_sort = {"sort_by_choice": cards}
+        json_sort = {'sort_by_choice': cards}
         return JsonResponse(data=json_sort, safe=False)
 
 
