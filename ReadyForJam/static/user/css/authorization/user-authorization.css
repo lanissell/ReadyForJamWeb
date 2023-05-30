@@ -6,9 +6,9 @@ html {
   height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
-  z-index: 1;
   background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat fixed center;
   background-size: cover;
+  z-index: 1;
 }
 
 .wrapper {
@@ -58,7 +58,7 @@ html {
   font-weight: 400;
   font-size: 30px;
   line-height: 49px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .registration__list {
@@ -71,12 +71,11 @@ ul li.registration__item {
 }
 
 .registration__item-title {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 35px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .registration__item-input {
@@ -115,10 +114,13 @@ ul li.registration__item {
   text-align: center;
   align-items: center;
 }
-.registration__button-block a {
+.registration__button-block button {
   color: #eeeeee;
 }
-.registration__button-block a:hover {
+.registration__button-block button:hover {
+  color: #ffffff;
+}
+.registration__button-block:hover {
   color: #ffffff;
 }
 
@@ -147,7 +149,7 @@ ul li.registration__item {
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
 .button-block__button-complete {
@@ -158,13 +160,11 @@ ul li.registration__item {
   border: 2px solid #313131;
   border-radius: 5px;
   text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
   text-align: center;
-  color: #FFFFFF;
   cursor: pointer;
 }
 

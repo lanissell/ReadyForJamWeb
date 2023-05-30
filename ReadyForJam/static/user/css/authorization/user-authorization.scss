@@ -7,10 +7,33 @@ html {
   height: 100%;
   width: 100%;
   font-family: Roboto, sans-serif;
-  z-index: 1;
   background: url("../../../../media/authorization/sr26e2dd61dd2e6.gif") no-repeat fixed center;
   background-size: cover;
+  z-index: 1;
 }
+
+$textColor: #ffffff;
+$unactiveColor: #eeeeee;
+
+
+@mixin button_animation {
+
+  button {
+    color: $unactiveColor;
+  }
+
+  button:hover {
+    color: $textColor;
+  }
+
+
+  &:hover {
+    //border: .5px solid #FFFFFF;
+    color: $textColor;
+  }
+}
+
+
 
 .wrapper {
   min-height: 100%;
@@ -63,7 +86,7 @@ html {
   font-weight: 400;
   font-size: 30px;
   line-height: 49px;
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .registration__form {
@@ -83,12 +106,11 @@ ul li.registration__item {
 }
 
 .registration__item-title {
-  font-family: Roboto, serif;
   font-style: normal;
   font-weight: 400;
   font-size: 30px;
   line-height: 35px;
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .registration__item-input {
@@ -122,22 +144,13 @@ ul li.registration__item {
   border-radius: 5px;
 }
 
-$unactiveColor: #eeeeee;
-$hoverColor: #ffffff;
-
 .registration__button-block {
   width: 100%;
   height: 40px;
   text-align: center;
   align-items: center;
 
-  a {
-    color: $unactiveColor;
-  }
-
-  a:hover {
-    color: $hoverColor;
-  }
+  @include button_animation;
 }
 
 .button-block {
@@ -170,7 +183,7 @@ $hoverColor: #ffffff;
   font-size: 20px;
   line-height: 33px;
 
-  color: #FFFFFF;
+  color: $textColor;
 }
 
 .button-block__button-complete {
@@ -183,14 +196,12 @@ $hoverColor: #ffffff;
   border-radius: 5px;
 
   text-decoration: none;
-  font-family: Roboto, sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 20px;
   line-height: 33px;
   text-align: center;
 
-  color: #FFFFFF;
 
   cursor: pointer;
 }

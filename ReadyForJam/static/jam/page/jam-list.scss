@@ -25,8 +25,7 @@ $hoverColor: #ffffff;
 }
 
 
-@mixin button__animation {
-  transition: scale 250ms;
+@mixin button_animation {
 
   a:hover {
     color: $hoverColor;
@@ -119,7 +118,7 @@ ul li.filter-block__item:nth-child(4) {
   cursor: pointer;
 
 
-  @include button__animation;
+  @include button_animation;
 }
 
 .filter-block_button-text {
