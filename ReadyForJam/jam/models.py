@@ -26,7 +26,7 @@ class JamColor(models.Model):
 
 class JamCriteria(models.Model):
     jam = models.ForeignKey(Jam, blank=False, null=False, on_delete=models.CASCADE)
-    name = models.CharField(max_length=128, blank=False, null=False, unique=False)
+    name = models.CharField(max_length=20, blank=False, null=False, unique=False)
 
 class Participant(models.Model):
     user = models.ForeignKey(User, blank=False, null=False, on_delete=models.CASCADE)

@@ -21,8 +21,8 @@
                                 {{ field }}
                             </li>
                         {% endfor %}
-                        {% for message in messages %}
-                            <li class="registration__item" style="color: #CA3E47">{{ message }}</li>
+                        {% for error in form.errors.values() %}
+                            <li class="registration__item" style="color: #CA3E47">{{ error   }}</li>
                         {% endfor %}
                     </ul>
                     <div class="registration__button-block button-block">

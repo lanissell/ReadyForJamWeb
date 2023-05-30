@@ -13,3 +13,7 @@ class UserLoginForm(AuthenticationForm):
         attrs=BasicHtmlAttrs.inputFieldAttrs
     ))
 
+    error_messages = {
+        'invalid_login': 'Не верный логин или пароль'
+    }
+

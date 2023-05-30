@@ -1,26 +1,26 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const quantitySortBtn = document.querySelector('#quantity_sort_btn');
-    const listParent = document.querySelector('#jam-list');
-    let isReverse = true;
-    quantitySortBtn.addEventListener('click', function () {
-        isReverse = !isReverse;
-        let xhr = new XMLHttpRequest();
-        xhr.open('POST', window.location.pathname, true);
-        xhr.setRequestHeader('Content-Type', 'application/json;charset=UTF-8');
-        xhr.addEventListener('readystatechange', function () {
-            if ((xhr.readyState === 4) && (xhr.status === 200)) {
-                let data = JSON.parse(xhr.response);
+    const quantitySortBtn = $('#quantity_sort_btn');
+    const listParent = $('#jam-list');
+    let isReverse = false;
+    quantitySortBtn[0].addEventListener('click', function () {
+        $.ajax({
+            url: window.location.pathname,
+            method: 'post',
+            dataType: 'json',
+            data: JSON.stringify({"is_quantity_reverse": isReverse}),
+            headers: {'X-CSRFToken': GetCookie('csrftoken')},
+            success: function (data) {
+                isReverse = !isReverse;
                 let parser = new DOMParser();
                 let doc = parser.parseFromString(data['sort_by_choice'], 'text/html');
-                listParent.replaceChildren(doc.querySelector('.list__container'))
-                if (isReverse) quantitySortBtn.classList.remove('rotate')
-                else quantitySortBtn.classList.add('rotate')
+                listParent[0].replaceChildren(doc.querySelector('.list__container'));
+                if (isReverse) quantitySortBtn[0].classList.add('rotate');
+                else quantitySortBtn[0].classList.remove('rotate');
             }
-        });
-        xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
-        xhr.send(JSON.stringify({"is_quantity_reverse": isReverse}))
+        })
     });
 })
+
 
 function GetCookie(name) {
     let cookieValue = null;
