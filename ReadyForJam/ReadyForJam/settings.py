@@ -69,7 +69,7 @@ WSGI_APPLICATION = 'ReadyForJam.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'bfs',
+        'NAME': 'ReadyForJamDb',
         'USER': 'superuser',
         'PASSWORD': 'fekod24rfFF',
         'HOST': 'localhost',

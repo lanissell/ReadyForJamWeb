@@ -1,42 +1,33 @@
 let colors = null;
 const localPath = window.location.pathname;
 
-document.addEventListener('DOMContentLoaded', SetControlBlock)
-
-$.ajax()
-
-function SetControlBlock() {
-    let data = null;
-    let blockParent = document.querySelector('.jam-block__button-block');
-    let xhr = new XMLHttpRequest();
-    xhr.open('GET', localPath + 'blockControl', true);
-    xhr.addEventListener('readystatechange', function () {
-        if ((xhr.readyState === 4) && (xhr.status === 200)) {
-            data = JSON.parse(xhr.response);
-            colors = data.projectColor;
-            let parent = document.querySelector('.jam-block__timer-container');
-            parent.append(GetJamNameHTML(data.jamName));
-            if (data.isAuthor) {
-                blockParent.append(GetButtonHtml('update/', 'Изменить'));
-
-                let deleteBtn = GetButtonHtml('', 'Удалить');
-                deleteBtn.id = 'delete_button';
-                blockParent.append(deleteBtn);
-            } else {
-                blockParent.remove();
-            }
-            document.querySelector('.load-wrapper').remove();
+$.ajax({
+    url: localPath + 'blockControl',
+    method: 'get',
+    headers: {'X-CSRFToken': GetCookie('csrftoken')},
+    dataType: 'json',
+    success: function (data) {
+        colors = data.projectColor;
+        let buttonParent = $('.jam-block__button-block')[0];
+        let timerParent = $('.jam-block__timer-container')[0];
+        timerParent.append(GetJamNameHTML(data.jamName));
+        if (data.isAuthor) {
+            buttonParent.append(GetButtonHtml('update/', 'Изменить'));
+            let deleteBtn = GetButtonHtml('', 'Удалить');
+            deleteBtn.id = 'delete_button';
+            buttonParent.append(deleteBtn);
+        } else {
+            buttonParent.remove();
         }
-    });
-    xhr.setRequestHeader("X-CSRFToken", GetCookie('csrftoken'));
-    xhr.send();
-}
+        document.querySelector('.load-wrapper').remove();
+    }
+})
 
 function GetJamNameHTML(jamName) {
     let themeDiv = document.createElement('div');
     themeDiv.append(jamName);
     themeDiv.id = 'timer'
-    themeDiv.onclick = function (){
+    themeDiv.onclick = function () {
         window.location.href = `/jam/${jamName}`
     }
     themeDiv.style.cursor = 'pointer';
@@ -49,10 +40,10 @@ function GetButtonHtml(href, title) {
     btn.className = 'jam-block__button';
     btn.insertAdjacentHTML('beforeend', `<div class="button-block__link">${title}</div>`);
     SetActiveBtnStyle(btn);
-    if (href !== ''){
+    if (href !== '') {
         btn.addEventListener('click', function () {
-        window.location.href = localPath + href;
-    })
+            window.location.href = localPath + href;
+        })
     }
     btn.onmouseover = function () {
         btn.style.borderColor = colors.main_text_color;
