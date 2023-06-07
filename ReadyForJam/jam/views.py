@@ -1,5 +1,6 @@
 import json
 
+from django.core.cache import cache
 from django.forms import model_to_dict
 from django.http import JsonResponse
 
@@ -171,6 +172,9 @@ class JamDeleteView(View):
 
 
 class JamListView(View):
+
+    _cacheKey = 'jam_list'
+
     _query = '''
             SELECT  jam_jam.id, 
                     jam_jam.name, 
@@ -187,14 +191,20 @@ class JamListView(View):
     _template = '/jam/jam-list.html'
 
     def get(self, request, **kwargs):
-        jams = Jam.objects.raw(self._query)
+        jams = cache.get(self._cacheKey)
+        if jams is None:
+            jams = Jam.objects.raw(self._query)
+            cache.set(self._cacheKey, jams, 60 * 60)
         jamCards = [JamCard(jam) for jam in jams]
         jamCards = sorted(jamCards, key=lambda c: c.participantQuantity, reverse=True)
         return render(request, self._template, context={'jamCards': jamCards})
 
     def post(self, request):
         isQuantityReverse = json.loads(request.body).get('is_quantity_reverse')
-        jams = Jam.objects.raw(self._query)
+        jams = cache.get(self._cacheKey)
+        if jams is None:
+            jams = Jam.objects.raw(self._query)
+            cache.set(self._cacheKey, jams, 60 * 60)
         jamCards = sorted([JamCard(jam) for jam in jams],
                           key=lambda c: c.participantQuantity,
                           reverse=isQuantityReverse)
@@ -203,8 +213,7 @@ class JamListView(View):
             context={'jamCards': jamCards},
             request=request
         )
-        print(isQuantityReverse)
-        json_sort = {"sort_by_choice": cards}
+        json_sort = {'sort_by_choice': cards}
         return JsonResponse(data=json_sort, safe=False)
 
 

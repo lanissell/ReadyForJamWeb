@@ -26,7 +26,7 @@ class UserRegistrationForm(UserCreationForm):
     password2 = forms.CharField(label='Повторите пароль', widget=forms.PasswordInput(
         attrs=attrs
     ))
-    email = forms.EmailField(label='E-mail', widget=forms.EmailInput(
+    email = forms.EmailField(label='E-mail' ,widget=forms.EmailInput(
         attrs=attrs
     ), error_messages={'invalid': 'Не корректно введена почта'})
 
@@ -38,6 +38,12 @@ class UserRegistrationForm(UserCreationForm):
         if password != passwordRepeat:
             raise ValidationError("Пароли не совпадают")
         return cleanedData
+
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        if User.objects.filter(email=email).exists():
+            raise ValidationError('Почта уже используется')
+        return email
 
     class Meta:
         model = User

@@ -11,11 +11,13 @@ class Project(models.Model):
     avatar = models.ImageField(upload_to='jam/project/avatar', default='')
     content = CKEditor5Field(config_name='extends')
 
+
 class ProjectColor(models.Model):
     project = models.ForeignKey(Project, blank=False, null=False, on_delete=models.CASCADE)
     background_color = models.CharField(max_length=10, blank=False, null=False)
     form_color = models.CharField(max_length=10, blank=False, null=False)
     main_text_color = models.CharField(max_length=10, blank=False, null=False)
+
 
 class Vote(models.Model):
     project = models.ForeignKey(Project, blank=False, null=False, on_delete=models.CASCADE)

@@ -181,8 +181,8 @@ div .jam-block__time-separator:last-child {
 }
 .jam-block__button:hover {
   color: #ffffff;
-  border: 0.5px solid #FFFFFF;
-  scale: 1.1;
+  border: 0.5px solid;
+  scale: 1.05;
 }
 
 .button-block__link {
