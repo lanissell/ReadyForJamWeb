@@ -1,4 +1,5 @@
 from django.urls import path
+from django.views.decorators.cache import cache_page
 
 import jam.views as jv
 from project.views import ProjectRegisterView, ProjectVoteView

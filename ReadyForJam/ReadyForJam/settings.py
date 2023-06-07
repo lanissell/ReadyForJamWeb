@@ -1,4 +1,5 @@
 import os
+from datetime import timedelta
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -95,6 +96,8 @@ AUTH_PASSWORD_VALIDATORS = [
 NOTIFICATIONS_USE_JSONFIELD = True
 
 LOGOUT_REDIRECT_URL = '/'
+
+AUTO_LOGOUT = {'IDLE_TIME': timedelta(hours=12)}
 
 LANGUAGE_CODE = 'ru'
 

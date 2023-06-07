@@ -16,9 +16,9 @@ class JamRegistrationForm(ModelForm):
 
     attrs = BasicHtmlAttrs.inputFieldAttrs
 
-    name = forms.CharField(label='Название', widget=forms.TextInput(
-        attrs=attrs
-    ))
+    name = forms.CharField(label='Название',
+                           error_messages={'unique': 'Название уже используется'} ,
+                           widget=forms.TextInput(attrs=attrs))
     theme = forms.CharField(label='Тема', widget=forms.TextInput(
         attrs=attrs
     ))
@@ -84,7 +84,7 @@ class JamColorForm(ModelForm):
 
 class JamCriteriaForm(ModelForm):
 
-    name = forms.CharField(label='', widget=forms.TextInput(
+    name = forms.CharField(label='', required=True ,widget=forms.TextInput(
         attrs={'class': 'criteria-block__input'}
     ))
     class Meta:
